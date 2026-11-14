@@ -9,16 +9,11 @@ import { BalaoDeFala } from "../componentes/BalaoDeFala";
 import { duracaoTexto, textoLimpo } from "../componentes/TextoAnimado";
 import { useEstilo } from "../tema/Estilo";
 import { tempos } from "../tema/tokens";
-import { configLia } from "./Lia";
 import { Neuro } from "./Neuro";
-import { Humano } from "./partes/Humano";
+import { Busto } from "./colagem/Busto";
 import { resolverEstado } from "./partes/estado";
-import { configTeo } from "./Teo";
-import { configCaio } from "./Caio";
-import { configRafa } from "./Rafa";
 import { Expressao, IdPersonagem, Mudanca, Olhar, Pose } from "./tipos";
 
-const humanos = { lia: configLia, teo: configTeo, caio: configCaio, rafa: configRafa } as const;
 
 export type PropsPersonagem = {
   id: IdPersonagem;
@@ -85,7 +80,7 @@ export const Personagem: React.FC<PropsPersonagem> = ({
       {id === "neuro" ? (
         <Neuro estado={estado} falando={falando} altura={h * 0.72} />
       ) : (
-        <Humano config={humanos[id]} estado={estado} falando={falando} altura={h} />
+        <Busto id={id} expressao={estado.expressao} olhando={estado.olhando} pose={estado.pose} falando={falando} altura={h * 0.82} />
       )}
     </div>
   );

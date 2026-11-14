@@ -12,7 +12,7 @@ Canal educativo **animamente** ("o mundo explicado em animação"): vídeos anim
 
 Siga o **prompt 1** de `animamente-base/prompt-base-animacao-animamente.md`. Leia esse arquivo antes de começar. Em resumo:
 
-1. **Antes de tudo**, leia `animamente-base/STYLE_GUIDE.md` e `animamente-base/src/tema/tokens.ts` e siga-os à risca: fundo Tinta com constelação de neurônios, destaques só Coral/Amarelo/Lavanda, só Fredoka, estilo adesivo com borda Névoa, personagens Neuro, Lia, Teo, Caio e Rafa, tempos e transições da base.
+1. **Antes de tudo**, leia `animamente-base/STYLE_GUIDE.md` e `animamente-base/src/tema/tokens.ts` e siga-os à risca: fundo Tinta com constelação de neurônios, destaques só Coral/Amarelo/Lavanda, só Fredoka, estilo adesivo com borda Névoa, personagens Neuro e o elenco em colagem de papel (Lia a gata, Bento o cachorro, Teo o bicho-preguiça, Rafa o elefante, Caio a lontra), tempos e transições da base.
 2. **Crie apenas um roteiro novo** em `animamente-base/roteiros/<id>.json` (com `"id"`) e registre em `src/Root.tsx`. Só crie componente ou cena nova se nenhum existente servir; nesse caso use os tokens e helpers da base e adicione ao `STYLE_GUIDE.md` e à Galeria.
 3. **Áudio:** música de fundo baixa e animada (`animada-1`, `animada-2` ou `animada-3`) e **nenhuma voz de IA**. A equipe grava as vozes no Dublador, por cima do vídeo pronto.
 4. **Falas feitas para o Dublador:**

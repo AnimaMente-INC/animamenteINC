@@ -51,8 +51,6 @@ const NOMES_CORES: Partial<Record<NomeCor, string>> = {
   nevoa: "Névoa",
   ardosia: "Ardósia",
   lilas: "Lilás",
-  pele1: "Pele 1",
-  pele2: "Pele 2",
 };
 
 const ConteudoGaleria: React.FC = () => {
@@ -60,10 +58,11 @@ const ConteudoGaleria: React.FC = () => {
   const ids: IdPersonagem[] = PERSONAGENS;
   const nomes: Record<IdPersonagem, string> = {
     neuro: "Neuro: mascote e narrador",
-    lia: "Lia: a estudante curiosa",
-    teo: "Teo: o professor",
-    caio: "Caio: o animado",
-    rafa: "Rafa: o atleta do cérebro",
+    lia: "Lia: a gata curiosa",
+    bento: "Bento: o cachorro otimista",
+    teo: "Teo: o bicho-preguiça sábio",
+    caio: "Caio: a lontra brincalhona",
+    rafa: "Rafa: o elefante coach",
   };
   return (
     <AbsoluteFill style={{ background: p.fundo }}>

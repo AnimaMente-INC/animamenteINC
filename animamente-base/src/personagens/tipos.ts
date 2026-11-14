@@ -1,5 +1,5 @@
-export type IdPersonagem = "neuro" | "lia" | "teo" | "caio" | "rafa";
-export const PERSONAGENS: IdPersonagem[] = ["neuro", "lia", "teo", "caio", "rafa"];
+export type IdPersonagem = "neuro" | "lia" | "bento" | "teo" | "caio" | "rafa";
+export const PERSONAGENS: IdPersonagem[] = ["neuro", "lia", "bento", "teo", "caio", "rafa"];
 export type Pose = "parado" | "apontando" | "acenando" | "pensando" | "comemorando";
 export type Expressao = "neutro" | "feliz" | "surpreso" | "pensativo" | "confuso" | "empolgado";
 export type Olhar = "esquerda" | "direita" | "frente";

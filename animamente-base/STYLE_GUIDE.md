@@ -104,58 +104,50 @@ Toda animação usa os helpers de `src/animacao`.
 
 ---
 
-## 6. Personagens
+## 6. Personagens: colagem de papel
 
-### Construção comum (humanos)
-1. **Corpo inteiro "chibi":** cabeça grande, orelhas, tronco, pernas e tênis. Há quatro tipos de tronco: `capsula`, `retangulo`, `redondo` e `atletico`.
-2. **Silhueta com uma única borda Névoa por fora.** Tudo o que sai da cabeça (cabelo volumoso, topete, tufos, pontas de faixa) vai em `silhuetaFrente` ou `silhuetaTras`, para ganhar a borda. Por dentro, as partes se separam **só pela cor**.
-3. **Braços-neurônio:** traço Névoa grosso que sai de trás da borda (o atleta usa um traço mais grosso). **Mãos-nó:** círculo na cor da pele com borda Névoa. Sem dedos.
-4. **Rosto:** olhos Tinta com brilho Névoa, sobrancelhas que reagem à expressão, bochechas Coral e boca Tinta. Sem nariz.
-5. **Um detalhe de neurônio** por personagem.
-6. Cada humano tem **uma cor de destaque principal** na roupa, para ser reconhecido de longe.
+Os personagens têm uma **identidade própria dentro da marca**: são **colagens de papel recortado** (como recortes de revista e aquarela), em **busto** (cabeça e ombros, com roupinha) e com a **boca "South Park"**: a mandíbula é um recorte separado que desce quando eles falam. As cores são as da animamente (Coral, Amarelo, Lavanda, Névoa, Tinta, Ardósia), mais os tons de pelo de cada bicho. O Neuro continua sendo o cérebro do logo.
 
-### Neuro: mascote e narrador
-É o próprio símbolo da marca ganhando vida: a **silhueta oficial do cérebro** (10 círculos + caule) em Coral com borda Névoa, um **mini A+M com ramos na "testa"**, neurônios nas laterais e no caule, olhos grandes e bochechas Névoa. Tem braços-neurônio com mãos-nó Coral e flutua o tempo todo.
-**Papel:** apresenta o tema, resume e encerra o vídeo. É o narrador padrão.
+### O jeito colagem (`personagens/colagem/papel.tsx`)
+1. **Recorte de tesoura:** toda forma vira um polígono de cortes retos levemente tremidos (`recorte(...)`), sempre o mesmo para a mesma semente.
+2. **Papel com textura**, por peça:
+    - `aquarela`: manchas suaves;
+    - `respingos`: pontinhos de tinta, como esponja;
+    - `manchada`: manchas acinzentadas, para papéis claros;
+    - `lisa`: só o grão do papel;
+    - **meio-tom de revista** (pontinhos) em bochechas, focinhos e orelhas.
+3. **Margem branca de recorte** (Névoa) por fora da silhueta. É a "borda de adesivo" da marca, agora como papel cortado de revista.
+4. **Sombra de papel:** cada peça projeta uma sombrinha, como papel colado sobre papel. Esta é a **única** exceção à regra "sem sombras", e vale só para os personagens.
+5. **Rabiscos de lápis** para pelos, costuras, dobrinhas e bigodes.
+6. **Movimento "em degraus"**, como animação de recorte: a cabeça balança e a boca abre mudando a cada 3 frames (`colagem.passo`).
 
-### Lia: a estudante curiosa
-Pele 1, blusa em cápsula **Amarelo**, legging Ardósia, tênis Coral, cabelo chanel **Tinta** com franja ondulada e **presilha-neurônio Coral**.
-**Papel:** faz as perguntas que o público faria.
+### Rosto e boca (`colagem/rosto.tsx`)
+- **Olhos de papel** com pupila recortada, brilho e **pálpebra que desce** (piscar e personalidade). A gata tem íris amarela com pupila em fenda.
+- **Sobrancelhas:** tiras de papel que sobem e giram com a expressão.
+- **Boca South Park:** fundo escuro (com língua ou dentes) + **mandíbula recortada que desce** (`Mandibula`) enquanto o personagem fala. Fechada, vira um risquinho de lápis.
+- **Expressões:** neutro, feliz, surpreso, pensativo, confuso e empolgado. Cada personagem soma a sua personalidade (pálpebras pesadas, sobrancelha levantada...).
 
-### Teo: o professor
-Pele 2, camisa **Lavanda** com gola Névoa e botões, calça Ardósia, sapato Tinta, cabelo grisalho Lavanda, **óculos Névoa com nós nas hastes** e **gravata-borboleta Coral**.
-**Papel:** explica fórmulas e conceitos.
+### O elenco
 
-### Caio: o animado
-Pele 3, **cabelo cacheado volumoso feito de círculos** (a mesma construção do cérebro do logo), **moletom Coral** com capuz, bolso canguru e **cordões-neurônio Névoa**, calça Ardósia e tênis Amarelo. Tronco `redondo`.
-**Papel:** abre assuntos com energia, faz piada e chama o público para participar.
-
-### Rafa: o atleta do cérebro
-Pele 1, **tronco atlético em V**, **regata Ardósia com acabamento Amarelo e um neurônio no peito**, **topete loiro Amarelo**, **faixa de cabeça Coral**, short Coral e tênis Névoa. Tem braços mais grossos e mãos maiores.
-**Papel:** desafios, dicas práticas, "bora treinar o cérebro".
-
-> Todos os personagens são **originais**. A base não cria personagens feitos para parecer pessoas reais.
-
-### API única
-
-```tsx
-<Personagem
-  id="neuro | lia | teo | caio | rafa"
-  pose="parado | apontando | acenando | pensando | comemorando"
-  expressao="neutro | feliz | surpreso | pensativo | confuso | empolgado"
-  fala="texto opcional com *destaque*"
-  olhando="esquerda | direita | frente"
-/>
-```
-
-- Com `fala`, aparece o balão Névoa centralizado acima do grupo, com o rabicho apontando para quem fala.
-- **Só um personagem fala por cena.**
+| Personagem | Visual | Personalidade | Bordão |
+|---|---|---|---|
+| **Lia, a gata** | preta "smoking", olhos amarelos de gato, bigodes, **boina Coral** com broche-neurônio, **blusa listrada** | curiosa e desconfiada, sempre com uma sobrancelha levantada | "Hum... será mesmo?" |
+| **Bento, o cachorro** | caramelo com focinho branco sardento, **uma orelha caída e outra virada pra cima**, língua pra fora, **capa de chuva Amarelo**, coleira Coral com plaquinha-neurônio | otimista e desastrado, topa tudo antes de entender | "Bora, bora, bora!" |
+| **Teo, o bicho-preguiça** | pelo desgrenhado, máscara escura, óculos redondos com nós de neurônio, **gola alta Coral** canelada, **caneca de café** fumegante na pata com garras | calmo, sábio, sonolento | "Devagar... e sempre." |
+| **Rafa, o elefante** | orelhas enormes em meio-tom rosado, tromba de papel com dobrinhas, presas, **faixa Amarelo**, **jaqueta esportiva Ardósia**, apito | coach confiante, com memória de elefante | "Bora treinar o cérebro!" |
+| **Caio, a lontra** | bochechas claras fofinhas, dentinhos, bigodes, **chapéu de pescador Amarelo**, **camisa estampada Coral** com folhas | brincalhão e travesso, uma piscadinha marota | "Pera que tem piada nisso!" |
 
 ### Criando um personagem novo
-1. Crie um `ConfigHumano` (veja `Caio.tsx`): pele, roupa, calça, sapato, tipo de tronco, ombros, cabelo e detalhes.
-2. Use só cores dos tokens. Tudo o que sai da cabeça vai em `silhuetaFrente`/`silhuetaTras`.
-3. Dê um detalhe de neurônio e escolha uma voz em `src/tema/vozes.json`.
-4. Registre em `tipos.ts` e `Personagem.tsx`, inclua na `Galeria` e documente aqui.
+1. Crie `colagem/<Bicho>.tsx` com o mesmo esqueleto: orelhas e roupa atrás, cabeça com margem, rosto, **boca + mandíbula**, olhos, sobrancelhas e acessórios na frente.
+2. Use só `recorte`, `Peca`, `Rabisco`, `Olho`, `Sobrancelha` e `Mandibula`, com as cores dos tokens. Os pelos novos entram nos tokens.
+3. Dê **uma marca registrada** (roupa, acessório, gesto) e uma personalidade que apareça no rosto em repouso.
+4. Registre em `colagem/Busto.tsx`, `tipos.ts` e `Elenco.tsx`, coloque o "jeito de falar" em `src/tema/vozes.json` e documente aqui.
+
+### API
+
+```tsx
+<Personagem id="neuro | lia | bento | teo | rafa | caio" expressao="..." fala="..." olhando="..." />
+```
 
 ---
 
@@ -172,10 +164,11 @@ Pele 1, **tronco atlético em V**, **regata Ardósia com acabamento Amarelo e um
 | Personagem | Jeito de falar |
 |---|---|
 | Neuro | animado e simpático, voz um pouco mais aguda, como personagem de desenho |
-| Lia | curiosa e leve, perguntando de verdade |
-| Teo | calmo e didático, sorrindo, sem pressa |
-| Caio | muita energia, rápido e brincalhão, puxando o público |
-| Rafa | voz grave e motivadora, como um treinador animado |
+| Lia (gata) | curiosa e desconfiada, meio irônica: "hum... será mesmo?" |
+| Bento (cachorro) | empolgadíssimo e otimista, rápido, topa tudo |
+| Teo (bicho-preguiça) | calmo, sábio e bem devagar, com sono |
+| Rafa (elefante) | grave, confiante e motivador, como técnico de academia |
+| Caio (lontra) | brincalhão e travesso, com risadinha |
 
 - Vozes de IA só se o roteiro pedir `"vozesIA": true`, e nunca imitando a voz de uma pessoa real.
 

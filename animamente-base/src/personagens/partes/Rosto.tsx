@@ -23,6 +23,12 @@ type Props = {
   bochechas?: string | null;
   /** Espessura das sobrancelhas (0 = sem sobrancelhas fixas). */
   sobrancelhas?: number;
+  /** Íris colorida com pupila em fenda (olho de gato). */
+  iris?: string;
+  /** Branco do olho (Névoa) atrás da pupila — para rostos escuros ou com máscara. */
+  olhoBranco?: boolean;
+  /** Cor dos traços dos olhos (arcos de felicidade, sobrancelhas). Padrão: Tinta. */
+  corLinhaOlhos?: string;
 };
 
 const T = cores.tinta;
@@ -40,10 +46,14 @@ export const Rosto: React.FC<Props> = ({
   escala = 1,
   bochechas = cores.coral,
   sobrancelhas = 0,
+  iris,
+  olhoBranco = false,
+  corLinhaOlhos = T,
 }) => {
   const sw = forma.traco * escala;
   const traco = { stroke: T, strokeWidth: sw, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, fill: "none" };
   const r = raioOlho;
+  const tracoOlho = { ...traco, stroke: corLinhaOlhos };
   const dx = olhando === "esquerda" ? -r * 0.8 : olhando === "direita" ? r * 0.8 : 0;
 
   /** Sobrancelha fixa (quando `sobrancelhas` > 0): muda de altura/inclinação com a expressão. */
@@ -58,7 +68,7 @@ export const Rosto: React.FC<Props> = ({
       <path
         key={`sf${lado}`}
         d={`M ${x - r * 1.2 * fora} ${yb + inclina} Q ${x} ${yb - r * 0.7} ${x + r * 1.3 * fora} ${yb + inclina * 0.1 + r * 0.2}`}
-        stroke={T}
+        stroke={corLinhaOlhos}
         strokeWidth={sobrancelhas}
         strokeLinecap="round"
         fill="none"
@@ -71,7 +81,29 @@ export const Rosto: React.FC<Props> = ({
     // olhos em arco (felicidade) não piscam
     if (expressao === "feliz" || expressao === "empolgado") {
       const w = r * 1.4;
-      return <path key={lado} d={`M ${x - w} ${c.y + r * 0.4} Q ${x} ${c.y - r * 1.5} ${x + w} ${c.y + r * 0.4}`} {...traco} />;
+      return <path key={lado} d={`M ${x - w} ${c.y + r * 0.4} Q ${x} ${c.y - r * 1.5} ${x + w} ${c.y + r * 0.4}`} {...tracoOlho} />;
+    }
+    if (iris || olhoBranco) {
+      // olho "completo": fundo (íris ou branco) + pupila + brilho; pisca achatando tudo
+      const R = r * 1.65 * (expressao === "surpreso" ? 1.15 : 1);
+      const k = Math.max(1 - piscada * 0.92, 0.08);
+      const ox2 = expressao === "pensativo" ? r * 0.4 : 0;
+      const oy2 = expressao === "pensativo" ? -r * 0.5 : 0;
+      const px = x + ox2 + (olhando === "esquerda" ? -R * 0.3 : olhando === "direita" ? R * 0.3 : 0) * 0.6;
+      const partes2: React.ReactNode[] = [
+        <ellipse key="f" cx={c.x + dx * 0.4} cy={c.y} rx={R} ry={R * k} fill={iris ?? cores.nevoa} />,
+      ];
+      if (piscada < 0.6) {
+        partes2.push(
+          iris ? (
+            <ellipse key="p" cx={px} cy={c.y + oy2 * 0.5} rx={r * 0.42} ry={R * 0.82 * k} fill={T} />
+          ) : (
+            <circle key="p" cx={px} cy={c.y + oy2} r={r * 0.95} fill={T} />
+          ),
+          <circle key="b" cx={px + r * 0.45} cy={c.y + oy2 - r * 0.5} r={r * 0.32} fill={cores.nevoa} />,
+        );
+      }
+      return <g key={lado}>{partes2}</g>;
     }
     const raio = expressao === "surpreso" ? r * 1.3 : r;
     const ox = expressao === "pensativo" ? r * 0.5 : 0;

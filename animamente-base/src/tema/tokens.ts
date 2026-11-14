@@ -17,10 +17,17 @@ export const cores = {
   // apoio (presentes nas peças da identidade)
   ardosia: "#5A5675", // tracejados, elementos inativos
   lilas: "#D9D6E6", // divisórias sobre fundo claro
-  // tons de pele dos personagens
-  pele1: "#F6C7A6",
-  pele2: "#A0663F",
-  pele3: "#C98B5E",
+  // papéis da colagem dos personagens — só para o corpo dos bichos, nunca para destaques
+  gataPelo: "#2E2856", // gata preta (um tom acima do Tinta, para não sumir no fundo)
+  cachorroPelo: "#D39A5E",
+  preguicaPelo: "#B9A68F",
+  preguicaRosto: "#EFE3D0",
+  preguicaMascara: "#6B5646",
+  elefantePele: "#A9A5C6",
+  elefanteOrelha: "#EDA5B8",
+  lontraPelo: "#9A633F",
+  lontraClaro: "#F2DAC0",
+  garra: "#E9E2D6",
 } as const;
 
 export type NomeCor = keyof typeof cores;
@@ -130,6 +137,19 @@ export const easings = {
   entrada: [0.34, 1.56, 0.64, 1] as const, // pequeno "pulo" no final
   saida: [0.4, 0, 1, 1] as const,
   suave: [0.45, 0, 0.55, 1] as const, // movimentos contínuos
+} as const;
+
+// ─── COLAGEM (personagens) ─────────────────────────────────────────────────
+/**
+ * Os personagens são colagens de papel recortado (revista, aquarela, respingos, meio-tom),
+ * com a boca "South Park": a mandíbula é um recorte separado que desce quando eles falam.
+ */
+export const colagem = {
+  margem: 7, // margem branca (Névoa) do recorte, como papel cortado de revista — a "borda de adesivo"
+  tesoura: 4, // quanto as bordas "tremem" (cortes retos de tesoura)
+  sombra: { dx: 3, dy: 5, desfoque: 2.2, opacidade: 0.45 }, // papel sobre papel
+  passo: 3, // movimento "em degraus" de animação recortada: muda a cada N frames
+  quedaMandibula: 46, // quanto a mandíbula desce com a boca toda aberta
 } as const;
 
 // ─── ÁUDIO ────────────────────────────────────────────────────────────────

@@ -8,10 +8,10 @@
 | Personagem | Quem grava | Jeito de falar |
 |---|---|---|
 | Neuro (mascote e narrador) | ______________ | animado e simpático, voz um pouco mais aguda, como personagem de desenho |
-| Caio (o animado) | ______________ | muita energia, rápido e brincalhão, puxando o público |
-| Teo (o professor) | ______________ | calmo e didático, sorrindo, sem pressa |
-| Rafa (o atleta do cérebro) | ______________ | voz grave e motivadora, como um treinador animado |
-| Lia (a estudante curiosa) | ______________ | curiosa e leve, perguntando de verdade, como quem acabou de ter a dúvida |
+| Caio (a lontra brincalhona) | ______________ | brincalhão e travesso, com risadinha, como quem vai contar uma piada |
+| Teo (o bicho-preguiça sábio) | ______________ | calmo, sábio e bem devagar, com sono, como um bicho-preguiça tomando café |
+| Rafa (o elefante coach) | ______________ | grave, confiante e motivador, como um técnico de academia |
+| Lia (a gata curiosa) | ______________ | curiosa e desconfiada, meio irônica, como quem pergunta 'hum... será mesmo?' |
 
 ## Falas (na ordem do vídeo)
 

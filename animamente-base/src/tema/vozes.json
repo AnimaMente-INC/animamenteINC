@@ -10,24 +10,30 @@
     "voz": "pf_dora",
     "velocidade": 1.05,
     "tom": 1,
-    "direcao": "curiosa e leve, perguntando de verdade, como quem acabou de ter a dúvida"
+    "direcao": "curiosa e desconfiada, meio irônica, como quem pergunta 'hum... será mesmo?'"
   },
   "teo": {
     "voz": "pm_santa",
     "velocidade": 0.95,
     "tom": -1,
-    "direcao": "calmo e didático, sorrindo, sem pressa"
+    "direcao": "calmo, sábio e bem devagar, com sono, como um bicho-preguiça tomando café"
   },
   "caio": {
     "voz": "pm_alex",
     "velocidade": 1.14,
     "tom": 1,
-    "direcao": "muita energia, rápido e brincalhão, puxando o público"
+    "direcao": "brincalhão e travesso, com risadinha, como quem vai contar uma piada"
   },
   "rafa": {
     "voz": "pm_santa",
     "velocidade": 1.02,
     "tom": -3,
-    "direcao": "voz grave e motivadora, como um treinador animado"
+    "direcao": "grave, confiante e motivador, como um técnico de academia"
+  },
+  "bento": {
+    "voz": "pm_alex",
+    "velocidade": 1.15,
+    "tom": 2,
+    "direcao": "empolgadíssimo e otimista, rápido, como cachorro feliz que topa tudo"
   }
 }

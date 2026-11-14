@@ -55,17 +55,19 @@ Oi! Bem-vindo à animamente!
 - **Cores:** Coral `#F0476B`, Amarelo `#FFC23D`, Lavanda `#C9C5DD` e Névoa `#F7F6FB`. Apoio: Ardósia `#5A5675` e Lilás `#D9D6E6`.
 - **Fonte:** só Fredoka.
 - **Estilo:** "adesivo" flat, com borda Névoa por fora da silhueta e neurônios (traços com nós redondos) em toda parte.
-- **Personagens** (todos originais, de corpo inteiro):
+- **Personagens** (todos originais):
   - **Neuro:** o cérebro do logo com rosto. É o narrador.
-  - **Lia:** a curiosa, de amarelo, cabelo chanel e presilha-neurônio.
-  - **Teo:** o professor, de lavanda, grisalho, com óculos de neurônio e gravata coral.
-  - **Caio:** o animado, com cachos de círculos e moletom coral.
-  - **Rafa:** o atleta do cérebro, com regata ardósia, topete loiro e faixa coral.
+  - **Elenco em colagem de papel** (busto com roupinha, boca "South Park"):
+    - **Lia, a gata:** curiosa e desconfiada, boina coral e blusa listrada.
+    - **Bento, o cachorro:** otimista e desastrado, capa de chuva amarela e uma orelha em pé.
+    - **Teo, o bicho-preguiça:** calmo e sábio, gola alta coral, óculos e caneca de café.
+    - **Rafa, o elefante:** coach confiante, faixa amarela, jaqueta esportiva e apito.
+    - **Caio, a lontra:** brincalhão, chapéu de pescador amarelo e camisa estampada.
 
 ## 1. Prompt para as próximas animações
 
 ```
-Use a base de animação da animamente que já existe neste projeto (pasta animamente-base). Antes de tudo, leia STYLE_GUIDE.md e src/tema/tokens.ts e siga-os à risca: identidade visual animamente (fundo Tinta com constelação de neurônios, destaques só Coral/Amarelo/Lavanda, só Fredoka, estilo adesivo com borda Névoa), personagens Neuro, Lia, Teo, Caio e Rafa, tempos e transições.
+Use a base de animação da animamente que já existe neste projeto (pasta animamente-base). Antes de tudo, leia STYLE_GUIDE.md e src/tema/tokens.ts e siga-os à risca: identidade visual animamente (fundo Tinta com constelação de neurônios, destaques só Coral/Amarelo/Lavanda, só Fredoka, estilo adesivo com borda Névoa), personagens Neuro e o elenco em colagem (Lia, Bento, Teo, Rafa, Caio), tempos e transições.
 
 Crie apenas um novo roteiro em /roteiros (com "id") sobre: [TEMA]
 Categoria (etiqueta da intro): [ex.: Ciência]
@@ -94,7 +96,7 @@ Você é um desenvolvedor sênior de motion design em código. Crie a BASE DE AN
 
 IDENTIDADE: fundo Tinta #1F1A3D com constelação de neurônios Coral a 16%; Coral #F0476B, Amarelo #FFC23D, Lavanda #C9C5DD, Névoa #F7F6FB; só Fredoka (600 títulos/destaques, 400 apoio). Estilo "adesivo": formas chapadas, sem contorno escuro, borda Névoa por fora da silhueta; neurônios = traços Névoa com nós redondos. Sem sombras e sem gradientes. Destaques no texto: *amarelo* e _coral_.
 
-PERSONAGENS ORIGINAIS de corpo inteiro (API única <Personagem id pose expressao fala olhando />; respiram, piscam, boca mexe ao falar): Neuro (o cérebro do logo com rosto), Lia (estudante curiosa), Teo (professor), Caio (o animado), Rafa (o atleta do cérebro).
+PERSONAGENS ORIGINAIS (API única <Personagem id expressao fala olhando />): Neuro (o cérebro do logo com rosto) e um elenco de bichos em COLAGEM DE PAPEL de revista, em busto com roupinha, boca "South Park" (mandíbula recortada que desce ao falar), olhos de papel que piscam e muita personalidade: Lia (gata curiosa e desconfiada), Bento (cachorro otimista), Teo (bicho-preguiça sábio), Rafa (elefante coach), Caio (lontra brincalhona).
 
 ÁUDIO: música de fundo original, baixa e animada, em loop; sem vozes de IA; cada fala com tempo estimado (2,4 palavras/s) e boca mexendo. Gerador de roteiro de locução ("npm run locucao") com duas saídas: um .md para leitura (tempo, quem fala, texto, jeito de falar) e um .dublador.txt para o app Dublador Animamente, no formato:
   [mm:ss.d - mm:ss.d] Quem fala

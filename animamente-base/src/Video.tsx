@@ -28,7 +28,7 @@ const timing = linearTiming({
 export type PropsVideo = { roteiro: Roteiro; vozes?: ManifestoVozes | null };
 
 /** Música de fundo em loop, baixa, com fade de entrada e saída. */
-const MusicaDeFundo: React.FC<{ nome: string; comVoz: boolean }> = ({ nome, comVoz }) => {
+export const MusicaDeFundo: React.FC<{ nome: string; comVoz: boolean }> = ({ nome, comVoz }) => {
   const { durationInFrames } = useVideoConfig();
   const alvo = comVoz ? audio.volumeMusicaComVoz : audio.volumeMusica;
   return (

@@ -19,13 +19,14 @@ import { comPadroes, falaDaCena, framesCenas, Roteiro, vozDaCena } from "../src/
 import { IdPersonagem } from "../src/personagens/tipos";
 import { audio, fps, tempos } from "../src/tema/tokens";
 
-const NOMES: Record<IdPersonagem, string> = { neuro: "Neuro", lia: "Lia", teo: "Teo", caio: "Caio", rafa: "Rafa" };
+const NOMES: Record<IdPersonagem, string> = { neuro: "Neuro", lia: "Lia", bento: "Bento", teo: "Teo", caio: "Caio", rafa: "Rafa" };
 const PAPEIS: Record<IdPersonagem, string> = {
   neuro: "mascote e narrador",
-  lia: "a estudante curiosa",
-  teo: "o professor",
-  caio: "o animado",
-  rafa: "o atleta do cérebro",
+  lia: "a gata curiosa",
+  bento: "o cachorro otimista",
+  teo: "o bicho-preguiça sábio",
+  caio: "a lontra brincalhona",
+  rafa: "o elefante coach",
 };
 const EMOCAO: Record<string, string> = {
   neutro: "natural",
