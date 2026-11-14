@@ -1,0 +1,51 @@
+# Roteiro de locução (formato do Dublador Animamente)
+# Título: GTA 6: tudo que já sabemos
+# Vídeo: gta6-tudo-que-sabemos.mp4 · vertical · duração 1:46.5
+# Como usar: abra o Dublador, clique em "Abrir vídeo" (o .mp4 renderizado deste roteiro)
+# e depois em "Abrir roteiro" (este arquivo). O texto entre parênteses é o jeito de falar e não é lido.
+# Arquivo gerado por "npm run locucao". Se o roteiro .json mudar, gere de novo.
+
+[00:00.4 - 00:03.3] Neuro
+Neuro aqui! Vamos de GTA 6?
+
+[00:04.2 - 00:09.6] Neuro
+(empolgado) Quando sai, quanto custa e em que plataformas? Eu te conto tudo!
+
+[00:10.7 - 00:16.5] Neuro
+(começa sorrindo e termina empolgado) Sai dia 19 de novembro de 2026, depois de ser adiado duas vezes.
+
+[00:17.8 - 00:24.5] Neuro
+(sorrindo) Sai para PS5 e Xbox Series X e S. O PC ainda está sem data.
+
+[00:25.7 - 00:32.8] Neuro
+(surpreso) No Brasil, a padrão custa 449 reais e 90 centavos. A Ultimate, 549 reais e 90.
+
+[00:33.7 - 00:40.8] Neuro
+(começa pensativo e termina surpreso) E pra fazer? A Rockstar não revela, mas analistas estimam mais de um bilhão de dólares.
+
+[00:41.8 - 00:47.2] Neuro
+(começa em dúvida e termina sorrindo) Requisitos de PC? Não existem, porque a Rockstar nem anunciou essa versão.
+
+[00:48.7 - 00:55.4] Neuro
+(pensativo) Nos jogos passados, o PC veio mais de um ano depois. Mas é só palpite!
+
+[00:56.7 - 01:02.9] Neuro
+(empolgado) A história segue Lucia e Jason, em Leonida, o estado fictício inspirado na Flórida.
+
+[01:04.3 - 01:11.0] Neuro
+(sorrindo) Lucia sai da prisão, se une a Jason, e os dois caem numa conspiração criminosa.
+
+[01:12.3 - 01:18.1] Neuro
+(surpreso) O mapa do GTA 6 tem o dobro do tamanho do GTA 5.
+
+[01:19.2 - 01:24.6] Neuro
+(empolgado) E é três vezes maior que o mapa de Red Dead 2!
+
+[01:25.7 - 01:32.4] Neuro
+(empolgado) Só Vice City já é o dobro de Los Santos, a cidade do GTA 5.
+
+[01:34.0 - 01:41.1] Neuro
+(empolgado) Resumindo: 19 de novembro, PS5 e Xbox, 449 reais e 90 centavos. PC fica pra depois!
+
+[01:42.2 - 01:45.9] Neuro
+(sorrindo) Siga a animamente e comente o próximo tema!

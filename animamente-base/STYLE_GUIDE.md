@@ -191,6 +191,7 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 | `Destaque` | círculo ou sublinhado "à mão" em Amarelo |
 | `Contador` | número em Fredoka SemiBold Amarelo |
 | `ComparacaoMitoVerdade` | MITO (Coral, riscado) × VERDADE (Amarelo) |
+| `Imagem` | imagem de referência do projeto (`public/`) como adesivo: borda Névoa, cantos de 28px, rótulo Lavanda. Exceção à regra "sem imagens externas": só quando o roteiro pede (`imagem`, na cena `explicacao`) |
 | `Constelacao` | fundo de neurônios Coral a 16% |
 | `BarraProgresso` | barra fina Coral no topo |
 

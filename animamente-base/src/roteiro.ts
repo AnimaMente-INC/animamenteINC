@@ -56,6 +56,9 @@ export type CenaRoteiro = {
   narrador?: IdPersonagem;
   /** Quando a narração começa (segundos, padrão 0,3). */
   narracaoEm?: number;
+  // imagem (arquivo em public/, ex.: "imagens/mapa.png") exibida como adesivo na cena `explicacao`
+  imagem?: string;
+  imagemRotulo?: string;
 };
 
 export type Roteiro = {
@@ -65,6 +68,8 @@ export type Roteiro = {
   musica?: string | false;
   /** Usar vozes de IA (Kokoro)? Padrão: false — as falas são gravadas pela equipe. */
   vozesIA?: boolean;
+  /** Pausa (segundos) depois que a voz termina, antes da cena acabar. Padrão: 0,6 s. Menor = voz mais colada. */
+  respiroVoz?: number;
   titulo: string;
   /** Etiqueta amarela na intro (ex.: "Ciência", "História", "Você sabia?"). */
   categoria?: string;
@@ -127,16 +132,16 @@ export const falaDaCena = (c: CenaRoteiro): { quem: IdPersonagem; texto: string;
 };
 
 /** Duração da cena em frames (sem contar a sobreposição da transição). A voz estica a cena se precisar. */
-export const duracaoCena = (c: CenaRoteiro, voz?: { duracao: number }) => {
+export const duracaoCena = (c: CenaRoteiro, voz?: { duracao: number }, respiro: number = RESPIRO_VOZ) => {
   const base = c.tipo === "intro" ? tempos.intro : c.tipo === "outro" ? tempos.outro : seg(c.duracao ?? 4);
   const f = falaDaCena(c);
   if (!voz || !f) return base;
-  return Math.max(base, f.em + seg(voz.duracao) + RESPIRO_VOZ);
+  return Math.max(base, f.em + seg(voz.duracao) + respiro);
 };
 
 /** Cada cena ganha +transição frames, porque a transição "come" esse tempo da cena seguinte. */
 export const framesCenas = (r: Roteiro, vozes?: ManifestoVozes | null) =>
-  r.cenas.map((c, i) => duracaoCena(c, vozDaCena(r, i, vozes)) + (i < r.cenas.length - 1 ? tempos.transicao : 0));
+  r.cenas.map((c, i) => duracaoCena(c, vozDaCena(r, i, vozes), r.respiroVoz !== undefined ? seg(r.respiroVoz) : RESPIRO_VOZ) + (i < r.cenas.length - 1 ? tempos.transicao : 0));
 
 export const duracaoTotal = (r: Roteiro, vozes?: ManifestoVozes | null) => {
   const f = framesCenas(r, vozes);

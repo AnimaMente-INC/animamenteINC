@@ -1,0 +1,80 @@
+{
+  "id": "gta6-tudo-que-sabemos",
+  "falas": [
+    {
+      "fala": 1,
+      "cena": 0,
+      "quem": "neuro"
+    },
+    {
+      "fala": 2,
+      "cena": 1,
+      "quem": "neuro"
+    },
+    {
+      "fala": 3,
+      "cena": 2,
+      "quem": "neuro"
+    },
+    {
+      "fala": 4,
+      "cena": 3,
+      "quem": "neuro"
+    },
+    {
+      "fala": 5,
+      "cena": 4,
+      "quem": "neuro"
+    },
+    {
+      "fala": 6,
+      "cena": 5,
+      "quem": "neuro"
+    },
+    {
+      "fala": 7,
+      "cena": 6,
+      "quem": "neuro"
+    },
+    {
+      "fala": 8,
+      "cena": 7,
+      "quem": "neuro"
+    },
+    {
+      "fala": 9,
+      "cena": 8,
+      "quem": "neuro"
+    },
+    {
+      "fala": 10,
+      "cena": 9,
+      "quem": "neuro"
+    },
+    {
+      "fala": 11,
+      "cena": 10,
+      "quem": "neuro"
+    },
+    {
+      "fala": 12,
+      "cena": 11,
+      "quem": "neuro"
+    },
+    {
+      "fala": 13,
+      "cena": 12,
+      "quem": "neuro"
+    },
+    {
+      "fala": 14,
+      "cena": 13,
+      "quem": "neuro"
+    },
+    {
+      "fala": 15,
+      "cena": 14,
+      "quem": "neuro"
+    }
+  ]
+}

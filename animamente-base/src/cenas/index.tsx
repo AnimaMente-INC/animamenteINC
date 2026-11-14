@@ -9,6 +9,7 @@ import { Cartao } from "../componentes/Cartao";
 import { ComparacaoMitoVerdade } from "../componentes/ComparacaoMitoVerdade";
 import { Destaque } from "../componentes/Destaque";
 import { Etiqueta } from "../componentes/Etiqueta";
+import { Imagem } from "../componentes/Imagem";
 import { Logo, Marca } from "../componentes/Logo";
 import { Lousa } from "../componentes/Lousa";
 import { Seta } from "../componentes/Seta";
@@ -55,6 +56,7 @@ export const CenaExplicacao: React.FC<PropsCena> = ({ cena, indice }) => (
     conteudo={
       <>
         {cena.titulo && <Titulo texto={cena.titulo} tamanho="subtitulo" atraso={2} />}
+        {cena.imagem && <Imagem arquivo={cena.imagem} rotulo={cena.imagemRotulo} atraso={8} />}
         {cena.lousa && <Lousa formula={cena.lousa} rotulo={cena.lousaRotulo} atraso={8} />}
         {cena.cartao && <Cartao {...cena.cartao} atraso={cena.lousa ? 24 : 8} />}
       </>
@@ -62,6 +64,7 @@ export const CenaExplicacao: React.FC<PropsCena> = ({ cena, indice }) => (
     personagens={cena.personagens}
     legenda={cena.legenda}
     legendaEm={legendaEm(cena, 30)}
+    alturaPersonagem={cena.imagem ? 480 : undefined}
   />
 );
 
