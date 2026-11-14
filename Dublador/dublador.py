@@ -87,6 +87,8 @@ CFG_PADRAO = {
     "duck": 35,                  # % do volume original enquanto alguém fala
     "folga": 1.5,
     "fonte": 30,
+    "ruido": True,               # supressor de ruído ligado
+    "ruido_forca": 60,           # 0 a 100
     "ultimo_dir": "",
 }
 
@@ -369,13 +371,117 @@ def reamostrar(x, sr_de, sr_para):
     return np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
 
 
-def processar_take(bruto, sr):
-    """Corta o silêncio do começo e do fim, equaliza o volume e devolve
-    (audio_48k_mono, segundos_cortados_do_inicio) — ou (None, None) se não houver fala."""
+def reduzir_ruido(x, sr, forca):
+    """Supressor de ruído (chiado, ventilador, zumbido): aprende o ruído nos
+    momentos mais silenciosos da própria gravação e o subtrai do áudio todo.
+    forca vai de 0 (desligado) a 100 (máximo)."""
+    x = np.asarray(x, dtype=np.float32).reshape(-1)
+    if forca <= 0 or len(x) < sr * 0.3:
+        return x
+    f = min(1.0, forca / 100.0)
+    n = 2048 if sr > 32000 else 1024
+    hop = n // 4
+    jan = (0.5 - 0.5 * np.cos(2 * np.pi * np.arange(n) / n)).astype(np.float32)
+    xp = np.concatenate([np.zeros(n, np.float32), x, np.zeros(n, np.float32)])
+    nq = 1 + (len(xp) - n) // hop
+    idx = np.arange(n)[None, :] + hop * np.arange(nq)[:, None]
+    S = np.fft.rfft(xp[idx] * jan, axis=1).astype(np.complex64)
+    mag = np.abs(S)
+    borda = n // hop
+    dentro = np.arange(borda, max(borda + 1, nq - borda))     # quadros sem o preenchimento
+    energia = (mag[dentro] ** 2).sum(axis=1)
+    k = max(4, int(len(dentro) * 0.15))
+    quietos = dentro[np.argsort(energia)[:k]]
+    ruido = mag[quietos].mean(axis=0)
+    alfa = 1.2 + 2.3 * f                       # quanto do ruído é subtraído
+    piso = 10 ** (-(6 + 26 * f) / 20)          # atenuação máxima: de -6 dB a -32 dB
+    g = np.sqrt(np.maximum(1.0 - (alfa * ruido[None, :] / (mag + 1e-9)) ** 2, piso ** 2)).astype(np.float32)
+    g[1:-1] = (g[:-2] + g[1:-1] + g[2:]) / 3.0                 # suaviza no tempo
+    g[:, 1:-1] = (g[:, :-2] + g[:, 1:-1] + g[:, 2:]) / 3.0     # e na frequência
+    freqs = np.fft.rfftfreq(n, 1.0 / sr)
+    g[:, freqs < 70] = piso * 0.5                              # ronco grave (vento, batida na mesa)
+    q = np.fft.irfft(S * g, n=n, axis=1).astype(np.float32) * jan
+    y = np.zeros(len(xp), dtype=np.float32)
+    w = np.zeros(len(xp), dtype=np.float32)
+    np.add.at(y, idx, q)
+    np.add.at(w, idx, np.broadcast_to(jan ** 2, idx.shape))
+    y /= np.maximum(w, 1e-6)
+    return y[n: n + len(x)]
+
+
+# Modificadores de voz: nome -> semitons de mudança de tom e filtros extras do ffmpeg
+EFEITOS = {
+    "Normal": {"st": 0, "filtros": []},
+    "Aguda (desenho animado)": {"st": 3, "filtros": []},
+    "Bem aguda (esquilo)": {"st": 6, "filtros": []},
+    "Grave": {"st": -3, "filtros": []},
+    "Bem grave (gigante)": {"st": -6, "filtros": []},
+    "Robô": {"st": 0, "filtros": [
+        "afftfilt=real='hypot(re,im)*sin(0)':imag='hypot(re,im)*cos(0)':win_size=512:overlap=0.75"]},
+    "Rádio / telefone": {"st": 0, "filtros": ["highpass=f=400", "lowpass=f=3200"]},
+    "Eco": {"st": 0, "filtros": ["aecho=0.8:0.7:90:0.35"]},
+    "Personalizada": {"st": None, "filtros": []},
+}
+EFEITO_PADRAO = "Normal"
+
+
+def filtros_da_voz(nome, st_custom=0.0, velocidade=1.0):
+    """Monta a lista de filtros do ffmpeg para um modificador de voz."""
+    ef = EFEITOS.get(nome, EFEITOS[EFEITO_PADRAO])
+    st = ef["st"] if ef["st"] is not None else float(st_custom or 0.0)
+    st = max(-12.0, min(12.0, st))
+    filtros = []
+    if abs(st) > 0.01:
+        fator = 2 ** (st / 12.0)   # muda o tom sem mudar a duração
+        filtros += [f"asetrate={SR * fator:.0f}", f"aresample={SR}", f"atempo={1 / fator:.5f}"]
+    filtros += ef["filtros"]
+    v = float(velocidade or 1.0)
+    while v > 2.0:
+        filtros.append("atempo=2.0")
+        v /= 2.0
+    if abs(v - 1.0) > 0.005:
+        filtros.append(f"atempo={max(0.5, v):.4f}")
+    return filtros
+
+
+def aplicar_voz(y, nome, st_custom, velocidade, pasta):
+    """Aplica o modificador de voz (e a aceleração, se houver) num áudio mono 48 kHz."""
+    filtros = filtros_da_voz(nome, st_custom, velocidade)
+    if not filtros:
+        return y
+    ent = os.path.join(pasta, "_voz_entrada.wav")
+    sai = os.path.join(pasta, "_voz_saida.wav")
+    try:
+        sf.write(ent, y, SR, subtype="PCM_16")
+        code, err = rodar_ffmpeg(["-i", ent, "-filter:a", ",".join(filtros),
+                                  "-ar", str(SR), "-ac", "1", "-c:a", "pcm_s16le", sai])
+        if code != 0:
+            raise RuntimeError(err[-600:])
+        z, _ = sf.read(sai, dtype="float32", always_2d=False)
+    finally:
+        for c in (ent, sai):
+            try:
+                os.remove(c)
+            except OSError:
+                pass
+    if z.ndim > 1:
+        z = z.mean(axis=1)
+    rms = float(np.sqrt(np.mean(z ** 2))) + 1e-9
+    pk = float(np.abs(z).max()) + 1e-9
+    z = z * min(0.1 / rms, 0.89 / pk, 12.0)     # volta ao volume padrão
+    return z.astype(np.float32)
+
+
+def processar_take(bruto, sr, ruido_forca=0):
+    """Tira o ruído (se pedido), corta o silêncio do começo e do fim, equaliza
+    o volume e devolve (audio_48k_mono, segundos_cortados_do_inicio) — ou
+    (None, None) se não houver fala."""
     x = np.asarray(bruto, dtype=np.float32).reshape(-1)
     if len(x) < sr * 0.2:
         return None, None
     x = x - float(np.mean(x))
+    if ruido_forca > 0:
+        x = reduzir_ruido(x, sr, ruido_forca)
     hop = max(1, int(sr * 0.02))
     n = len(x) // hop
     q = x[: n * hop].reshape(n, hop)
@@ -771,6 +877,8 @@ class App:
         self.var_duck = tk.IntVar(value=self.cfg["duck"])
         self.var_folga = tk.DoubleVar(value=self.cfg["folga"])
         self.var_fonte = tk.IntVar(value=self.cfg["fonte"])
+        self.var_ruido = tk.BooleanVar(value=self.cfg["ruido"])
+        self.var_ruido_forca = tk.IntVar(value=self.cfg["ruido_forca"])
         ttk.Checkbutton(op, text="Ouvir o som do vídeo enquanto grava (use fone!)",
                         variable=self.var_ouvir_orig, takefocus=False).pack(anchor="w")
         ttk.Checkbutton(op, text="Tocar a revisão logo depois de gravar",
@@ -790,6 +898,12 @@ class App:
         tk.Scale(fr, from_=0, to=100, orient="horizontal", variable=self.var_duck, length=150,
                  bg="#F3F2F8", highlightthickness=0, takefocus=0,
                  command=lambda v: self._opcao_mudou()).grid(row=1, column=1)
+        ttk.Checkbutton(fr, text="Supressor de ruído — força (%)", variable=self.var_ruido,
+                        command=self._ruido_mudou, takefocus=False).grid(row=4, column=0, sticky="w")
+        sc_ruido = tk.Scale(fr, from_=10, to=100, orient="horizontal", variable=self.var_ruido_forca,
+                            length=150, bg="#F3F2F8", highlightthickness=0, takefocus=0)
+        sc_ruido.grid(row=4, column=1)
+        sc_ruido.bind("<ButtonRelease-1>", lambda e: self._ruido_mudou())
         ttk.Label(fr, text="Tempo extra no fim do trecho (s)").grid(row=2, column=0, sticky="w", pady=2)
         ttk.Spinbox(fr, from_=0, to=10, increment=0.5, width=6, textvariable=self.var_folga,
                     command=self._opcao_mudou).grid(row=2, column=1, sticky="w")
@@ -872,6 +986,24 @@ class App:
         self.lbl_info = tk.Label(ctl2, text="Abra um vídeo e um roteiro para começar.",
                                  bg="#F3F2F8", fg=ARDOSIA, anchor="w", font=("Segoe UI", 10, "bold"))
         self.lbl_info.pack(side="left", fill="x", expand=True, padx=8)
+
+        ctl3 = ttk.Frame(centro, padding=(0, 6, 0, 0))
+        ctl3.pack(fill="x")
+        self.lbl_voz = ttk.Label(ctl3, text="Modificador de voz:")
+        self.lbl_voz.pack(side="left")
+        self.cb_voz = ttk.Combobox(ctl3, state="readonly", width=24, values=list(EFEITOS), takefocus=False)
+        self.cb_voz.set(EFEITO_PADRAO)
+        self.cb_voz.pack(side="left", padx=4)
+        self.cb_voz.bind("<<ComboboxSelected>>", lambda e: self._voz_mudou())
+        ttk.Label(ctl3, text="Tom (semitons):").pack(side="left", padx=(8, 0))
+        self.var_st = tk.DoubleVar(value=0.0)
+        self.sp_st = ttk.Spinbox(ctl3, from_=-12, to=12, increment=1, width=5, textvariable=self.var_st,
+                                 command=self._voz_mudou, state="disabled")
+        self.sp_st.pack(side="left", padx=4)
+        self.sp_st.bind("<Return>", lambda e: self._voz_mudou())
+        self.sp_st.bind("<FocusOut>", lambda e: self._voz_mudou())
+        ttk.Label(ctl3, text="vale para todas as falas desta pessoa",
+                  foreground=ARDOSIA).pack(side="left", padx=8)
 
 
     def _atalhos(self):
@@ -1125,6 +1257,11 @@ class App:
             self.lbl_prox.configure(text="Este é o último trecho.")
         inf = self.projeto.info(t.n) if self.projeto else {}
         self.var_ajuste.set(round(float(inf.get("ajuste", 0.0)), 2))
+        voz = self._voz(t.locutor)
+        self.lbl_voz.configure(text=f"Modificador de voz de {t.locutor}:" if t.locutor else "Modificador de voz:")
+        self.cb_voz.set(voz["nome"])
+        self.var_st.set(voz["st"])
+        self.sp_st.configure(state=("normal" if voz["nome"] == "Personalizada" else "disabled"))
         self.pb_tempo["value"] = 0
         self._mostrar_frame(t.inicio)
         self._atualizar_info()
@@ -1313,6 +1450,8 @@ class App:
                 "duck": int(self.var_duck.get()),
                 "folga": float(self.var_folga.get()),
                 "fonte": int(self.var_fonte.get()),
+                "ruido": bool(self.var_ruido.get()),
+                "ruido_forca": int(self.var_ruido_forca.get()),
             })
         except Exception:
             return
@@ -1412,34 +1551,126 @@ class App:
     def _salvar_take(self, t, dados, sr, vt0, lat):
         proj = self.projeto
         inf = proj.info(t.n)
-        nome_bruto = f"trecho_{t.n:02d}_bruto.wav"
-        sf.write(proj.caminho(nome_bruto), dados, sr, subtype="PCM_16")
-        y, corte = processar_take(dados, sr)
+        y, _ = processar_take(dados, sr, self._forca_ruido())
         if y is None:
             self._atualizar_info()
             self.lbl_info.configure(text="Não ouvi nenhuma fala nesta gravação. Confira o microfone "
                                          "(a barrinha lá em cima deve mexer quando você fala).", fg="#C62842")
             return
-        nome = f"trecho_{t.n:02d}.wav"
-        sf.write(proj.caminho(nome), y, SR, subtype="PCM_16")
+        nome_bruto = f"trecho_{t.n:02d}_bruto.wav"
+        sf.write(proj.caminho(nome_bruto), dados, sr, subtype="PCM_16")
         inf.update({
             "status": "gravado",
             "sig": t.assinatura(),
             "bruto": nome_bruto,
-            "take": nome,
-            "rel": round((vt0 - lat) - t.inicio + corte, 4),
+            "rel_base": round((vt0 - lat) - t.inicio, 4),
             "ajuste": 0.0,
             "velocidade": 1.0,
-            "dur": round(len(y) / SR, 3),
             "gravado_em": datetime.now().isoformat(timespec="seconds"),
         })
+        self._gerar_take(t)
         proj.salvar()
-        self.cache_takes.pop(t.n, None)
         self.var_ajuste.set(0.0)
         self._atualizar_linha(self.atual)
         self._atualizar_info()
         if self.var_auto.get():
             self.root.after(250, self.ouvir_com_video)
+
+    # ------------------------------------------- ruído e modificador de voz
+    def _forca_ruido(self):
+        try:
+            return int(self.var_ruido_forca.get()) if self.var_ruido.get() else 0
+        except Exception:
+            return 0
+
+    def _voz(self, locutor):
+        """Modificador de voz escolhido para quem fala (vale para todas as falas da pessoa)."""
+        vozes = self.projeto.dados.setdefault("vozes", {}) if self.projeto else {}
+        v = vozes.get(locutor or "", {})
+        nome = v.get("nome", EFEITO_PADRAO)
+        if nome not in EFEITOS:
+            nome = EFEITO_PADRAO
+        return {"nome": nome, "st": float(v.get("st", 0.0))}
+
+    def _gerar_take(self, t):
+        """(Re)cria a fala final do trecho a partir da gravação original:
+        supressor de ruído -> corte de silêncio e volume -> modificador de voz."""
+        proj = self.projeto
+        inf = proj.info(t.n)
+        bruto = proj.caminho(inf["bruto"]) if inf.get("bruto") else None
+        if not bruto or not os.path.exists(bruto):
+            return False
+        dados, sr = sf.read(bruto, dtype="float32", always_2d=False)
+        if dados.ndim > 1:
+            dados = dados.mean(axis=1)
+        y, corte = processar_take(dados, sr, self._forca_ruido())
+        if y is None:      # o supressor não pode apagar uma fala que existia
+            y, corte = processar_take(dados, sr, 0)
+        if y is None:
+            return False
+        voz = self._voz(t.locutor)
+        try:
+            y = aplicar_voz(y, voz["nome"], voz["st"], float(inf.get("velocidade", 1.0)), proj.dir)
+        except Exception:
+            log_erro(traceback.format_exc())
+            messagebox.showerror("Modificador de voz", "Não consegui aplicar o modificador de voz "
+                                                       "(detalhes em erros.log). A fala ficou sem efeito.")
+        nome = f"trecho_{t.n:02d}.wav"
+        sf.write(proj.caminho(nome), y, SR, subtype="PCM_16")
+        inf["take"] = nome
+        inf["dur"] = round(len(y) / SR, 3)
+        if "rel_base" in inf:
+            inf["rel"] = round(float(inf["rel_base"]) + float(corte), 4)
+        self.cache_takes.pop(t.n, None)
+        return True
+
+    def _refazer_takes(self, locutor=None):
+        """Refaz as falas já gravadas (todas, ou só as de um locutor). Devolve quantas."""
+        if self.estado == "tocando":
+            self.parar_reproducao()
+        self.root.configure(cursor="watch")
+        self.root.update_idletasks()
+        n = 0
+        try:
+            for t in self.trechos:
+                if locutor is not None and (t.locutor or "") != locutor:
+                    continue
+                if self.projeto.info(t.n).get("bruto") and self._gerar_take(t):
+                    n += 1
+            self.projeto.salvar()
+        finally:
+            self.root.configure(cursor="")
+        self._atualizar_info()
+        return n
+
+    def _ruido_mudou(self):
+        antes = (self.cfg.get("ruido"), self.cfg.get("ruido_forca"))
+        self._opcao_mudou()
+        if antes == (self.cfg.get("ruido"), self.cfg.get("ruido_forca")):
+            return
+        salvar_cfg(self.cfg)
+        if self.estado in ("parado", "tocando") and self.projeto and self.trechos:
+            self._refazer_takes()
+
+    def _voz_mudou(self):
+        t = self._trecho()
+        if not t or not self.projeto or self.estado not in ("parado", "tocando"):
+            return
+        nome = self.cb_voz.get()
+        if nome not in EFEITOS:
+            return
+        self.sp_st.configure(state=("normal" if nome == "Personalizada" else "disabled"))
+        try:
+            st = max(-12.0, min(12.0, float(str(self.sp_st.get()).replace(",", "."))))
+        except ValueError:
+            st = 0.0
+        nova = {"nome": nome, "st": st}
+        if nova == self._voz(t.locutor):
+            return
+        self.projeto.dados.setdefault("vozes", {})[t.locutor or ""] = nova
+        self.projeto.salvar()
+        if self._refazer_takes(t.locutor or "") and self._take(t) is not None:
+            self.ouvir_voz()      # já toca para ouvir como ficou
 
     # ----------------------------------------------------------- revisão
     def _takes_no_intervalo(self, a, b):
@@ -1573,19 +1804,11 @@ class App:
                             "Quer acelerar mesmo assim? (Regravar costuma ficar melhor.)"):
             return
         inf = self.projeto.info(t.n)
-        orig = self.projeto.caminho(inf["take"])
-        tmp = self.projeto.caminho(f"trecho_{t.n:02d}_tmp.wav")
-        code, err = rodar_ffmpeg(["-i", orig, "-filter:a", f"atempo={fator:.4f}",
-                                  "-ar", str(SR), "-ac", "1", "-c:a", "pcm_s16le", tmp])
-        if code != 0:
-            log_erro(err)
-            messagebox.showerror("Acelerar", "Não consegui acelerar o áudio (detalhes em erros.log).")
-            return
-        os.replace(tmp, orig)
         inf["velocidade"] = round(float(inf.get("velocidade", 1.0)) * fator, 4)
         inf["status"] = "gravado"
+        if not self._gerar_take(t):
+            messagebox.showerror("Acelerar", "Não consegui acelerar o áudio (detalhes em erros.log).")
         self.projeto.salvar()
-        self.cache_takes.pop(t.n, None)
         self._atualizar_linha(self.atual)
         self._atualizar_info()
 
