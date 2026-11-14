@@ -1,0 +1,108 @@
+{
+  "titulo": "O que é _entropia_?",
+  "formato": "vertical",
+  "tema": "escuro",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 4,
+      "personagens": [
+        {
+          "id": "lia",
+          "pose": "pensando",
+          "expressao": "confuso",
+          "fala": "Por que meu quarto *sempre* bagunça sozinho?",
+          "falaEm": 0.3
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 6,
+      "personagens": [
+        {
+          "id": "teo",
+          "pose": "parado",
+          "expressao": "feliz",
+          "mudancas": [
+            {
+              "em": 0.8,
+              "pose": "apontando"
+            }
+          ]
+        }
+      ],
+      "lousa": "S = k · ln W",
+      "lousaRotulo": "entropia de Boltzmann",
+      "legenda": "Entropia mede *quantas formas* a bagunça pode ter"
+    },
+    {
+      "tipo": "diagrama",
+      "duracao": 5,
+      "titulo": "Por que a desordem vence",
+      "nos": [
+        {
+          "texto": "Poucas formas de estar arrumado",
+          "icone": "alvo",
+          "cor": "lavanda"
+        },
+        {
+          "texto": "Muitas formas de estar bagunçado",
+          "icone": "dados",
+          "cor": "amarelo"
+        },
+        {
+          "texto": "A bagunça é só mais provável",
+          "icone": "grafico",
+          "cor": "coral"
+        }
+      ]
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 5,
+      "titulo": "Cuidado com o mito",
+      "mito": "Entropia é só sujeira e caos",
+      "verdade": "É uma medida de probabilidade",
+      "personagens": [
+        {
+          "id": "lia",
+          "pose": "parado",
+          "expressao": "confuso",
+          "mudancas": [
+            {
+              "em": 1.8,
+              "expressao": "surpreso",
+              "pose": "comemorando"
+            },
+            {
+              "em": 3.2,
+              "expressao": "feliz"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 5,
+      "destaque": "Desordem = mais provável",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Agora você _entende_ entropia!",
+          "falaEm": 1
+        }
+      ]
+    },
+    {
+      "tipo": "outro"
+    }
+  ],
+  "categoria": "Física"
+}

@@ -1,0 +1,4 @@
+node_modules/
+out/
+modelos-voz/
+.DS_Store

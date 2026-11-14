@@ -1,0 +1,50 @@
+{
+  "id": "apresentacao-canal",
+  "falas": [
+    {
+      "fala": 1,
+      "cena": 0,
+      "quem": "neuro"
+    },
+    {
+      "fala": 2,
+      "cena": 1,
+      "quem": "neuro"
+    },
+    {
+      "fala": 3,
+      "cena": 2,
+      "quem": "caio"
+    },
+    {
+      "fala": 4,
+      "cena": 3,
+      "quem": "neuro"
+    },
+    {
+      "fala": 5,
+      "cena": 4,
+      "quem": "teo"
+    },
+    {
+      "fala": 6,
+      "cena": 5,
+      "quem": "rafa"
+    },
+    {
+      "fala": 7,
+      "cena": 6,
+      "quem": "lia"
+    },
+    {
+      "fala": 8,
+      "cena": 7,
+      "quem": "neuro"
+    },
+    {
+      "fala": 9,
+      "cena": 8,
+      "quem": "neuro"
+    }
+  ]
+}

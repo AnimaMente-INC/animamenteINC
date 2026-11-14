@@ -1,0 +1,33 @@
+{
+  "_comentario": "Voz de cada personagem. 'direcao' orienta quem GRAVA a fala (padrão do canal). voz/velocidade/tom só valem se o roteiro pedir vozesIA: true (Kokoro TTS).",
+  "neuro": {
+    "voz": "pm_alex",
+    "velocidade": 1.08,
+    "tom": 3,
+    "direcao": "animado e simpático, voz um pouco mais aguda, como personagem de desenho"
+  },
+  "lia": {
+    "voz": "pf_dora",
+    "velocidade": 1.05,
+    "tom": 1,
+    "direcao": "curiosa e leve, perguntando de verdade, como quem acabou de ter a dúvida"
+  },
+  "teo": {
+    "voz": "pm_santa",
+    "velocidade": 0.95,
+    "tom": -1,
+    "direcao": "calmo e didático, sorrindo, sem pressa"
+  },
+  "caio": {
+    "voz": "pm_alex",
+    "velocidade": 1.14,
+    "tom": 1,
+    "direcao": "muita energia, rápido e brincalhão, puxando o público"
+  },
+  "rafa": {
+    "voz": "pm_santa",
+    "velocidade": 1.02,
+    "tom": -3,
+    "direcao": "voz grave e motivadora, como um treinador animado"
+  }
+}

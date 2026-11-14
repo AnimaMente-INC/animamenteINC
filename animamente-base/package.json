@@ -1,0 +1,29 @@
+{
+  "name": "animamente-base",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Base de animação 2D minimalista do canal Animamente INC (design system de animação em Remotion).",
+  "scripts": {
+    "start": "remotion studio",
+    "render": "remotion render",
+    "render:exemplo": "remotion render ExemploEntropia out/exemplo-entropia.mp4",
+    "render:galeria": "remotion still Galeria out/galeria.png --frame=60",
+    "typecheck": "tsc --noEmit",
+    "verificar-estilo": "node scripts/verificar-estilo.mjs",
+    "locucao": "tsx scripts/roteiro-locucao.ts",
+    "musica": "python3 scripts/gerar-musica.py"
+  },
+  "dependencies": {
+    "@fontsource/fredoka": "^5.3.0",
+    "@remotion/cli": "4.0.543",
+    "@remotion/transitions": "^4.0.543",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "remotion": "4.0.543"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "tsx": "^4.23.15",
+    "typescript": "^5.8.3"
+  }
+}

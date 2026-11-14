@@ -1,0 +1,127 @@
+{
+  "id": "apresentacao-canal",
+  "titulo": "Prazer, _animamente_!",
+  "categoria": "Bem-vindo!",
+  "formato": "vertical",
+  "tema": "escuro",
+  "cenas": [
+    {
+      "tipo": "intro",
+      "narracao": "Oi! Bem-vindo à animamente!",
+      "narracaoEm": 0.5
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 3,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "acenando",
+          "expressao": "feliz",
+          "fala": "Eu sou o _Neuro_, o cérebro desta turma!",
+          "falaEm": 0.3,
+          "mudancas": [{ "em": 2.2, "pose": "parado", "expressao": "empolgado" }]
+        }
+      ]
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 3,
+      "personagens": [
+        {
+          "id": "caio",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "fala": "E o que a gente faz *aqui*, Neuro?",
+          "falaEm": 0.3
+        },
+        {
+          "id": "lia",
+          "pose": "pensando",
+          "expressao": "pensativo",
+          "mudancas": [{ "em": 1.6, "expressao": "surpreso" }]
+        }
+      ]
+    },
+    {
+      "tipo": "diagrama",
+      "duracao": 5,
+      "titulo": "Nossa _missão_",
+      "nos": [
+        { "texto": "Um assunto complicado", "icone": "interrogacao", "cor": "lavanda" },
+        { "texto": "Vira uma animação simples", "icone": "play", "cor": "coral" },
+        { "texto": "E você entende de verdade", "icone": "lampada", "cor": "amarelo" }
+      ],
+      "narracao": "A gente pega um assunto complicado, transforma numa animação simples, e você entende de verdade.",
+      "narracaoEm": 0.4
+    },
+    {
+      "tipo": "lista",
+      "duracao": 5,
+      "titulo": "O que tem no _canal_",
+      "itens": [
+        { "titulo": "Ciência", "texto": "do átomo ao universo", "icone": "atomo", "cor": "coral" },
+        { "titulo": "História", "texto": "o passado sem decoreba", "icone": "ampulheta", "cor": "amarelo" },
+        { "titulo": "Curiosidades", "texto": "perguntas que você nunca fez", "icone": "interrogacao", "cor": "lavanda" }
+      ],
+      "personagens": [{ "id": "teo", "pose": "apontando", "expressao": "feliz", "olhando": "direita" }],
+      "narrador": "teo",
+      "narracao": "Tem ciência, história e curiosidades, em vídeos curtos e longos, aqui no Instagram e no YouTube.",
+      "narracaoEm": 0.4
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 4,
+      "cartao": { "titulo": "Treino pro cérebro", "texto": "desafios e dicas práticas", "icone": "neuronio", "cor": "amarelo" },
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "parado",
+          "expressao": "feliz",
+          "fala": "E aqui o cérebro também *treina*. Bora?",
+          "falaEm": 0.3,
+          "mudancas": [{ "em": 1.2, "pose": "comemorando", "expressao": "empolgado" }]
+        }
+      ]
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 5,
+      "titulo": "Fica a dica",
+      "mito": "Estudar é chato e difícil",
+      "verdade": "Com animação, fica leve!",
+      "personagens": [
+        {
+          "id": "lia",
+          "pose": "parado",
+          "expressao": "confuso",
+          "mudancas": [{ "em": 2.0, "expressao": "feliz", "pose": "comemorando" }]
+        }
+      ],
+      "narrador": "lia",
+      "narracao": "Estudar não precisa ser chato. Com animação, tudo fica mais leve!",
+      "narracaoEm": 0.4
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 4,
+      "destaque": "o mundo explicado em *animação*",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Então já sabe: aqui o mundo é explicado em animação!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Siga a _animamente_!",
+      "botao": "Siga para mais",
+      "narracao": "Siga a animamente, e até o próximo vídeo!",
+      "narracaoEm": 0.3
+    }
+  ]
+}
