@@ -172,4 +172,5 @@ export const amplitudes = {
   flutuacao: 10, // px (Neuro sobe e desce)
   deslizeTransicao: 120, // px
   popEscalaInicial: 0.6,
+  zoomImagem: 0.06, // zoom lento ("Ken Burns") das imagens de referência: 1 → 1,06 durante a cena
 } as const;

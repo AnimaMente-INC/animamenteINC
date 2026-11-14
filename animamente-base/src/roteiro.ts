@@ -24,8 +24,8 @@ export type PersonagemRoteiro = {
 
 export type ItemRoteiro = { texto: string; titulo?: string; icone?: NomeIcone; cor?: NomeCor };
 
-export type TipoCena = "intro" | "pergunta" | "explicacao" | "diagrama" | "comparacao" | "lista" | "resumo" | "outro";
-export const TIPOS_CENA: TipoCena[] = ["intro", "pergunta", "explicacao", "diagrama", "comparacao", "lista", "resumo", "outro"];
+export type TipoCena = "intro" | "pergunta" | "explicacao" | "diagrama" | "comparacao" | "lista" | "imagem" | "resumo" | "outro";
+export const TIPOS_CENA: TipoCena[] = ["intro", "pergunta", "explicacao", "diagrama", "comparacao", "lista", "imagem", "resumo", "outro"];
 
 export type CenaRoteiro = {
   tipo: TipoCena;
@@ -44,6 +44,15 @@ export type CenaRoteiro = {
   // comparacao
   mito?: string;
   verdade?: string;
+  // imagem (moldura de imagem de referência, ex.: print de trailer)
+  /** Caminho dentro de public/ (ex.: "gta6/trailer-01.jpg"). Sem ele, a cena mostra um espaço reservado. */
+  imagem?: string;
+  /** O que deve entrar no espaço reservado (aparece na tela até a imagem ser colocada). */
+  imagemDescricao?: string;
+  /** Etiqueta no canto da moldura (ex.: "Trailer 2"). */
+  imagemRotulo?: string;
+  /** Crédito da imagem (ex.: "Imagem: Rockstar Games"). */
+  imagemCredito?: string;
   // resumo
   destaque?: string;
   // outro
@@ -192,6 +201,7 @@ export const validarRoteiro = (r: Roteiro): string[] => {
     if (c.tipo === "comparacao" && (!c.mito || !c.verdade)) erros.push(`${onde}: precisa de "mito" e "verdade"`);
     if (c.tipo === "diagrama" && !c.nos?.length) erros.push(`${onde}: precisa de "nos"`);
     if (c.tipo === "lista" && !c.itens?.length) erros.push(`${onde}: precisa de "itens"`);
+    if (c.tipo === "imagem" && !c.imagem && !c.imagemDescricao) erros.push(`${onde}: precisa de "imagem" ou "imagemDescricao"`);
   });
   return erros;
 };

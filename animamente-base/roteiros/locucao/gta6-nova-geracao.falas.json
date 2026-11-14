@@ -1,0 +1,50 @@
+{
+  "id": "gta6-nova-geracao",
+  "falas": [
+    {
+      "fala": 1,
+      "cena": 1,
+      "quem": "caio"
+    },
+    {
+      "fala": 2,
+      "cena": 2,
+      "quem": "neuro"
+    },
+    {
+      "fala": 3,
+      "cena": 3,
+      "quem": "bento"
+    },
+    {
+      "fala": 4,
+      "cena": 4,
+      "quem": "caio"
+    },
+    {
+      "fala": 5,
+      "cena": 5,
+      "quem": "bento"
+    },
+    {
+      "fala": 6,
+      "cena": 6,
+      "quem": "caio"
+    },
+    {
+      "fala": 7,
+      "cena": 7,
+      "quem": "neuro"
+    },
+    {
+      "fala": 8,
+      "cena": 8,
+      "quem": "bento"
+    },
+    {
+      "fala": 9,
+      "cena": 9,
+      "quem": "neuro"
+    }
+  ]
+}

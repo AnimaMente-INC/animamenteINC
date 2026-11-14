@@ -4,6 +4,7 @@ import apresentacaoCanal from "../roteiros/apresentacao-canal.json";
 import exemploEntropia from "../roteiros/exemplo-entropia.json";
 import gta6 from "../roteiros/gta6-tudo-que-sabemos.json";
 import gta6voz from "../roteiros/gta6-tudo-que-sabemos-voz-ia.json";
+import gta6NovaGeracao from "../roteiros/gta6-nova-geracao.json";
 import { Galeria, GALERIA } from "./Galeria";
 import { ELENCO, FolhaElenco, PREVIA, PreviaElenco } from "./Elenco";
 import { duracaoTotal, ManifestoVozes, Roteiro } from "./roteiro";
@@ -43,6 +44,7 @@ const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "ExemploEntropia", roteiro: exemploEntropia as Roteiro },
   { id: "Gta6TudoQueSabemos", roteiro: gta6 as Roteiro },
   { id: "Gta6VozIA", roteiro: gta6voz as Roteiro },
+  { id: "Gta6NovaGeracao", roteiro: gta6NovaGeracao as Roteiro },
 ];
 
 export const Root: React.FC = () => (

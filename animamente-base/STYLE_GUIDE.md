@@ -14,7 +14,7 @@ Este guia é a "lei" visual dos vídeos. Ele aplica a **identidade visual oficia
 2. **Estilo "adesivo":** formas chapadas, sem contorno escuro, com **uma borda Névoa por fora da silhueta**, igual ao cérebro do logo.
 3. **Neurônios em todo lugar:** traços Névoa com nós redondos nas pontas (letras do logo, braços, setas, presilhas, hastes de óculos).
 4. **Uma ideia por tela.** Se precisa de duas legendas, são duas cenas.
-5. **Flat de verdade:** sem sombras, sem gradientes, sem texturas, sem emojis e sem imagens externas.
+5. **Flat de verdade:** sem sombras, sem gradientes, sem texturas, sem emojis e sem imagens externas. A única exceção é a cena `imagem` (seção 8), para imagens de referência com crédito, sempre dentro da `MolduraImagem`.
 6. **No máximo 3 cores de destaque**, que são exatamente Coral, Amarelo e Lavanda.
 
 ---
@@ -194,6 +194,7 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 | `Imagem` | imagem de referência do projeto (`public/`) como adesivo: borda Névoa, cantos de 28px, rótulo Lavanda. Exceção à regra "sem imagens externas": só quando o roteiro pede (`imagem`, na cena `explicacao`) |
 | `Constelacao` | fundo de neurônios Coral a 16% |
 | `BarraProgresso` | barra fina Coral no topo |
+| `MolduraImagem` | imagem de referência 16:9 em moldura de adesivo (borda Névoa, cantos 28), etiqueta Amarelo no canto, crédito em Lavanda e zoom lento (`amplitudes.zoomImagem`). Sem imagem, mostra um espaço reservado tracejado com ícone de câmera e a descrição do que entra ali |
 
 Ícones disponíveis: lampada, livro, atomo, grafico, relogio, ampulheta, interrogacao, alvo, certo, errado, calor, dados, play, camera, neuronio.
 
@@ -209,8 +210,11 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 | `diagrama` | cartões ligados por setas | `nos`, `titulo?` |
 | `comparacao` | mito × verdade | `mito`, `verdade`, `titulo?` |
 | `lista` | itens numerados | `itens`, `titulo?` |
+| `imagem` | imagem de referência (ex.: print de trailer) na `MolduraImagem` + legenda + personagens | `imagem?` (caminho em `public/`), `imagemDescricao?`, `imagemRotulo?`, `imagemCredito?`, `titulo?` (precisa de `imagem` ou `imagemDescricao`) |
 | `resumo` | frase circulada + Neuro | `destaque?`, `personagens?` |
 | `outro` | Neuro acenando + chamada + marca + botão (3s) | `chamada?`, `botao?` |
+
+**Cena `imagem`:** use só para mostrar algo real que a animação não consegue desenhar (print de trailer, foto histórica) e sempre com `imagemCredito`. Prefira `narracao` a `fala` nessa cena, para sobrar espaço para a moldura no vertical. Para trocar o espaço reservado pela imagem: coloque o arquivo em `public/` (ex.: `public/gta6/trailer-01.jpg`), escreva `"imagem": "gta6/trailer-01.jpg"` na cena e renderize de novo.
 
 Qualquer cena aceita uma fala: `narracao`, `narrador` e `narracaoEm`, ou a `fala` de um personagem. Todas entram no roteiro de locução.
 
