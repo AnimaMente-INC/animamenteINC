@@ -116,9 +116,9 @@ Se o roteiro sair do padrão (personagem, pose ou ícone inexistente, cor fora d
 ```
 src/
   tema/        tokens.ts (ÚNICA fonte de cores, fontes, tamanhos, tempos), formatos.ts, Estilo.tsx
-  personagens/ Neuro (cérebro do logo), Personagem (API única), partes/ (rosto, braços-neurônio, cérebro A+M)
+  personagens/ Personagem (API única), partes/ (cérebro A+M oficial, usado pelo Logo e pela colagem do Neuro)
                colagem/ elenco em colagem de papel: Gata (Lia), Cachorro (Bento), Preguica (Teo),
-                        Elefante (Rafa), Lontra (Caio) + papel.tsx (recortes/texturas) e rosto.tsx (olhos, boca South Park)
+                        Elefante (Rafa), Lontra (Caio), NeuroColagem (Neuro) + papel.tsx (recortes/texturas) e rosto.tsx (olhos, boca South Park)
   Elenco.tsx   folha do elenco (FolhaElenco) e prévia com todos falando (PreviaElenco)
   componentes/ Logo/Marca, Etiqueta, Titulo, Legenda, BalaoDeFala, Cartao, Lousa, Seta, Destaque, Contador,
                Comparação, Ícones, Constelacao (fundo), BarraProgresso

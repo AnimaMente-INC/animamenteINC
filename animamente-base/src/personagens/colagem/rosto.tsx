@@ -5,7 +5,7 @@
  */
 import React, { useId } from "react";
 import { cores } from "../../tema/tokens";
-import { Expressao, Olhar } from "../tipos";
+import { Expressao, Olhar, Pose } from "../tipos";
 import { elipse, Peca, recorte } from "./papel";
 
 /** Tudo o que um busto precisa saber neste frame. */
@@ -17,6 +17,7 @@ export type EstadoBusto = {
   abertura: number; // 0 boca fechada → 1 toda aberta (já inclui a fala)
   falando: boolean;
   passo: number; // frame "em degraus" (animação recortada)
+  pose: Pose; // só o Neuro usa (braços); os bustos usam para inclinar/pular
 };
 
 /** Parâmetros de rosto por expressão (iguais para todos; cada personagem soma a sua personalidade). */

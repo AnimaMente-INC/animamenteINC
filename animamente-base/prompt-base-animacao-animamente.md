@@ -56,8 +56,8 @@ Oi! Bem-vindo à animamente!
 - **Fonte:** só Fredoka.
 - **Estilo:** "adesivo" flat, com borda Névoa por fora da silhueta e neurônios (traços com nós redondos) em toda parte.
 - **Personagens** (todos originais):
-  - **Neuro:** o cérebro do logo com rosto. É o narrador.
-  - **Elenco em colagem de papel** (busto com roupinha, boca "South Park"):
+  - **Elenco em colagem de papel** (boca "South Park"):
+    - **Neuro, o cérebro:** o cérebro do logo em papel recortado, com gravata-borboleta amarela. É o anfitrião e narrador.
     - **Lia, a gata:** curiosa e desconfiada, boina coral e blusa listrada.
     - **Bento, o cachorro:** otimista e desastrado, capa de chuva amarela e uma orelha em pé.
     - **Teo, o bicho-preguiça:** calmo e sábio, gola alta coral, óculos e caneca de café.

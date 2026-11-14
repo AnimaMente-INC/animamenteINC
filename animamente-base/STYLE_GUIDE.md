@@ -106,7 +106,7 @@ Toda animação usa os helpers de `src/animacao`.
 
 ## 6. Personagens: colagem de papel
 
-Os personagens têm uma **identidade própria dentro da marca**: são **colagens de papel recortado** (como recortes de revista e aquarela), em **busto** (cabeça e ombros, com roupinha) e com a **boca "South Park"**: a mandíbula é um recorte separado que desce quando eles falam. As cores são as da animamente (Coral, Amarelo, Lavanda, Névoa, Tinta, Ardósia), mais os tons de pelo de cada bicho. O Neuro continua sendo o cérebro do logo.
+Os personagens têm uma **identidade própria dentro da marca**: são **colagens de papel recortado** (como recortes de revista e aquarela), em **busto** (cabeça e ombros, com roupinha) e com a **boca "South Park"**: a mandíbula é um recorte separado que desce quando eles falam. As cores são as da animamente (Coral, Amarelo, Lavanda, Névoa, Tinta, Ardósia), mais os tons de pelo de cada bicho. O **Neuro** também é colagem: o cérebro do logo recortado em papel.
 
 ### O jeito colagem (`personagens/colagem/papel.tsx`)
 1. **Recorte de tesoura:** toda forma vira um polígono de cortes retos levemente tremidos (`recorte(...)`), sempre o mesmo para a mesma semente.
@@ -131,6 +131,7 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 
 | Personagem | Visual | Personalidade | Bordão |
 |---|---|---|---|
+| **Neuro, o cérebro** | o cérebro do símbolo oficial em papel Coral aquarelado, A+M em tiras de papel Névoa com ramos de neurônio a lápis, retalhos em meio-tom, **gravata-borboleta Amarelo**, braços-neurônio de tira de papel com mãos-nó | o anfitrião animado e narrador, olhos grandes e sobrancelhas sempre pra cima | "Bem-vindo à animamente!" |
 | **Lia, a gata** | preta "smoking", olhos amarelos de gato, bigodes, **boina Coral** com broche-neurônio, **blusa listrada** | curiosa e desconfiada, sempre com uma sobrancelha levantada | "Hum... será mesmo?" |
 | **Bento, o cachorro** | caramelo com focinho branco sardento, **uma orelha caída e outra virada pra cima**, língua pra fora, **capa de chuva Amarelo**, coleira Coral com plaquinha-neurônio | otimista e desastrado, topa tudo antes de entender | "Bora, bora, bora!" |
 | **Teo, o bicho-preguiça** | pelo desgrenhado, máscara escura, óculos redondos com nós de neurônio, **gola alta Coral** canelada, **caneca de café** fumegante na pata com garras | calmo, sábio, sonolento | "Devagar... e sempre." |
@@ -141,7 +142,7 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 1. Crie `colagem/<Bicho>.tsx` com o mesmo esqueleto: orelhas e roupa atrás, cabeça com margem, rosto, **boca + mandíbula**, olhos, sobrancelhas e acessórios na frente.
 2. Use só `recorte`, `Peca`, `Rabisco`, `Olho`, `Sobrancelha` e `Mandibula`, com as cores dos tokens. Os pelos novos entram nos tokens.
 3. Dê **uma marca registrada** (roupa, acessório, gesto) e uma personalidade que apareça no rosto em repouso.
-4. Registre em `colagem/Busto.tsx`, `tipos.ts` e `Elenco.tsx`, coloque o "jeito de falar" em `src/tema/vozes.json` e documente aqui.
+4. Registre em `colagem/Busto.tsx`, `tipos.ts` e `Elenco.tsx` (o Neuro está em `colagem/NeuroColagem.tsx` e é o único com braços: as poses mexem os braços dele), coloque o "jeito de falar" em `src/tema/vozes.json` e documente aqui.
 
 ### API
 

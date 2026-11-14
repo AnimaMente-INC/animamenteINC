@@ -9,7 +9,6 @@ import { BalaoDeFala } from "../componentes/BalaoDeFala";
 import { duracaoTexto, textoLimpo } from "../componentes/TextoAnimado";
 import { useEstilo } from "../tema/Estilo";
 import { tempos } from "../tema/tokens";
-import { Neuro } from "./Neuro";
 import { Busto } from "./colagem/Busto";
 import { resolverEstado } from "./partes/estado";
 import { Expressao, IdPersonagem, Mudanca, Olhar, Pose } from "./tipos";
@@ -77,11 +76,7 @@ export const Personagem: React.FC<PropsPersonagem> = ({
           <BalaoDeFala texto={fala} atraso={falaEm} inicioSaida={falaAte} rabicho={rabicho} porPalavra={porPalavra} />
         </div>
       )}
-      {id === "neuro" ? (
-        <Neuro estado={estado} falando={falando} altura={h * 0.72} />
-      ) : (
-        <Busto id={id} expressao={estado.expressao} olhando={estado.olhando} pose={estado.pose} falando={falando} altura={h * 0.82} />
-      )}
+      <Busto id={id} expressao={estado.expressao} olhando={estado.olhando} pose={estado.pose} falando={falando} altura={h * 0.82} />
     </div>
   );
 };

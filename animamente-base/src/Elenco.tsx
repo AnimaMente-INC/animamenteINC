@@ -9,7 +9,7 @@ import { Constelacao } from "./componentes/Constelacao";
 import { Etiqueta } from "./componentes/Etiqueta";
 import { Logo } from "./componentes/Logo";
 import { Busto, IdBusto } from "./personagens/colagem/Busto";
-import { Expressao } from "./personagens/tipos";
+import { Expressao, Pose } from "./personagens/tipos";
 import { carregarFontes } from "./tema/carregarFontes";
 import { ProvedorEstilo, useEstilo } from "./tema/Estilo";
 import { audio, cores, NomeCor } from "./tema/tokens";
@@ -18,6 +18,7 @@ import { MusicaDeFundo } from "./Video";
 carregarFontes();
 
 export const ELENCO: { id: IdBusto; nome: string; bicho: string; jeito: string; bordao: string; cor: NomeCor }[] = [
+  { id: "neuro", nome: "Neuro", bicho: "o cérebro", jeito: "o anfitrião animado (e narrador)", bordao: "Bem-vindo à animamente!", cor: "coral" },
   { id: "lia", nome: "Lia", bicho: "a gata", jeito: "curiosa e desconfiada", bordao: "Hum... será mesmo?", cor: "amarelo" },
   { id: "bento", nome: "Bento", bicho: "o cachorro", jeito: "otimista e desastrado", bordao: "Bora, bora, bora!", cor: "coral" },
   { id: "teo", nome: "Teo", bicho: "o bicho-preguiça", jeito: "calmo, sábio e movido a café", bordao: "Devagar... e sempre.", cor: "lavanda" },
@@ -25,12 +26,12 @@ export const ELENCO: { id: IdBusto; nome: string; bicho: string; jeito: string; 
   { id: "caio", nome: "Caio", bicho: "a lontra", jeito: "brincalhão e travesso", bordao: "Pera que tem piada nisso!", cor: "coral" },
 ];
 
-const Cartao: React.FC<{ i: number; expressao: Expressao; falando?: boolean; altura: number; compacto?: boolean }> = ({ i, expressao, falando = false, altura, compacto }) => {
+const Cartao: React.FC<{ i: number; expressao: Expressao; falando?: boolean; altura: number; compacto?: boolean; pose?: Pose }> = ({ i, expressao, falando = false, altura, compacto, pose = "parado" }) => {
   const { fonte, p } = useEstilo();
   const c = ELENCO[i];
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-      <Busto id={c.id} expressao={expressao} olhando="frente" pose="parado" falando={falando} altura={altura} />
+      <Busto id={c.id} expressao={expressao} olhando="frente" pose={pose} falando={falando} altura={altura} />
       <Etiqueta texto={`${c.nome}, ${c.bicho}`} cor={c.cor} tamanho={compacto ? "rotulo" : "subtitulo"} />
       <div style={{ ...fonte("texto", compacto ? "nota" : "rotulo"), color: p.textoApoio, textAlign: "center" }}>{c.jeito}</div>
       <div style={{ ...fonte("textoForte", compacto ? "nota" : "rotulo"), color: p.texto }}>“{c.bordao}”</div>
@@ -45,7 +46,7 @@ export const FolhaElenco: React.FC = () => (
   </ProvedorEstilo>
 );
 
-const EXPRESSOES_PADRAO: Expressao[] = ["pensativo", "empolgado", "neutro", "feliz", "feliz"];
+const EXPRESSOES_PADRAO: Expressao[] = ["feliz", "pensativo", "empolgado", "neutro", "feliz", "feliz"];
 
 const ConteudoFolha: React.FC = () => {
   const { fonte, p } = useEstilo();
@@ -64,7 +65,7 @@ const ConteudoFolha: React.FC = () => {
         </div>
         <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", flex: 1 }}>
           {ELENCO.map((_, i) => (
-            <Cartao key={i} i={i} expressao={EXPRESSOES_PADRAO[i]} altura={580} compacto />
+            <Cartao key={i} i={i} expressao={EXPRESSOES_PADRAO[i]} altura={560} compacto pose={i === 0 ? "acenando" : "parado"} />
           ))}
         </div>
       </div>
@@ -97,9 +98,9 @@ const ConteudoPrevia: React.FC = () => {
               id={x.id}
               expressao={i === atual ? (local > 10 && local < 52 ? EXPRESSOES_PADRAO[i] : "feliz") : "neutro"}
               olhando={i < atual ? "direita" : i > atual ? "esquerda" : "frente"}
-              pose="parado"
+              pose={x.id === "neuro" && i === atual ? "acenando" : "parado"}
               falando={i === atual && local > 10 && local < 52}
-              altura={430}
+              altura={360}
             />
           </div>
         ))}

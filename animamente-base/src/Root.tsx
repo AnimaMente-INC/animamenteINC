@@ -60,7 +60,7 @@ export const Root: React.FC = () => (
     </Folder>
     <Folder name="DesignSystem">
       <Composition id="Galeria" component={Galeria} fps={fps} width={GALERIA.largura} height={GALERIA.altura} durationInFrames={90} />
-      <Composition id="FolhaElenco" component={FolhaElenco} fps={fps} width={2700} height={1350} durationInFrames={90} />
+      <Composition id="FolhaElenco" component={FolhaElenco} fps={fps} width={3200} height={1350} durationInFrames={90} />
       <Composition id="PreviaElenco" component={PreviaElenco} fps={fps} width={1920} height={1080} durationInFrames={PREVIA.porPersonagem * ELENCO.length} />
     </Folder>
   </>

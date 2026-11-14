@@ -11,13 +11,15 @@ import { Cachorro } from "./Cachorro";
 import { Elefante } from "./Elefante";
 import { Gata } from "./Gata";
 import { Lontra } from "./Lontra";
+import { NeuroColagem } from "./NeuroColagem";
 import { Preguica } from "./Preguica";
 import { FiltrosPapel } from "./papel";
 import { EstadoBusto, rostoDe } from "./rosto";
 
-export type IdBusto = "lia" | "bento" | "teo" | "rafa" | "caio";
+export type IdBusto = "neuro" | "lia" | "bento" | "teo" | "rafa" | "caio";
 
 export const BUSTOS: Record<IdBusto, { C: React.FC<{ e: EstadoBusto }>; semente: number }> = {
+  neuro: { C: NeuroColagem, semente: 11 },
   lia: { C: Gata, semente: 3 },
   bento: { C: Cachorro, semente: 13 },
   teo: { C: Preguica, semente: 7 },
@@ -52,6 +54,7 @@ export const Busto: React.FC<{
     abertura,
     falando,
     passo,
+    pose,
   };
   // balanço "em degraus": a cabeça e os ombros mexem como recorte animado
   const fase = passo + semente * 3;
