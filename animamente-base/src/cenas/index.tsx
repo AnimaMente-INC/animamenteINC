@@ -1,5 +1,5 @@
 /**
- * TIPOS DE CENA PRONTOS — intro, pergunta, explicacao, diagrama, comparacao, lista, resumo, outro.
+ * TIPOS DE CENA PRONTOS — intro, pergunta, explicacao, diagrama, comparacao, lista, imagem, resumo, outro.
  * Cada cena só monta componentes da base dentro do LayoutCena. Nenhum estilo novo aqui.
  */
 import React from "react";
@@ -11,6 +11,7 @@ import { Destaque } from "../componentes/Destaque";
 import { Etiqueta } from "../componentes/Etiqueta";
 import { Logo, Marca } from "../componentes/Logo";
 import { Lousa } from "../componentes/Lousa";
+import { MolduraImagem } from "../componentes/MolduraImagem";
 import { Seta } from "../componentes/Seta";
 import { textoLimpo } from "../componentes/TextoAnimado";
 import { Titulo } from "../componentes/Titulo";
@@ -153,6 +154,33 @@ export const CenaLista: React.FC<PropsCena> = ({ cena, duracao, indice }) => {
   );
 };
 
+// ─── IMAGEM: imagem de referência (ex.: print de trailer) em moldura de adesivo ─
+export const CenaImagem: React.FC<PropsCena> = ({ cena, duracao, indice }) => {
+  const { formato } = useEstilo();
+  return (
+    <LayoutCena
+      semente={indice + 1}
+      conteudo={
+        <>
+          {cena.titulo && <Titulo texto={cena.titulo} tamanho="subtitulo" atraso={2} />}
+          <MolduraImagem
+            imagem={cena.imagem}
+            descricao={cena.imagemDescricao}
+            rotulo={cena.imagemRotulo}
+            credito={cena.imagemCredito}
+            atraso={6}
+            duracao={duracao}
+          />
+        </>
+      }
+      personagens={cena.personagens}
+      legenda={cena.legenda}
+      legendaEm={legendaEm(cena, 30)}
+      alturaPersonagem={formato === "vertical" ? 480 : undefined}
+    />
+  );
+};
+
 // ─── RESUMO: Neuro fecha a ideia com um destaque circulado ─────────────────
 const FraseDestaque: React.FC<{ texto: string; atraso: number }> = ({ texto, atraso }) => {
   const frame = useCurrentFrame();
@@ -225,6 +253,7 @@ export const CENAS: Record<CenaRoteiro["tipo"], React.FC<PropsCena>> = {
   diagrama: CenaDiagrama,
   comparacao: CenaComparacao,
   lista: CenaLista,
+  imagem: CenaImagem,
   resumo: CenaResumo,
   outro: CenaOutro,
 };

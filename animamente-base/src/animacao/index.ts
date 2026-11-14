@@ -114,3 +114,7 @@ export const transicaoCena = (frame: number, duracaoCena: number) => {
 /** Número animado (contador). */
 export const contar = (frame: number, de: number, ate: number, atraso = 0, duracao = 30) =>
   interpolate(frame - atraso, [0, duracao], [de, ate], { ...travar, easing: easeSuave });
+
+/** Zoom lento de imagem (1 → 1 + amplitudes.zoomImagem ao longo de `duracao` frames). */
+export const zoomLento = (frame: number, duracao: number) =>
+  1 + amplitudes.zoomImagem * interpolate(frame, [0, Math.max(1, duracao)], [0, 1], { ...travar, easing: easeSuave });

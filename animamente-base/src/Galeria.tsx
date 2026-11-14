@@ -16,6 +16,7 @@ import { Icone, ICONES } from "./componentes/Icone";
 import { Legenda } from "./componentes/Legenda";
 import { Logo, Marca } from "./componentes/Logo";
 import { Lousa } from "./componentes/Lousa";
+import { MolduraImagem } from "./componentes/MolduraImagem";
 import { Conector, Seta } from "./componentes/Seta";
 import { Titulo } from "./componentes/Titulo";
 import { Personagem } from "./personagens/Personagem";
@@ -26,7 +27,7 @@ import { comAlfa, cores, fontes, forma, NomeCor, tamanhosBase } from "./tema/tok
 
 carregarFontes();
 
-export const GALERIA = { largura: 2400, altura: 7600 };
+export const GALERIA = { largura: 2400, altura: 8300 };
 
 const Secao: React.FC<{ titulo: string; children: React.ReactNode }> = ({ titulo, children }) => {
   const { fonte, p } = useEstilo();
@@ -168,6 +169,7 @@ const ConteudoGaleria: React.FC = () => {
             </div>
           </div>
           <ComparacaoMitoVerdade mito="Entropia é só sujeira" verdade="É uma medida de probabilidade" />
+          <MolduraImagem descricao="Espaço reservado: a equipe coloca o print aqui" rotulo="Trailer" credito="Imagem: crédito da fonte" />
           <div style={{ display: "flex", gap: 56, alignItems: "center" }}>
             <Marca tamanho="titulo" />
             <Etiqueta texto="Toque no link" cor="coral" tamanho="rotulo" />

@@ -2,6 +2,7 @@ import React from "react";
 import { CalculateMetadataFunction, Composition, Folder, staticFile } from "remotion";
 import apresentacaoCanal from "../roteiros/apresentacao-canal.json";
 import exemploEntropia from "../roteiros/exemplo-entropia.json";
+import gta6NovaGeracao from "../roteiros/gta6-nova-geracao.json";
 import { Galeria, GALERIA } from "./Galeria";
 import { ELENCO, FolhaElenco, PREVIA, PreviaElenco } from "./Elenco";
 import { duracaoTotal, ManifestoVozes, Roteiro } from "./roteiro";
@@ -39,6 +40,7 @@ const metadados: CalculateMetadataFunction<PropsVideo> = async ({ props }) => {
 const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "ApresentacaoCanal", roteiro: apresentacaoCanal as Roteiro },
   { id: "ExemploEntropia", roteiro: exemploEntropia as Roteiro },
+  { id: "Gta6NovaGeracao", roteiro: gta6NovaGeracao as Roteiro },
 ];
 
 export const Root: React.FC = () => (

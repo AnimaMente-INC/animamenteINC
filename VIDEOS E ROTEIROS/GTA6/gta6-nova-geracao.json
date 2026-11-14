@@ -1,0 +1,242 @@
+{
+  "id": "gta6-nova-geracao",
+  "titulo": "Como o _GTA 6_ vai mudar os games?",
+  "categoria": "Games",
+  "formato": "vertical",
+  "tema": "escuro",
+  "musica": "animada-2",
+  "vozesIA": true,
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 5.5,
+      "titulo": "Por que tanto _hype_?",
+      "personagens": [
+        {
+          "id": "caio",
+          "pose": "pensando",
+          "expressao": "confuso",
+          "fala": "Neuro, por que todo mundo só fala de *GTA 6*?",
+          "falaEm": 0.5
+        },
+        {
+          "id": "bento",
+          "pose": "parado",
+          "expressao": "empolgado",
+          "mudancas": [
+            {
+              "em": 3.4,
+              "pose": "comemorando"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 6.5,
+      "titulo": "A data mais _esperada_",
+      "lousa": "19/11/2026",
+      "lousaRotulo": "PS5 e Xbox Series X|S",
+      "legenda": "*13 anos* depois do GTA 5",
+      "legendaEm": 3,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "olhando": "frente"
+        }
+      ],
+      "narracao": "Ele chega dia *dezenove de novembro*, treze anos depois do GTA 5."
+    },
+    {
+      "tipo": "imagem",
+      "duracao": 7.5,
+      "titulo": "Recorde _mundial_",
+      "imagemDescricao": "Print do Trailer 2: Jason esperando a Lucia sair da prisão",
+      "imagemRotulo": "Vice City",
+      "imagemCredito": "Imagem: Rockstar Games",
+      "legenda": "*475 milhões* de views em 24h",
+      "legendaEm": 2.5,
+      "personagens": [
+        {
+          "id": "bento",
+          "pose": "comemorando",
+          "expressao": "empolgado"
+        },
+        {
+          "id": "caio",
+          "pose": "parado",
+          "expressao": "surpreso"
+        }
+      ],
+      "narrador": "bento",
+      "narracao": "O trailer dois virou o maior lançamento de vídeo da *história* em um dia!",
+      "imagem": "gta6/trailer-01.jpg"
+    },
+    {
+      "tipo": "imagem",
+      "duracao": 7.5,
+      "titulo": "Gráficos _surreais_",
+      "imagemDescricao": "Print do trailer: Vice City ao pôr do sol, com reflexo na água e nos prédios",
+      "imagemRotulo": "Capturado no PS5",
+      "imagemCredito": "Imagem: Rockstar Games",
+      "legenda": "Luz, reflexo, suor e poeira *reais*",
+      "legendaEm": 3,
+      "personagens": [
+        {
+          "id": "caio",
+          "pose": "apontando",
+          "expressao": "surpreso"
+        },
+        {
+          "id": "neuro",
+          "pose": "parado",
+          "expressao": "feliz"
+        }
+      ],
+      "narrador": "caio",
+      "narracao": "E tudo foi capturado *dentro do jogo*, num PS5. Olha esse reflexo na água!",
+      "imagem": "gta6/trailer-02.jpg"
+    },
+    {
+      "tipo": "imagem",
+      "duracao": 7,
+      "titulo": "Dois _protagonistas_",
+      "imagemDescricao": "Print do trailer: Lucia e Jason juntos, prontos para um assalto",
+      "imagemRotulo": "Jason e Lucia",
+      "imagemCredito": "Imagem: Rockstar Games",
+      "legenda": "Um casal no crime em *Leonida*",
+      "legendaEm": 3,
+      "personagens": [
+        {
+          "id": "bento",
+          "pose": "apontando",
+          "expressao": "feliz"
+        },
+        {
+          "id": "caio",
+          "pose": "parado",
+          "expressao": "empolgado"
+        }
+      ],
+      "narrador": "bento",
+      "narracao": "Agora são dois protagonistas, a Lucia e o Jason, um *casal* no crime.",
+      "imagem": "gta6/trailer-03.jpg"
+    },
+    {
+      "tipo": "lista",
+      "duracao": 8,
+      "titulo": "Mecânicas _novas_",
+      "itens": [
+        {
+          "titulo": "Academia",
+          "texto": "o corpo muda com o treino",
+          "icone": "alvo",
+          "cor": "amarelo"
+        },
+        {
+          "titulo": "Casa",
+          "texto": "o esconderijo evolui com você",
+          "icone": "certo",
+          "cor": "coral"
+        },
+        {
+          "titulo": "Redes sociais",
+          "texto": "vídeos virais dentro do jogo",
+          "icone": "play",
+          "cor": "lavanda"
+        }
+      ],
+      "legenda": "*Pistas* que o trailer deu",
+      "personagens": [
+        {
+          "id": "caio",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "olhando": "frente"
+        }
+      ],
+      "narrador": "caio",
+      "narracao": "O trailer dá pistas: academia, casa que evolui e redes sociais *dentro* do jogo."
+    },
+    {
+      "tipo": "diagrama",
+      "duracao": 8.5,
+      "titulo": "Impacto na _indústria_",
+      "nos": [
+        {
+          "titulo": "US$ 79,99",
+          "texto": "o preço vira o novo padrão",
+          "icone": "grafico",
+          "cor": "coral"
+        },
+        {
+          "titulo": "Calendário",
+          "texto": "rivais fogem de novembro",
+          "icone": "relogio",
+          "cor": "amarelo"
+        },
+        {
+          "titulo": "Sem disco",
+          "texto": "a caixa vem só com código",
+          "icone": "play",
+          "cor": "lavanda"
+        }
+      ],
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "pensativo",
+          "olhando": "frente"
+        }
+      ],
+      "narracao": "E a indústria sente: preço de oitenta dólares, rivais fugindo da data e caixa *sem disco*."
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 6,
+      "titulo": "Só _gráfico_?",
+      "mito": "Gráfico bonito é só enfeite",
+      "verdade": "Vira a régua da nova geração",
+      "personagens": [
+        {
+          "id": "bento",
+          "pose": "pensando",
+          "expressao": "surpreso",
+          "fala": "Então todo jogo novo vai ser *comparado* com ele?",
+          "falaEm": 0.6
+        },
+        {
+          "id": "caio",
+          "pose": "parado",
+          "expressao": "pensativo"
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 6.5,
+      "destaque": "GTA 6 = nova _régua_",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Exato! Ele vira a *régua* da nova geração de jogos.",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Qual mecânica você quer _testar_?",
+      "botao": "Siga para mais"
+    }
+  ]
+}

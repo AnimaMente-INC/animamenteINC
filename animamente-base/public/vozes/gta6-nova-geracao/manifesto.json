@@ -1,0 +1,76 @@
+{
+  "cenas": {
+    "1": {
+      "arquivo": "vozes/gta6-nova-geracao/cena01.wav",
+      "duracao": 2.699,
+      "quem": "caio",
+      "tipo": "fala",
+      "texto": "Neuro, por que todo mundo só fala de GTA 6?",
+      "chave": "998e893913e8"
+    },
+    "2": {
+      "arquivo": "vozes/gta6-nova-geracao/cena02.wav",
+      "duracao": 4.148,
+      "quem": "neuro",
+      "tipo": "narracao",
+      "texto": "Ele chega dia dezenove de novembro, treze anos depois do GTA 5.",
+      "chave": "a740a9be3ca4"
+    },
+    "3": {
+      "arquivo": "vozes/gta6-nova-geracao/cena03.wav",
+      "duracao": 3.827,
+      "quem": "bento",
+      "tipo": "narracao",
+      "texto": "O trailer dois virou o maior lançamento de vídeo da história em um dia!",
+      "chave": "43a89314a398"
+    },
+    "4": {
+      "arquivo": "vozes/gta6-nova-geracao/cena04.wav",
+      "duracao": 4.429,
+      "quem": "caio",
+      "tipo": "narracao",
+      "texto": "E tudo foi capturado dentro do jogo, num PS5. Olha esse reflexo na água!",
+      "chave": "849a959881cf"
+    },
+    "5": {
+      "arquivo": "vozes/gta6-nova-geracao/cena05.wav",
+      "duracao": 3.767,
+      "quem": "bento",
+      "tipo": "narracao",
+      "texto": "Agora são dois protagonistas, a Lucia e o Jason, um casal no crime.",
+      "chave": "3a1b914bc434"
+    },
+    "6": {
+      "arquivo": "vozes/gta6-nova-geracao/cena06.wav",
+      "duracao": 4.532,
+      "quem": "caio",
+      "tipo": "narracao",
+      "texto": "O trailer dá pistas: academia, casa que evolui e redes sociais dentro do jogo.",
+      "chave": "ea2036c17728"
+    },
+    "7": {
+      "arquivo": "vozes/gta6-nova-geracao/cena07.wav",
+      "duracao": 5.09,
+      "quem": "neuro",
+      "tipo": "narracao",
+      "texto": "E a indústria sente: preço de oitenta dólares, rivais fugindo da data e caixa sem disco.",
+      "chave": "a8ec4a6ac562"
+    },
+    "8": {
+      "arquivo": "vozes/gta6-nova-geracao/cena08.wav",
+      "duracao": 2.913,
+      "quem": "bento",
+      "tipo": "fala",
+      "texto": "Então todo jogo novo vai ser comparado com ele?",
+      "chave": "fc1e4f27fd3d"
+    },
+    "9": {
+      "arquivo": "vozes/gta6-nova-geracao/cena09.wav",
+      "duracao": 2.921,
+      "quem": "neuro",
+      "tipo": "fala",
+      "texto": "Exato! Ele vira a régua da nova geração de jogos.",
+      "chave": "7ec998513b2e"
+    }
+  }
+}
