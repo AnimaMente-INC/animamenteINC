@@ -1,0 +1,171 @@
+{
+  "id": "financas-casal",
+  "titulo": "Dinheiro a dois: eu, você e _nós_",
+  "categoria": "Finanças",
+  "formato": "vertical",
+  "tema": "escuro",
+  "profundidade": true,
+  "musica": "animada-3",
+  "cenas": [
+    { "tipo": "intro" },
+    {
+      "tipo": "pergunta",
+      "duracao": 5,
+      "titulo": "Como dividir as _contas_?",
+      "personagens": [
+        {
+          "id": "caio",
+          "pose": "pensando",
+          "expressao": "confuso",
+          "fala": "Amor, a gente divide as contas *meio a meio*?",
+          "falaEm": 0.6
+        },
+        { "id": "lia", "pose": "parado", "expressao": "pensativo", "mudancas": [{ "em": 2.6, "pose": "pensando", "expressao": "confuso" }] }
+      ]
+    },
+    {
+      "tipo": "barras",
+      "duracao": 8,
+      "titulo": "O mês do _casal_",
+      "barras": [
+        { "nome": "Lia", "segmentos": [{ "valor": 6000, "cor": "amarelo", "rotulo": "salário" }] },
+        { "nome": "Caio", "segmentos": [{ "valor": 4000, "cor": "coral", "rotulo": "salário" }] },
+        { "nome": "Contas", "segmentos": [{ "valor": 4000, "cor": "lavanda", "rotulo": "da casa" }] }
+      ],
+      "legenda": "Juntos, eles ganham *R$ 10.000*",
+      "personagens": [{ "id": "neuro", "pose": "apontando", "expressao": "feliz", "olhando": "frente" }],
+      "narracao": "A Lia ganha seis mil reais. O Caio, quatro mil. E as contas da casa somam *quatro mil* por mês."
+    },
+    {
+      "tipo": "barras",
+      "duracao": 9,
+      "titulo": "Meio a _meio_",
+      "barras": [
+        {
+          "nome": "Lia",
+          "nota": "1/3 do salário",
+          "segmentos": [
+            { "valor": 2000, "cor": "lavanda", "rotulo": "contas" },
+            { "valor": 4000, "cor": "amarelo", "rotulo": "sobra" }
+          ]
+        },
+        {
+          "nome": "Caio",
+          "nota": "metade do salário",
+          "corNota": "coral",
+          "segmentos": [
+            { "valor": 2000, "cor": "lavanda", "rotulo": "contas" },
+            { "valor": 2000, "cor": "coral", "rotulo": "sobra" }
+          ]
+        }
+      ],
+      "legenda": "Valor igual, peso _desigual_",
+      "personagens": [
+        { "id": "lia", "pose": "parado", "expressao": "neutro", "mudancas": [{ "em": 5, "expressao": "surpreso" }] },
+        { "id": "caio", "pose": "parado", "expressao": "neutro", "mudancas": [{ "em": 4, "pose": "pensando", "expressao": "confuso" }] }
+      ],
+      "narracao": "Meio a meio, cada um paga dois mil. Para a Lia, é um terço do salário. Para o Caio, é a *metade*."
+    },
+    {
+      "tipo": "blocos",
+      "duracao": 9,
+      "titulo": "As três _instâncias_",
+      "blocos": [
+        { "titulo": "EU", "texto": "o meu dinheiro, as minhas escolhas", "cor": "amarelo" },
+        { "titulo": "VOCÊ", "texto": "o seu dinheiro, as suas escolhas", "cor": "coral" },
+        { "titulo": "NÓS", "texto": "as contas e os sonhos do casal", "cor": "lavanda" }
+      ],
+      "personagens": [{ "id": "teo", "pose": "apontando", "expressao": "feliz", "olhando": "frente" }],
+      "narrador": "teo",
+      "narracao": "O livro A Psicologia Financeira fala de três instâncias que o casal precisa respeitar: o eu, o você e o *nós*."
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 9,
+      "titulo": "O tamanho do _nós_",
+      "lousa": "4.000 ÷ 10.000 = 40%",
+      "lousaRotulo": "contas ÷ renda do casal",
+      "legenda": "Cada um entra com *40%* do que ganha",
+      "legendaEm": 4.5,
+      "personagens": [{ "id": "teo", "pose": "apontando", "expressao": "feliz" }],
+      "narrador": "teo",
+      "narracao": "O nós são as contas em comum. Para ser justo, cada um contribui na proporção do que ganha: *quarenta por cento* do salário."
+    },
+    {
+      "tipo": "barras",
+      "duracao": 9,
+      "titulo": "Divisão _proporcional_",
+      "barras": [
+        {
+          "nome": "Lia",
+          "nota": "40% do salário",
+          "segmentos": [
+            { "valor": 2400, "cor": "lavanda", "rotulo": "contas" },
+            { "valor": 3600, "cor": "amarelo", "rotulo": "sobra" }
+          ]
+        },
+        {
+          "nome": "Caio",
+          "nota": "40% do salário",
+          "segmentos": [
+            { "valor": 1600, "cor": "lavanda", "rotulo": "contas" },
+            { "valor": 2400, "cor": "coral", "rotulo": "sobra" }
+          ]
+        }
+      ],
+      "legenda": "Valor diferente, esforço *igual*",
+      "personagens": [
+        { "id": "lia", "pose": "parado", "expressao": "feliz", "mudancas": [{ "em": 5, "pose": "comemorando", "expressao": "empolgado" }] },
+        { "id": "caio", "pose": "parado", "expressao": "feliz", "mudancas": [{ "em": 5.4, "pose": "comemorando", "expressao": "empolgado" }] }
+      ],
+      "narracao": "Assim, a Lia paga dois mil e quatrocentos, e o Caio, mil e seiscentos. O esforço fica *igual* para os dois."
+    },
+    {
+      "tipo": "barras",
+      "duracao": 10,
+      "titulo": "Eu, você e _nós_",
+      "barras": [
+        { "nome": "Eu", "nota": "livre", "segmentos": [{ "valor": 3600, "cor": "amarelo", "rotulo": "da Lia" }] },
+        {
+          "nome": "Nós",
+          "nota": "contas pagas",
+          "corNota": "lavanda",
+          "segmentos": [
+            { "valor": 2400, "cor": "lavanda", "rotulo": "da Lia" },
+            { "valor": 1600, "cor": "lavanda", "rotulo": "do Caio" }
+          ]
+        },
+        { "nome": "Você", "nota": "livre", "corNota": "coral", "segmentos": [{ "valor": 2400, "cor": "coral", "rotulo": "do Caio" }] }
+      ],
+      "legenda": "Sem ter que *pedir permissão*",
+      "personagens": [{ "id": "neuro", "pose": "apontando", "expressao": "empolgado", "olhando": "frente" }],
+      "narracao": "E o que sobra é o eu e o você: três mil e seiscentos dela, dois mil e quatrocentos dele, para usar *sem pedir permissão*."
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 5,
+      "titulo": "O que é _justo_?",
+      "mito": "Dividir tudo meio a meio",
+      "verdade": "O mesmo esforço para os dois",
+      "personagens": [
+        { "id": "lia", "pose": "comemorando", "expressao": "empolgado", "fala": "Agora sim ficou *justo*!", "falaEm": 2 },
+        { "id": "caio", "pose": "comemorando", "expressao": "feliz" }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 5,
+      "destaque": "Eu + você + _nós_",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Respeitar as três é cuidar do dinheiro *e* do casal!",
+          "falaEm": 1
+        }
+      ]
+    },
+    { "tipo": "outro", "chamada": "Combinem o _nós_ de vocês!", "botao": "Siga para mais" }
+  ]
+}
