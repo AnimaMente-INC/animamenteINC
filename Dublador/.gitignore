@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+projetos/
+videos_finalizados/
+config.json
+erros.log

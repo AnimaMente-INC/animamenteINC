@@ -32,8 +32,9 @@ Todo vídeo sai com **música de fundo baixa e animada** e **sem vozes de IA**. 
 
 - **Música:** trilhas originais compostas por código (sem direitos de terceiros) em `public/musica/`: `animada-1` (padrão, 112 bpm), `animada-2` (120 bpm) e `animada-3` (100 bpm, com swing). Para escolher outra, use `"musica": "animada-2"` no roteiro; para tirar a música, `"musica": false`. O volume fica em `audio.volumeMusica` (tokens). Para gerar de novo ou criar variações, rode `npm run musica`.
 - **Falas sem voz:** cada fala ganha o tempo estimado de leitura (2,4 palavras por segundo + folga). A boca do personagem mexe nesse tempo e o balão acompanha.
-- **Roteiro de locução:** `npm run locucao -- roteiros/meu-video.json` gera `roteiros/locucao/<id>.md` com o tempo de cada fala no vídeo, quem fala, o texto (com as ênfases), quanto tempo cabe, o jeito de falar e o nome do arquivo para salvar.
-- **Gravações da equipe:** salvem como `fala01.wav`, `fala02.m4a`... numa pasta e rodem
+- **Roteiro de locução:** `npm run locucao -- roteiros/meu-video.json` gera `roteiros/locucao/<id>.md` com o tempo de cada fala no vídeo, quem fala, o texto (com as ênfases), quanto tempo cabe, o jeito de falar e o nome do arquivo para salvar. Gera também `roteiros/locucao/<id>.dublador.txt`, o mesmo roteiro no formato do Dublador.
+- **Gravação padrão (Dublador Animamente):** abra `../Dublador/ABRIR_DUBLADOR.bat`, escolha o vídeo renderizado e o `<id>.dublador.txt`, grave fala por fala lendo o teleprompter e exporte. O vídeo final sai em `../Dublador/videos_finalizados/`. Como a voz entra por cima do vídeo pronto, cada fala precisa caber na própria cena.
+- **Alternativa (o vídeo se ajusta à voz):** salvem como `fala01.wav`, `fala02.m4a`... numa pasta e rodem
   `python3 scripts/importar-gravacoes.py roteiros/meu-video.json pasta/`.
   O script corta os silêncios e normaliza o volume. O vídeo passa a tocar as vozes, ajusta o tempo das cenas, sincroniza boca e balão e abaixa a música.
 - *(Opcional, fora do padrão)* Vozes de IA (Kokoro, offline): `"vozesIA": true` no roteiro + `scripts/gerar-vozes.py`. A instalação está explicada no topo do script.
@@ -77,7 +78,7 @@ Todo vídeo sai com **música de fundo baixa e animada** e **sem vozes de IA**. 
 }
 ```
 
-**2. Gere o roteiro de locução:** `npm run locucao -- roteiros/meu-video.json` (e entregue para quem vai gravar)
+**2. Gere o roteiro de locução:** `npm run locucao -- roteiros/meu-video.json` (o arquivo `<id>.dublador.txt` é o que se abre no Dublador)
 
 **3. Registre** em `src/Root.tsx`:
 
@@ -90,7 +91,7 @@ const videos = [
 ];
 ```
 
-**4. Veja no Studio** (`npm start`) e renderize. Quando as gravações chegarem, importe-as e renderize de novo.
+**4. Veja no Studio** (`npm start`) e renderize. Depois abra o vídeo e o `<id>.dublador.txt` no Dublador para gravar as vozes.
 
 ### Referência rápida do roteiro
 
@@ -142,19 +143,7 @@ npm run typecheck
 
 ## Usando com IA nas próximas animações
 
-Cole isto junto com o projeto:
-
-```
-Use a base de animação da Animamente INC que já existe neste projeto. Antes de tudo, leia STYLE_GUIDE.md e src/tema/tokens.ts e siga-os à risca: identidade visual animamente (fundo Tinta com constelação de neurônios, Coral/Amarelo/Lavanda, só Fredoka, estilo adesivo com borda Névoa), personagens Neuro, Lia, Teo, Caio e Rafa, vozes de src/tema/vozes.json, tempos e transições.
-
-Regra de áudio: o vídeo é gerado com música de fundo baixa e animada e SEM vozes de IA; junto com o vídeo, gere o roteiro de locução (npm run locucao) com tudo o que é falado, porque a equipe grava as vozes.
-
-Crie apenas um novo roteiro em /roteiros (com "id", falas curtas e uma fala por cena) sobre: [TEMA]
-Formato: [vertical | horizontal] · Duração: [X segundos] · Público: [ex.: estudantes do ensino médio]
-Pontos que precisam aparecer: [lista]
-
-Só crie um componente ou cena nova se nenhum existente servir; nesse caso, construa com os tokens e helpers da base e adicione ao STYLE_GUIDE.md.
-```
+Use o **prompt 1** de `prompt-base-animacao-animamente.md` (já adaptado ao Dublador).
 
 ## Licenças
 

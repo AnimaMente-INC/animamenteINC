@@ -1,0 +1,29 @@
+# ROTEIRO MODELO — Dublador Animamente
+# Linhas que começam com # são ignoradas (use para anotações).
+#
+# Cada fala começa com uma linha de TEMPO entre colchetes:
+#     [início - fim] Quem fala
+# e logo abaixo vem o texto que será lido no teleprompter.
+#
+# Tempos em minutos:segundos, com décimos se quiser: 00:07.5
+# Texto entre parênteses é instrução (pausa, tom, risada): aparece em lilás
+# no teleprompter e NÃO precisa ser lido.
+# Regra de ouro: ~2,5 palavras por segundo de janela.
+
+# Título: Por que o céu é azul?
+# Vídeo: ceu-azul_vertical.mp4
+
+[00:00 - 00:06] Neuro
+Oi! Eu sou o Neuro. Hoje vamos descobrir por que o céu é azul.
+
+[00:06.5 - 00:10] Lia
+Mas Neuro... (pausa) a luz do Sol não é branca?
+
+[00:10.5 - 00:17] Teo
+(tom de professor) Exatamente, Lia! A luz branca é uma mistura de todas as cores do arco-íris.
+
+[00:17.5 - 00:25] Neuro
+Quando essa luz bate no ar, o azul se espalha muito mais que as outras cores.
+
+[00:25.5 - 00:30] Lia
+(animada) Então o céu é azul porque o azul se espalha mais!

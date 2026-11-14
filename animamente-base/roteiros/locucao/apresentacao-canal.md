@@ -91,6 +91,10 @@ As palavras em **negrito** são os destaques da tela: dê ênfase a elas. O temp
 
 ## Como gravar e colocar no vídeo
 
+**Jeito padrão: Dublador Animamente.** Abra `Dublador/ABRIR_DUBLADOR.bat`, clique em "Abrir vídeo" (o .mp4 deste vídeo) e em "Abrir roteiro" (`roteiros/locucao/apresentacao-canal.dublador.txt`). Grave fala por fala lendo o teleprompter, revise e exporte. O vídeo final sai em `Dublador/videos_finalizados/`.
+
+**Jeito alternativo (o vídeo se ajusta à voz):**
+
 1. Grave **uma fala por arquivo**, em lugar silencioso, com o celular a um palmo da boca.
 2. Deixe meio segundo de silêncio antes e depois. O silêncio extra é cortado automaticamente.
 3. Salve cada fala com o nome indicado (`fala01.wav`, `fala02.wav`...). Também valem `.mp3`, `.m4a` e `.ogg`.

@@ -5,8 +5,12 @@
  * Uso:
  *   npm run locucao -- roteiros/meu-video.json
  *
- * Saída: roteiros/locucao/<id>.md — tempo de cada fala no vídeo, quem fala, o texto,
- * quanto tempo cabe, o jeito de falar e o nome do arquivo para salvar a gravação.
+ * Saídas:
+ *   roteiros/locucao/<id>.dublador.txt — roteiro pronto para abrir no Dublador Animamente
+ *     (../Dublador/ABRIR_DUBLADOR.bat): um bloco "[mm:ss.d - mm:ss.d] Quem fala" por fala,
+ *     com os tempos exatos do vídeo renderizado.
+ *   roteiros/locucao/<id>.md — o mesmo conteúdo para leitura: tempo de cada fala, quem fala,
+ *     o texto, quanto tempo cabe, o jeito de falar e o nome do arquivo da gravação.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
@@ -55,6 +59,7 @@ let inicio = 0;
 const falas: string[] = [];
 const elenco = new Set<IdPersonagem>();
 const mapa: { fala: number; cena: number; quem: IdPersonagem }[] = [];
+const dublador: { de: number; ate: number; quem: string; texto: string; emocao: string }[] = [];
 roteiro.cenas.forEach((bruta, i) => {
   const cena = comPadroes(bruta);
   const f = falaDaCena(cena);
@@ -74,6 +79,7 @@ roteiro.cenas.forEach((bruta, i) => {
     mapa.push({ fala: n, cena: i, quem: f.quem });
     const palavras = f.texto.replace(/[*_]/g, "").split(/\s+/).filter(Boolean).length;
     elenco.add(f.quem);
+    dublador.push({ de, ate, quem: NOMES[f.quem], texto: f.texto.replace(/[*_]/g, "").trim(), emocao });
     falas.push(
       [
         `### ${n}. ${NOMES[f.quem]} · ${tempo(de)} → ${tempo(ate)}`,
@@ -112,6 +118,10 @@ As palavras em **negrito** são os destaques da tela: dê ênfase a elas. O temp
 ${falas.join("\n")}
 ## Como gravar e colocar no vídeo
 
+**Jeito padrão: Dublador Animamente.** Abra \`Dublador/ABRIR_DUBLADOR.bat\`, clique em "Abrir vídeo" (o .mp4 deste vídeo) e em "Abrir roteiro" (\`roteiros/locucao/${id}.dublador.txt\`). Grave fala por fala lendo o teleprompter, revise e exporte. O vídeo final sai em \`Dublador/videos_finalizados/\`.
+
+**Jeito alternativo (o vídeo se ajusta à voz):**
+
 1. Grave **uma fala por arquivo**, em lugar silencioso, com o celular a um palmo da boca.
 2. Deixe meio segundo de silêncio antes e depois. O silêncio extra é cortado automaticamente.
 3. Salve cada fala com o nome indicado (\`fala01.wav\`, \`fala02.wav\`...). Também valem \`.mp3\`, \`.m4a\` e \`.ogg\`.
@@ -120,9 +130,33 @@ ${falas.join("\n")}
 5. Renderize de novo: a voz de vocês toca no lugar certo, a boca e o balão acompanham, e a música abaixa um pouco sozinha.
 `;
 
+// ---- Roteiro no formato do Dublador Animamente (regras em ../Dublador/LEIA-ME.md) ----
+const RESPIRO = Math.round(0.3 * fps); // silêncio mínimo entre o fim de uma fala e o início da próxima
+const tempoDub = (frames: number) => {
+  const d = Math.round((Math.max(0, frames) / fps) * 10); // décimos de segundo
+  return `${String(Math.floor(d / 600)).padStart(2, "0")}:${((d % 600) / 10).toFixed(1).padStart(4, "0")}`;
+};
+const blocos = dublador.map((b, i) => {
+  const limite = i + 1 < dublador.length ? dublador[i + 1].de - RESPIRO : total;
+  const fim = Math.max(b.de + Math.round(0.5 * fps), Math.min(b.ate, limite));
+  const instrucao = b.emocao === "natural" ? "" : `(${b.emocao}) `;
+  return `[${tempoDub(b.de)} - ${tempoDub(fim)}] ${b.quem}\n${instrucao}${b.texto}\n`;
+});
+const txtDublador = `# Roteiro de locução (formato do Dublador Animamente)
+# Título: ${roteiro.titulo.replace(/[*_]/g, "")}
+# Vídeo: ${id}.mp4 · ${roteiro.formato} · duração ${tempo(total)}
+# Como usar: abra o Dublador, clique em "Abrir vídeo" (o .mp4 renderizado deste roteiro)
+# e depois em "Abrir roteiro" (este arquivo). O texto entre parênteses é o jeito de falar e não é lido.
+# Arquivo gerado por "npm run locucao". Se o roteiro .json mudar, gere de novo.
+
+${blocos.join("\n")}`;
+
 const destino = join(dirname(arq), "locucao", `${id}.md`);
 mkdirSync(dirname(destino), { recursive: true });
 writeFileSync(destino, md);
 // mapa fala → cena, usado pelo importador de gravações
 writeFileSync(join(dirname(arq), "locucao", `${id}.falas.json`), JSON.stringify({ id, falas: mapa }, null, 2));
+const destinoDublador = join(dirname(arq), "locucao", `${id}.dublador.txt`);
+writeFileSync(destinoDublador, txtDublador);
 console.log(`✓ ${destino} (${falas.length} falas, ${tempo(total)})`);
+console.log(`✓ ${destinoDublador} (abrir no Dublador junto com o vídeo renderizado)`);

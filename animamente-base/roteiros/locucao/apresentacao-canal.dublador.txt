@@ -1,0 +1,33 @@
+# Roteiro de locução (formato do Dublador Animamente)
+# Título: Prazer, animamente!
+# Vídeo: apresentacao-canal.mp4 · vertical · duração 0:48.8
+# Como usar: abra o Dublador, clique em "Abrir vídeo" (o .mp4 renderizado deste roteiro)
+# e depois em "Abrir roteiro" (este arquivo). O texto entre parênteses é o jeito de falar e não é lido.
+# Arquivo gerado por "npm run locucao". Se o roteiro .json mudar, gere de novo.
+
+[00:00.5 - 00:02.6] Neuro
+Oi! Bem-vindo à animamente!
+
+[00:03.5 - 00:07.2] Neuro
+(começa sorrindo e termina empolgado) Eu sou o Neuro, o cérebro desta turma!
+
+[00:08.1 - 00:11.8] Caio
+(empolgado) E o que a gente faz aqui, Neuro?
+
+[00:12.8 - 00:19.5] Neuro
+A gente pega um assunto complicado, transforma numa animação simples, e você entende de verdade.
+
+[00:20.5 - 00:27.6] Teo
+(sorrindo) Tem ciência, história e curiosidades, em vídeos curtos e longos, aqui no Instagram e no YouTube.
+
+[00:28.5 - 00:31.8] Rafa
+(começa sorrindo e termina empolgado) E aqui o cérebro também treina. Bora?
+
+[00:32.8 - 00:37.8] Lia
+(começa em dúvida e termina sorrindo) Estudar não precisa ser chato. Com animação, tudo fica mais leve!
+
+[00:39.0 - 00:43.6] Neuro
+(empolgado) Então já sabe: aqui o mundo é explicado em animação!
+
+[00:44.5 - 00:48.2] Neuro
+(sorrindo) Siga a animamente, e até o próximo vídeo!
