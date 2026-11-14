@@ -409,52 +409,109 @@ def reduzir_ruido(x, sr, forca):
     return y[n: n + len(x)]
 
 
-# Modificadores de voz: nome -> semitons de mudança de tom e filtros extras do ffmpeg
+# --------------------------------------------------------------------------- #
+#  Modificadores de voz
+# --------------------------------------------------------------------------- #
+# Cada modificador combina:
+#   tom      = altura da voz, em semitons (cordas vocais: + agudo, - grave)
+#   timbre   = tamanho do "corpo" da voz, em semitons (formantes: + cabeça/boca
+#              menor, como mulher e criança; - maior, como homem e gigante)
+#   sussurro = quanto de ar entra na voz (0 a 1)
+#   filtros  = efeitos extras do ffmpeg (tremor, eco, rádio...)
+# Tom e timbre são mexidos separadamente — é isso que faz a voz parecer de
+# outra pessoa, e não só a mesma voz acelerada.
+TREMOR = ["vibrato=f=5.2:d=0.22", "tremolo=f=5.2:d=0.22"]
 EFEITOS = {
-    "Normal": {"st": 0, "filtros": []},
-    "Aguda (desenho animado)": {"st": 3, "filtros": []},
-    "Bem aguda (esquilo)": {"st": 6, "filtros": []},
-    "Grave": {"st": -3, "filtros": []},
-    "Bem grave (gigante)": {"st": -6, "filtros": []},
-    "Robô": {"st": 0, "filtros": [
+    "Normal": {},
+    "— Pessoas —": None,
+    "Mulher": {"tom": 5, "timbre": 2.6},
+    "Mulher jovem": {"tom": 7, "timbre": 3.4},
+    "Homem": {"tom": -5, "timbre": -2.6},
+    "Homem de voz grossa": {"tom": -7, "timbre": -3.6},
+    "Criança": {"tom": 8, "timbre": 4.6},
+    "Adolescente": {"tom": 3, "timbre": 1.6},
+    "Idoso": {"tom": -2, "timbre": -1.2, "sussurro": 0.16, "filtros": TREMOR + ["lowpass=f=6500"]},
+    "Idosa": {"tom": 3, "timbre": 1.8, "sussurro": 0.16, "filtros": TREMOR + ["lowpass=f=7000"]},
+    "— Personagens —": None,
+    "Aguda (desenho animado)": {"tom": 3, "timbre": 3},
+    "Bem aguda (esquilo)": {"tom": 6, "timbre": 6},
+    "Grave": {"tom": -3, "timbre": -3},
+    "Bem grave (gigante)": {"tom": -6, "timbre": -6},
+    "Monstro": {"tom": -8, "timbre": -5, "sussurro": 0.25},
+    "Sussurro": {"sussurro": 1.0, "filtros": ["highpass=f=250"]},
+    "Robô": {"filtros": [
         "afftfilt=real='hypot(re,im)*sin(0)':imag='hypot(re,im)*cos(0)':win_size=512:overlap=0.75"]},
-    "Rádio / telefone": {"st": 0, "filtros": ["highpass=f=400", "lowpass=f=3200"]},
-    "Eco": {"st": 0, "filtros": ["aecho=0.8:0.7:90:0.35"]},
-    "Personalizada": {"st": None, "filtros": []},
+    "Rádio / telefone": {"filtros": ["highpass=f=400", "lowpass=f=3200"]},
+    "Eco": {"filtros": ["aecho=0.8:0.7:90:0.35"]},
+    "Personalizada": {"custom": True},
 }
 EFEITO_PADRAO = "Normal"
 
 
-def filtros_da_voz(nome, st_custom=0.0, velocidade=1.0):
-    """Monta a lista de filtros do ffmpeg para um modificador de voz."""
-    ef = EFEITOS.get(nome, EFEITOS[EFEITO_PADRAO])
-    st = ef["st"] if ef["st"] is not None else float(st_custom or 0.0)
-    st = max(-12.0, min(12.0, st))
-    filtros = []
-    if abs(st) > 0.01:
-        fator = 2 ** (st / 12.0)   # muda o tom sem mudar a duração
-        filtros += [f"asetrate={SR * fator:.0f}", f"aresample={SR}", f"atempo={1 / fator:.5f}"]
-    filtros += ef["filtros"]
-    v = float(velocidade or 1.0)
-    while v > 2.0:
-        filtros.append("atempo=2.0")
-        v /= 2.0
-    if abs(v - 1.0) > 0.005:
-        filtros.append(f"atempo={max(0.5, v):.4f}")
-    return filtros
+def _stft(x, n=2048):
+    hop = n // 4
+    jan = (0.5 - 0.5 * np.cos(2 * np.pi * np.arange(n) / n)).astype(np.float32)
+    xp = np.concatenate([np.zeros(n, np.float32), x, np.zeros(n, np.float32)])
+    nq = 1 + (len(xp) - n) // hop
+    idx = np.arange(n)[None, :] + hop * np.arange(nq)[:, None]
+    return np.fft.rfft(xp[idx] * jan, axis=1).astype(np.complex64), idx, jan, len(xp)
 
 
-def aplicar_voz(y, nome, st_custom, velocidade, pasta):
-    """Aplica o modificador de voz (e a aceleração, se houver) num áudio mono 48 kHz."""
-    filtros = filtros_da_voz(nome, st_custom, velocidade)
+def _istft(S, idx, jan, total, n, tamanho):
+    q = np.fft.irfft(S, n=n, axis=1).astype(np.float32) * jan
+    y = np.zeros(total, dtype=np.float32)
+    w = np.zeros(total, dtype=np.float32)
+    np.add.at(y, idx, q)
+    np.add.at(w, idx, np.broadcast_to(jan ** 2, idx.shape))
+    y /= np.maximum(w, 1e-6)
+    return y[n: n + tamanho]
+
+
+def mudar_timbre(x, razao=1.0, sussurro=0.0):
+    """Mexe no timbre sem mexer no tom: separa o "formato" da voz (envelope
+    espectral, que dá a impressão de tamanho da pessoa) das cordas vocais e
+    estica ou encolhe só o formato. razao > 1 = voz de corpo menor (mulher,
+    criança); razao < 1 = corpo maior (homem, gigante). sussurro (0 a 1)
+    troca parte das cordas vocais por ar."""
+    x = np.asarray(x, dtype=np.float32).reshape(-1)
+    if (abs(razao - 1.0) < 0.004 and sussurro <= 0) or len(x) < 4096:
+        return x
+    n = 2048
+    S, idx, jan, total = _stft(x, n)
+    mag = np.abs(S)
+    cep = np.fft.irfft(np.log(mag + 1e-5), n=n, axis=1)
+    nc = int(SR * 0.0011)                      # guarda só o formato geral (até ~1,1 ms)
+    lif = np.zeros(n, dtype=np.float32)
+    lif[:nc] = 1.0
+    lif[-(nc - 1):] = 1.0
+    env = np.exp(np.fft.rfft(cep * lif, n=n, axis=1).real).astype(np.float32)
+    K = mag.shape[1]
+    orig = np.clip(np.arange(K) / razao, 0, K - 1)
+    i0 = np.floor(orig).astype(int)
+    i1 = np.minimum(i0 + 1, K - 1)
+    fr = (orig - i0).astype(np.float32)
+    env2 = env[:, i0] * (1 - fr) + env[:, i1] * fr
+    S2 = S * np.clip(env2 / (env + 1e-9), 0.05, 20.0)
+    if sussurro > 0:
+        rng = np.random.default_rng(7)
+        fase = np.exp(2j * np.pi * rng.random(S.shape)).astype(np.complex64)
+        ar = env2 * fase
+        forca = np.sqrt((np.abs(S2) ** 2).sum(axis=1, keepdims=True) /
+                        ((env2 ** 2).sum(axis=1, keepdims=True) + 1e-9))
+        s_ = min(1.0, float(sussurro))
+        S2 = (1 - s_) * S2 + s_ * ar * forca
+    return _istft(S2, idx, jan, total, n, len(x))
+
+
+def _ffmpeg_filtrar(y, filtros, pasta):
     if not filtros:
         return y
     ent = os.path.join(pasta, "_voz_entrada.wav")
     sai = os.path.join(pasta, "_voz_saida.wav")
     try:
-        sf.write(ent, y, SR, subtype="PCM_16")
+        sf.write(ent, y, SR, subtype="FLOAT")
         code, err = rodar_ffmpeg(["-i", ent, "-filter:a", ",".join(filtros),
-                                  "-ar", str(SR), "-ac", "1", "-c:a", "pcm_s16le", sai])
+                                  "-ar", str(SR), "-ac", "1", "-c:a", "pcm_f32le", sai])
         if code != 0:
             raise RuntimeError(err[-600:])
         z, _ = sf.read(sai, dtype="float32", always_2d=False)
@@ -464,11 +521,51 @@ def aplicar_voz(y, nome, st_custom, velocidade, pasta):
                 os.remove(c)
             except OSError:
                 pass
-    if z.ndim > 1:
-        z = z.mean(axis=1)
+    return z.mean(axis=1) if z.ndim > 1 else z
+
+
+def parametros_da_voz(nome, tom_custom=0.0, timbre_custom=0.0):
+    ef = EFEITOS.get(nome) or {}
+    if ef.get("custom"):
+        tom, timbre = float(tom_custom or 0.0), float(timbre_custom or 0.0)
+    else:
+        tom, timbre = float(ef.get("tom", 0.0)), float(ef.get("timbre", 0.0))
+    lim = lambda v: max(-12.0, min(12.0, v))
+    return lim(tom), lim(timbre), float(ef.get("sussurro", 0.0)), list(ef.get("filtros", []))
+
+
+def aplicar_voz(y, nome, tom_custom, velocidade, pasta, timbre_custom=0.0):
+    """Aplica o modificador de voz (e a aceleração, se houver) num áudio mono 48 kHz."""
+    tom, timbre, sussurro, filtros = parametros_da_voz(nome, tom_custom, timbre_custom)
+    z = np.asarray(y, dtype=np.float32)
+    mexeu = False
+    if abs(tom) > 0.01:            # 1) tom: sobe/desce tudo junto, sem mudar a duração
+        fator = 2 ** (tom / 12.0)
+        z = _ffmpeg_filtrar(z, [f"asetrate={SR * fator:.0f}", f"aresample={SR}",
+                                f"atempo={1 / fator:.5f}"], pasta)
+        mexeu = True
+    razao = 2 ** ((timbre - tom) / 12.0)   # 2) timbre: corrige o formato para o valor pedido
+    if abs(razao - 1.0) > 0.004 or sussurro > 0:
+        z = mudar_timbre(z, razao, sussurro)
+        mexeu = True
+    v = float(velocidade or 1.0)           # 3) efeitos extras e aceleração
+    while v > 2.0:
+        filtros.append("atempo=2.0")
+        v /= 2.0
+    if abs(v - 1.0) > 0.005:
+        filtros.append(f"atempo={max(0.5, v):.4f}")
+    if filtros:
+        z = _ffmpeg_filtrar(z, filtros, pasta)
+        mexeu = True
+    if not mexeu:
+        return y
     rms = float(np.sqrt(np.mean(z ** 2))) + 1e-9
     pk = float(np.abs(z).max()) + 1e-9
     z = z * min(0.1 / rms, 0.89 / pk, 12.0)     # volta ao volume padrão
+    fo = int(0.02 * SR)
+    if len(z) > 2 * fo:
+        z[:fo] *= np.linspace(0, 1, fo, dtype=np.float32)
+        z[-fo:] *= np.linspace(1, 0, fo, dtype=np.float32)
     return z.astype(np.float32)
 
 
@@ -823,13 +920,14 @@ class App:
         # ---- barra superior
         topo = ttk.Frame(r, style="Topo.TFrame", padding=(10, 8))
         topo.pack(fill="x")
-        for txt, cmd in (("🎬 Abrir vídeo", self.abrir_video),
+        for txt, cmd in (("✨ Novo vídeo + roteiro", self.novo_projeto),
+                         ("🎬 Abrir vídeo", self.abrir_video),
                          ("📝 Abrir roteiro", self.abrir_roteiro),
                          ("⟳ Recarregar roteiro", self.recarregar_roteiro),
-                         ("❔ Como escrever o roteiro", self.abrir_guia)):
+                         ("❔ Ajuda do roteiro", self.abrir_guia)):
             ttk.Button(topo, text=txt, command=cmd, takefocus=False).pack(side="left", padx=(0, 6))
         ttk.Label(topo, text="   Microfone:", style="Topo.TLabel").pack(side="left")
-        self.cb_mic = ttk.Combobox(topo, state="readonly", width=42)
+        self.cb_mic = ttk.Combobox(topo, state="readonly", width=28)
         self.cb_mic.pack(side="left", padx=6)
         self.cb_mic.bind("<<ComboboxSelected>>", lambda e: self._trocar_mic())
         self.vu = tk.Canvas(topo, width=150, height=16, bg="#2E2758", highlightthickness=0)
@@ -916,12 +1014,15 @@ class App:
         self.b_exportar = ttk.Button(ex, text="💾 Exportar vídeo final", style="Exp.TButton",
                                      command=self.exportar, takefocus=False)
         self.b_exportar.pack(fill="x")
+        self.b_refazer = ttk.Button(ex, text="🗑 Refazer tudo (apagar as gravações)", takefocus=False,
+                                    command=self.refazer_tudo)
         self.pb_exp = ttk.Progressbar(ex, mode="determinate", maximum=100)
         self.pb_exp.pack(fill="x", pady=4)
         self.lbl_exp = ttk.Label(ex, text="", foreground=ARDOSIA)
         self.lbl_exp.pack(anchor="w")
         ttk.Button(ex, text="📂 Abrir pasta dos vídeos prontos", takefocus=False,
                    command=lambda: abrir_no_sistema(OUT_DIR)).pack(fill="x", pady=(4, 0))
+        self.b_refazer.pack(fill="x", pady=(4, 0))
 
         # ---- coluna central: vídeo + teleprompter + controles
         centro = ttk.Frame(corpo)
@@ -991,17 +1092,25 @@ class App:
         ctl3.pack(fill="x")
         self.lbl_voz = ttk.Label(ctl3, text="Modificador de voz:")
         self.lbl_voz.pack(side="left")
-        self.cb_voz = ttk.Combobox(ctl3, state="readonly", width=24, values=list(EFEITOS), takefocus=False)
+        self.cb_voz = ttk.Combobox(ctl3, state="readonly", width=24, values=list(EFEITOS), takefocus=False,
+                                   height=len(EFEITOS))
         self.cb_voz.set(EFEITO_PADRAO)
         self.cb_voz.pack(side="left", padx=4)
         self.cb_voz.bind("<<ComboboxSelected>>", lambda e: self._voz_mudou())
-        ttk.Label(ctl3, text="Tom (semitons):").pack(side="left", padx=(8, 0))
+        ttk.Label(ctl3, text="Tom:").pack(side="left", padx=(8, 0))
         self.var_st = tk.DoubleVar(value=0.0)
         self.sp_st = ttk.Spinbox(ctl3, from_=-12, to=12, increment=1, width=5, textvariable=self.var_st,
                                  command=self._voz_mudou, state="disabled")
         self.sp_st.pack(side="left", padx=4)
         self.sp_st.bind("<Return>", lambda e: self._voz_mudou())
         self.sp_st.bind("<FocusOut>", lambda e: self._voz_mudou())
+        ttk.Label(ctl3, text="Timbre:").pack(side="left", padx=(6, 0))
+        self.var_fm = tk.DoubleVar(value=0.0)
+        self.sp_fm = ttk.Spinbox(ctl3, from_=-12, to=12, increment=1, width=5, textvariable=self.var_fm,
+                                 command=self._voz_mudou, state="disabled")
+        self.sp_fm.pack(side="left", padx=4)
+        self.sp_fm.bind("<Return>", lambda e: self._voz_mudou())
+        self.sp_fm.bind("<FocusOut>", lambda e: self._voz_mudou())
         ttk.Label(ctl3, text="vale para todas as falas desta pessoa",
                   foreground=ARDOSIA).pack(side="left", padx=8)
 
@@ -1079,7 +1188,73 @@ class App:
             self.cfg["ultimo_dir"] = os.path.dirname(p)
             self.carregar_video(p)
 
-    def carregar_video(self, p):
+    def novo_projeto(self):
+        """Escolhe um vídeo novo e, em seguida, o roteiro dele."""
+        if self.estado == "exportando":
+            return
+        self.parar_tudo()
+        inicial = self.cfg.get("ultimo_dir") or os.path.expanduser("~")
+        v = filedialog.askopenfilename(
+            title="1 de 2 — Escolha o VÍDEO", initialdir=inicial,
+            filetypes=[("Vídeos", "*.mp4 *.mov *.mkv *.webm *.avi *.m4v"), ("Todos os arquivos", "*.*")])
+        if not v:
+            return
+        r = filedialog.askopenfilename(
+            title="2 de 2 — Escolha o ROTEIRO deste vídeo", initialdir=os.path.dirname(v),
+            filetypes=[("Roteiro (texto ou Markdown)", "*.txt *.md"), ("Todos os arquivos", "*.*")])
+        self.cfg["ultimo_dir"] = os.path.dirname(v)
+        self.carregar_video(v, roteiro=r or None)
+
+    def _limpar_roteiro(self):
+        self.roteiro_path = None
+        self.trechos = []
+        self.atual = None
+        self.cache_takes.clear()
+        self.tree.delete(*self.tree.get_children())
+        self.lbl_loc.configure(text="")
+        self.lbl_prox.configure(text="")
+        self.pb_tempo["value"] = 0
+        for b in (self.b_ouvir, self.b_voz, self.b_aprovar, self.b_acelerar):
+            b.configure(state="disabled")
+        self.b_gravar.configure(text="● Gravar  [Espaço]")
+        self.lbl_info.configure(text="Abra o roteiro deste vídeo para começar.", fg=ARDOSIA)
+
+    def refazer_tudo(self):
+        """Apaga todas as gravações deste vídeo para começar do zero."""
+        if self.estado in ("gravando", "exportando"):
+            return
+        if not self.projeto or not self.trechos:
+            messagebox.showinfo("Refazer tudo", "Abra um vídeo e um roteiro primeiro.")
+            return
+        gravados = [t for t in self.trechos if self.projeto.info(t.n).get("bruto") or self.projeto.tem_take(t.n)]
+        if not gravados:
+            messagebox.showinfo("Refazer tudo", "Ainda não há nenhuma gravação neste vídeo.")
+            return
+        if not messagebox.askyesno(
+                "Refazer tudo",
+                f"Isso apaga as {len(gravados)} gravações deste vídeo e volta todos os trechos para "
+                "“pendente”.\n\nNão dá para desfazer. Os vídeos já exportados continuam na pasta "
+                "videos_finalizados.\n\nApagar tudo e começar de novo?", icon="warning", default="no"):
+            return
+        self.parar_tudo()
+        for inf in self.projeto.dados["trechos"].values():
+            for chave in ("take", "bruto"):
+                nome = inf.get(chave)
+                if nome:
+                    try:
+                        os.remove(self.projeto.caminho(nome))
+                    except OSError:
+                        pass
+        self.projeto.dados["trechos"] = {}
+        self.projeto.salvar()
+        self.cache_takes.clear()
+        self._preencher_lista()
+        self.atual = None
+        self._selecionar(0)
+        self.pb_exp["value"] = 0
+        self.lbl_exp.configure(text="")
+
+    def carregar_video(self, p, roteiro=None):
         self.parar_tudo()
         try:
             v = Video(p)
@@ -1097,12 +1272,15 @@ class App:
         self._extrair_audio_original()
         self.root.title(f"Dublador Animamente — {os.path.basename(p)}")
         roteiro_salvo = self.projeto.dados.get("roteiro")
-        if roteiro_salvo and os.path.exists(roteiro_salvo):
+        self._limpar_roteiro()      # o roteiro do vídeo anterior não vale para este
+        if roteiro:
+            self.roteiro_path = roteiro
+        elif roteiro_salvo and os.path.exists(roteiro_salvo):
             self.roteiro_path = roteiro_salvo   # continua de onde parou
+        self._mostrar_frame(0)
         if self.roteiro_path:
             self.aplicar_roteiro()
-        else:
-            self._mostrar_frame(0)
+        if not self.trechos:
             self._mostrar_texto_livre("Vídeo aberto! Agora clique em “📝 Abrir roteiro”.")
         self._atualizar_rotulo_arquivos()
 
@@ -1148,7 +1326,7 @@ class App:
         except ErroRoteiro as e:
             messagebox.showerror("Roteiro com problema",
                                  f"{e}\n\nCorrija o arquivo e clique em “⟳ Recarregar roteiro”.\n"
-                                 "Dúvidas? Clique em “❔ Como escrever o roteiro”.")
+                                 "Dúvidas? Clique em “❔ Ajuda do roteiro”.")
             return
         except Exception as e:
             log_erro(traceback.format_exc())
@@ -1260,8 +1438,7 @@ class App:
         voz = self._voz(t.locutor)
         self.lbl_voz.configure(text=f"Modificador de voz de {t.locutor}:" if t.locutor else "Modificador de voz:")
         self.cb_voz.set(voz["nome"])
-        self.var_st.set(voz["st"])
-        self.sp_st.configure(state=("normal" if voz["nome"] == "Personalizada" else "disabled"))
+        self._mostrar_voz(voz)
         self.pb_tempo["value"] = 0
         self._mostrar_frame(t.inicio)
         self._atualizar_info()
@@ -1488,7 +1665,7 @@ class App:
             self.g_folga = 1.5
         self._limpar_destaque()
         self.b_gravar.configure(text="■ Parar  [Espaço]")
-        for b in (self.b_ouvir, self.b_voz, self.b_aprovar, self.b_acelerar, self.b_exportar):
+        for b in (self.b_ouvir, self.b_voz, self.b_aprovar, self.b_acelerar, self.b_exportar, self.b_refazer):
             b.configure(state="disabled")
         self.lbl_info.configure(text="Prepare-se… a gravação começa quando a contagem chegar a zero.",
                                 fg=CORAL)
@@ -1541,6 +1718,7 @@ class App:
         self.canvas.itemconfigure(self.cd_id, text="")
         self.canvas.itemconfigure(self.rec_id, text="")
         self.b_exportar.configure(state="normal")
+        self.b_refazer.configure(state="normal")
         self._limpar_destaque()
         if not gravou or len(dados) == 0:
             self._atualizar_info()
@@ -1588,9 +1766,18 @@ class App:
         vozes = self.projeto.dados.setdefault("vozes", {}) if self.projeto else {}
         v = vozes.get(locutor or "", {})
         nome = v.get("nome", EFEITO_PADRAO)
-        if nome not in EFEITOS:
+        if not isinstance(EFEITOS.get(nome), dict):
             nome = EFEITO_PADRAO
-        return {"nome": nome, "st": float(v.get("st", 0.0))}
+        return {"nome": nome, "st": float(v.get("st", 0.0)), "fm": float(v.get("fm", 0.0))}
+
+    def _mostrar_voz(self, voz):
+        """Mostra nos campos Tom e Timbre os valores do modificador escolhido."""
+        tom, timbre, _, _ = parametros_da_voz(voz["nome"], voz["st"], voz["fm"])
+        self.var_st.set(tom)
+        self.var_fm.set(timbre)
+        estado = "normal" if voz["nome"] == "Personalizada" else "disabled"
+        self.sp_st.configure(state=estado)
+        self.sp_fm.configure(state=estado)
 
     def _gerar_take(self, t):
         """(Re)cria a fala final do trecho a partir da gravação original:
@@ -1610,7 +1797,7 @@ class App:
             return False
         voz = self._voz(t.locutor)
         try:
-            y = aplicar_voz(y, voz["nome"], voz["st"], float(inf.get("velocidade", 1.0)), proj.dir)
+            y = aplicar_voz(y, voz["nome"], voz["st"], float(inf.get("velocidade", 1.0)), proj.dir, voz["fm"])
         except Exception:
             log_erro(traceback.format_exc())
             messagebox.showerror("Modificador de voz", "Não consegui aplicar o modificador de voz "
@@ -1657,15 +1844,23 @@ class App:
         if not t or not self.projeto or self.estado not in ("parado", "tocando"):
             return
         nome = self.cb_voz.get()
-        if nome not in EFEITOS:
+        atual = self._voz(t.locutor)
+        if not isinstance(EFEITOS.get(nome), dict):     # clicou num título da lista
+            self.cb_voz.set(atual["nome"])
             return
-        self.sp_st.configure(state=("normal" if nome == "Personalizada" else "disabled"))
-        try:
-            st = max(-12.0, min(12.0, float(str(self.sp_st.get()).replace(",", "."))))
-        except ValueError:
-            st = 0.0
-        nova = {"nome": nome, "st": st}
-        if nova == self._voz(t.locutor):
+
+        def ler(sp):
+            try:
+                return max(-12.0, min(12.0, float(str(sp.get()).replace(",", "."))))
+            except ValueError:
+                return 0.0
+        if nome == "Personalizada":
+            # ao entrar em Personalizada, parte dos valores do modificador anterior
+            nova = {"nome": nome, "st": ler(self.sp_st), "fm": ler(self.sp_fm)}
+        else:
+            nova = {"nome": nome, "st": atual["st"], "fm": atual["fm"]}
+        self._mostrar_voz(nova)
+        if nova == atual:
             return
         self.projeto.dados.setdefault("vozes", {})[t.locutor or ""] = nova
         self.projeto.salvar()

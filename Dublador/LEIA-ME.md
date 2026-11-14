@@ -25,10 +25,19 @@ Dê dois cliques em **`ABRIR_DUBLADOR.bat`**.
    - Quer empurrar a fala um pouquinho? Use o **Ajuste fino** (ex.: `0.2` = 0,2 s depois, `-0.2` = antes).
 6. Com tudo aprovado: **💾 Exportar vídeo final**. O vídeo sai em **`videos_finalizados/`**, junto com um `.wav` só com a voz.
 
+## Trocar de vídeo e recomeçar
+
+- **✨ Novo vídeo + roteiro** (primeiro botão): escolhe um vídeo e, logo em seguida, o roteiro dele. Use sempre que for começar outro vídeo. As gravações do vídeo anterior continuam guardadas.
+- **🗑 Refazer tudo** (em Finalizar): apaga todas as gravações do vídeo aberto e volta os trechos para "pendente". Pede confirmação e não dá para desfazer. Os vídeos já exportados não são apagados.
+
 ## Supressor de ruído e modificador de voz
 
 - **Supressor de ruído** (em Opções, já vem ligado): tira chiado, ventilador e zumbido de cada gravação. A força vai de 10 a 100; comece em 60 e só aumente se ainda sobrar ruído, porque força alta demais deixa a voz "abafada". Para funcionar bem, fique meio segundo em silêncio antes de começar a falar: é nesse silêncio que o programa aprende qual é o ruído.
-- **Modificador de voz** (abaixo dos botões de gravar): Normal, Aguda (desenho animado), Bem aguda (esquilo), Grave, Bem grave (gigante), Robô, Rádio / telefone, Eco, ou **Personalizada**, onde você escolhe o tom em semitons (de -12 a +12). A escolha vale para **todas as falas de quem está falando naquele trecho** (por exemplo, todas as do Neuro), então cada personagem pode ter a sua voz.
+- **Modificador de voz** (abaixo dos botões de gravar). A escolha vale para **todas as falas de quem está falando naquele trecho** (por exemplo, todas as do Neuro), então cada personagem pode ter a sua voz.
+  - **Pessoas:** Mulher, Mulher jovem, Homem, Homem de voz grossa, Criança, Adolescente, Idoso, Idosa. Esses mexem em duas coisas separadas: o **tom** (altura da voz) e o **timbre** (o "tamanho" da voz, que faz parecer outra pessoa). Idoso e Idosa ganham também um leve tremor e um pouco de ar na voz.
+  - **Personagens:** Aguda (desenho animado), Bem aguda (esquilo), Grave, Bem grave (gigante), Monstro, Sussurro, Robô, Rádio / telefone, Eco.
+  - **Personalizada:** você escolhe o Tom e o Timbre, de -12 a +12. Dica: escolha primeiro um modificador pronto e depois mude para Personalizada; os campos já começam com os valores dele, para você ajustar.
+  - O resultado depende da voz de quem grava. "Mulher" foi pensado para uma voz masculina e "Homem" para uma voz feminina. Se soar exagerado, use Personalizada com valores menores.
 - Os dois podem ser mudados **depois de gravar**: o programa guarda a gravação original e refaz as falas na hora, sem precisar gravar de novo.
 
 Pode fechar o programa no meio. Quando abrir o mesmo vídeo de novo, ele volta de onde parou, com as gravações e o roteiro (tudo fica em `projetos/`). Assim cada pessoa da equipe pode gravar a sua parte em momentos diferentes.
