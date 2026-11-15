@@ -3,7 +3,7 @@ import { CalculateMetadataFunction, Composition, Folder, staticFile } from "remo
 import apresentacaoCanal from "../roteiros/apresentacao-canal.json";
 import exemploEntropia from "../roteiros/exemplo-entropia.json";
 import gta6 from "../roteiros/gta6-tudo-que-sabemos.json";
-import gta6voz from "../roteiros/gta6-tudo-que-sabemos-voz-ia.json";
+import binanceHack from "../roteiros/binance-hack-2026.json";
 import gta6VsZelda from "../roteiros/passeio/gta6-vs-zelda.json";
 import { duracaoPasseio, Passeio, RoteiroPasseio } from "./passeio/Passeio";
 import { Capa, CAPAS } from "./Capa";
@@ -45,7 +45,7 @@ const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "ApresentacaoCanal", roteiro: apresentacaoCanal as Roteiro },
   { id: "ExemploEntropia", roteiro: exemploEntropia as Roteiro },
   { id: "Gta6TudoQueSabemos", roteiro: gta6 as Roteiro },
-  { id: "Gta6VozIA", roteiro: gta6voz as Roteiro },
+  { id: "BinanceHack2026", roteiro: binanceHack as Roteiro },
 ];
 
 export const Root: React.FC = () => (

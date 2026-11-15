@@ -1,0 +1,130 @@
+{
+  "id": "binance-hack-2026",
+  "titulo": "Como roubaram _6 bilhões_ da Binance?",
+  "categoria": "Tecnologia",
+  "formato": "vertical",
+  "tema": "escuro",
+  "musica": "animada-1",
+  "cenas": [
+    { "tipo": "intro" },
+    {
+      "tipo": "pergunta",
+      "duracao": 5.5,
+      "titulo": "O maior _roubo_ cripto",
+      "personagens": [
+        { "id": "lia", "pose": "pensando", "expressao": "surpreso", "fala": "Roubaram *seis bilhões* da Binance? Como alguém faz isso?", "falaEm": 0.5 },
+        { "id": "bento", "pose": "parado", "expressao": "confuso", "mudancas": [{ "em": 3, "expressao": "surpreso" }] }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 7.5,
+      "titulo": "Um recorde _mundial_",
+      "lousa": "US$ 6,3 bilhões",
+      "lousaRotulo": "29 de outubro de 2026",
+      "legenda": "Quase tudo em *20 minutos*",
+      "legendaEm": 4,
+      "personagens": [{ "id": "neuro", "pose": "apontando", "expressao": "empolgado", "olhando": "frente" }],
+      "narracao": "Foi o maior roubo de cripto da história, quatro vezes o *recorde* anterior."
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 6.5,
+      "titulo": "A porta de _entrada_",
+      "cartao": { "titulo": "O alvo: pessoas", "texto": "computadores de engenheiros", "icone": "alvo", "cor": "coral" },
+      "legenda": "Segundo a própria *Binance*",
+      "legendaEm": 3.5,
+      "personagens": [{ "id": "teo", "pose": "apontando", "expressao": "pensativo", "olhando": "frente" }],
+      "narrador": "teo",
+      "narracao": "Ninguém quebrou a blockchain. Eles entraram pelo computador dos *funcionários*."
+    },
+    {
+      "tipo": "lista",
+      "duracao": 9,
+      "titulo": "Meses de _preparo_",
+      "itens": [
+        { "titulo": "Junho", "texto": "um programa adulterado", "icone": "dados", "cor": "amarelo" },
+        { "titulo": "Setembro", "texto": "uma entrevista de emprego falsa", "icone": "interrogacao", "cor": "coral" },
+        { "titulo": "Outubro", "texto": "uma ferramenta de IA interna", "icone": "neuronio", "cor": "lavanda" }
+      ],
+      "personagens": [{ "id": "teo", "pose": "pensando", "expressao": "pensativo", "olhando": "frente" }],
+      "narrador": "teo",
+      "narracao": "Foi um plano de meses, com três portas de entrada diferentes."
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 7,
+      "titulo": "A entrevista _falsa_",
+      "cartao": { "titulo": "Teste de programação", "texto": "com um vírus que o antivírus não viu", "icone": "errado", "cor": "coral" },
+      "personagens": [
+        { "id": "caio", "pose": "pensando", "expressao": "confuso", "fala": "Pera... o teste da vaga era um *vírus*?", "falaEm": 0.5, "mudancas": [{ "em": 3, "expressao": "surpreso" }] }
+      ]
+    },
+    {
+      "tipo": "diagrama",
+      "duracao": 9,
+      "titulo": "Como o dinheiro _saiu_",
+      "nos": [
+        { "titulo": "Computador invadido", "texto": "senha roubada de um engenheiro", "icone": "dados", "cor": "coral" },
+        { "titulo": "Servidor da Binance", "texto": "um programa malicioso rodando", "icone": "play", "cor": "amarelo" },
+        { "titulo": "Assinador oficial", "texto": "aprovou saques fora do processo", "icone": "certo", "cor": "lavanda" }
+      ],
+      "personagens": [{ "id": "neuro", "pose": "apontando", "expressao": "surpreso", "olhando": "frente" }],
+      "narracao": "Lá dentro, eles fizeram o *próprio sistema* da Binance assinar os saques."
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 8,
+      "titulo": "Uma _procuração_",
+      "lousa": "EIP-7702",
+      "lousaRotulo": "recurso do Ethereum",
+      "legenda": "Não arrombaram o cofre: o *porteiro* assinou",
+      "legendaEm": 4,
+      "personagens": [{ "id": "teo", "pose": "apontando", "expressao": "feliz", "olhando": "frente" }],
+      "narrador": "teo",
+      "narracao": "Com ele, a carteira assinou uma *procuração* que deixava os hackers sacarem."
+    },
+    {
+      "tipo": "lista",
+      "duracao": 9,
+      "titulo": "E o _dinheiro_?",
+      "itens": [
+        { "titulo": "US$ 3 bilhões", "texto": "congelados por Tether e Circle", "icone": "certo", "cor": "amarelo" },
+        { "titulo": "Clientes", "texto": "a Binance cobriu as perdas", "icone": "certo", "cor": "lavanda" },
+        { "titulo": "Saques", "texto": "voltaram em 1º de novembro", "icone": "relogio", "cor": "coral" }
+      ],
+      "personagens": [{ "id": "rafa", "pose": "apontando", "expressao": "feliz", "olhando": "frente" }],
+      "narrador": "rafa",
+      "narracao": "Três bilhões foram *congelados*, e a Binance cobriu o prejuízo dos clientes."
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 6.5,
+      "titulo": "Quem _foi_?",
+      "cartao": { "titulo": "Coreia do Norte", "texto": "segundo o FBI, mas o país nega", "icone": "interrogacao", "cor": "amarelo" },
+      "personagens": [
+        { "id": "lia", "pose": "pensando", "expressao": "pensativo", "fala": "E o FBI aponta a *Coreia do Norte*. Mas eles negam.", "falaEm": 0.5 }
+      ]
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 6.5,
+      "titulo": "O que _aprendemos_?",
+      "mito": "Hackers quebraram a blockchain",
+      "verdade": "O elo fraco foram as pessoas",
+      "personagens": [
+        { "id": "bento", "pose": "comemorando", "expressao": "surpreso", "fala": "Então o perigo era um *arquivo* de recrutador!", "falaEm": 2 },
+        { "id": "caio", "pose": "parado", "expressao": "feliz" }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 5.5,
+      "destaque": "Desconfie de _arquivos_ de vaga",
+      "personagens": [
+        { "id": "neuro", "pose": "comemorando", "expressao": "empolgado", "fala": "Recrutador mandou um arquivo? *Desconfie* antes de abrir!", "falaEm": 1 }
+      ]
+    },
+    { "tipo": "outro", "chamada": "Proteja seu _computador_!", "botao": "Siga para mais" }
+  ]
+}
