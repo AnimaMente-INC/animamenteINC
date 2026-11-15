@@ -1,0 +1,219 @@
+{
+  "id": "gta6-vs-zelda",
+  "titulo": "Jogo do Ano: GTA 6 ou Zelda?",
+  "musica": "animada-3",
+  "falas": [
+    {
+      "quem": "neuro",
+      "expressao": "empolgado",
+      "pose": "acenando",
+      "texto": "Jogo do ano de 2026: *GTA 6* ou o remake de _Zelda Ocarina of Time_?",
+      "voz": "Jogo do ano de 2026: gê tê á seis, ou o rimeique de Zelda Ocarina óv táime?",
+      "arquivo": "vozes/gta6-vs-zelda/fala00.wav",
+      "inicio": 0.5,
+      "duracao": 5.141
+    },
+    {
+      "quem": "lia",
+      "expressao": "pensativo",
+      "texto": "Hum... e a crítica, diz o quê?",
+      "arquivo": "vozes/gta6-vs-zelda/fala01.wav",
+      "inicio": 5.761,
+      "duracao": 1.557
+    },
+    {
+      "quem": "neuro",
+      "expressao": "feliz",
+      "pose": "apontando",
+      "texto": "O Zelda já saiu, com nota *95* no Metacritic. A maior do ano!",
+      "voz": "O Zelda já saiu, com nota 95 no Metacrític. A maior do ano!",
+      "arquivo": "vozes/gta6-vs-zelda/fala02.wav",
+      "inicio": 7.438,
+      "duracao": 3.934
+    },
+    {
+      "quem": "lia",
+      "expressao": "confuso",
+      "texto": "E o GTA 6?",
+      "voz": "E o gê tê á seis?",
+      "arquivo": "vozes/gta6-vs-zelda/fala03.wav",
+      "inicio": 11.492,
+      "duracao": 1.175
+    },
+    {
+      "quem": "neuro",
+      "expressao": "pensativo",
+      "pose": "pensando",
+      "texto": "Ainda sem nota! Sai dia 19, e as análises devem chegar na véspera.",
+      "arquivo": "vozes/gta6-vs-zelda/fala04.wav",
+      "inicio": 12.787,
+      "duracao": 4.149
+    },
+    {
+      "quem": "neuro",
+      "expressao": "empolgado",
+      "pose": "apontando",
+      "texto": "Mas o GTA 5 tirou *97*, então muita gente aposta nele.",
+      "voz": "Mas o gê tê á cinco tirou 97, então muita gente aposta nele.",
+      "arquivo": "vozes/gta6-vs-zelda/fala05.wav",
+      "inicio": 17.056,
+      "duracao": 4.056
+    },
+    {
+      "quem": "lia",
+      "expressao": "pensativo",
+      "texto": "Só que são propostas completamente diferentes, né?",
+      "arquivo": "vozes/gta6-vs-zelda/fala06.wav",
+      "inicio": 21.232,
+      "duracao": 2.791
+    },
+    {
+      "quem": "neuro",
+      "expressao": "feliz",
+      "pose": "comemorando",
+      "texto": "Totalmente! E os dois vão ser _lindos_ do mesmo jeito.",
+      "arquivo": "vozes/gta6-vs-zelda/fala07.wav",
+      "inicio": 24.143,
+      "duracao": 2.848
+    },
+    {
+      "quem": "lia",
+      "expressao": "confuso",
+      "texto": "Mas o Zelda é um remake. O jogo já existia!",
+      "voz": "Mas o Zelda é um rimeique. O jogo já existia!",
+      "arquivo": "vozes/gta6-vs-zelda/fala08.wav",
+      "inicio": 27.111,
+      "duracao": 2.479
+    },
+    {
+      "quem": "neuro",
+      "expressao": "feliz",
+      "pose": "parado",
+      "texto": "Sim, mas com coisas novas e gráficos lindos.",
+      "arquivo": "vozes/gta6-vs-zelda/fala09.wav",
+      "inicio": 29.71,
+      "duracao": 2.579
+    },
+    {
+      "quem": "lia",
+      "expressao": "pensativo",
+      "texto": "E o GTA é novo, mas com a mesma premissa dos anteriores.",
+      "voz": "E o gê tê á é novo, mas com a mesma premissa dos anteriores.",
+      "arquivo": "vozes/gta6-vs-zelda/fala10.wav",
+      "inicio": 32.409,
+      "duracao": 3.239
+    },
+    {
+      "quem": "neuro",
+      "expressao": "pensativo",
+      "pose": "pensando",
+      "texto": "História e mecânicas novas, na fórmula de sempre.",
+      "arquivo": "vozes/gta6-vs-zelda/fala11.wav",
+      "inicio": 35.768,
+      "duracao": 2.741
+    },
+    {
+      "quem": "lia",
+      "expressao": "surpreso",
+      "texto": "Então jogo do ano merece ganhar *só por gráfico*?",
+      "arquivo": "vozes/gta6-vs-zelda/fala12.wav",
+      "inicio": 38.629,
+      "duracao": 2.796
+    },
+    {
+      "quem": "neuro",
+      "expressao": "empolgado",
+      "pose": "apontando",
+      "texto": "Essa é a questão! Vamos esperar o GTA sair, pra ver se inova de verdade ou se é só evolução gráfica.",
+      "voz": "Essa é a questão! Vamos esperar o gê tê á sair, pra ver se inova de verdade, ou se é só evolução gráfica.",
+      "arquivo": "vozes/gta6-vs-zelda/fala13.wav",
+      "inicio": 41.545,
+      "duracao": 5.727
+    },
+    {
+      "quem": "neuro",
+      "expressao": "feliz",
+      "pose": "acenando",
+      "texto": "E você, aposta em qual? _Comenta aí!_",
+      "arquivo": "vozes/gta6-vs-zelda/fala14.wav",
+      "inicio": 47.392,
+      "duracao": 1.897
+    }
+  ],
+  "placas": [
+    {
+      "tipo": "abertura",
+      "de": 0,
+      "ate": 1
+    },
+    {
+      "tipo": "nota",
+      "de": 2,
+      "ate": 3,
+      "titulo": "Zelda: Ocarina of Time",
+      "sub": "remake · maior nota de 2026",
+      "valor": 95,
+      "cor": "amarelo"
+    },
+    {
+      "tipo": "espera",
+      "de": 4,
+      "ate": 5,
+      "titulo": "GTA 6",
+      "sub": "sai em 19/11 · sem nota ainda",
+      "extraEm": 5,
+      "extra": "GTA 5",
+      "extraValor": 97
+    },
+    {
+      "tipo": "setas",
+      "de": 6,
+      "ate": 7,
+      "esquerda": "crime em mundo aberto",
+      "direita": "aventura de fantasia",
+      "extraEm": 7,
+      "extra": "lindos do mesmo jeito"
+    },
+    {
+      "tipo": "selo",
+      "de": 8,
+      "ate": 9,
+      "titulo": "REMAKE",
+      "sub": "o jogo é de 1998",
+      "extraEm": 9,
+      "itens": [
+        "+ novidades",
+        "+ gráficos"
+      ]
+    },
+    {
+      "tipo": "estrela",
+      "de": 10,
+      "ate": 11,
+      "titulo": "NOVO",
+      "sub": "história e mecânicas",
+      "extraEm": 11,
+      "extra": "mesma fórmula"
+    },
+    {
+      "tipo": "duvida",
+      "de": 12,
+      "ate": 12,
+      "titulo": "só por gráfico?"
+    },
+    {
+      "tipo": "balanca",
+      "de": 13,
+      "ate": 13,
+      "esquerda": "inovação",
+      "direita": "só gráfico"
+    },
+    {
+      "tipo": "final",
+      "de": 14,
+      "ate": 14,
+      "titulo": "Comenta aí!"
+    }
+  ],
+  "duracao": 51.01
+}
