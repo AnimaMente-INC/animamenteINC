@@ -1,0 +1,33 @@
+# Roteiro de locução (formato do Dublador Animamente)
+# Título: Como o GTA 6 vai mudar os games?
+# Vídeo: gta6-nova-geracao.mp4 · vertical · duração 1:08.2
+# Como usar: abra o Dublador, clique em "Abrir vídeo" (o .mp4 renderizado deste roteiro)
+# e depois em "Abrir roteiro" (este arquivo). O texto entre parênteses é o jeito de falar e não é lido.
+# Arquivo gerado por "npm run locucao". Se o roteiro .json mudar, gere de novo.
+
+[00:02.5 - 00:07.1] Caio
+(em dúvida) Neuro, por que todo mundo só fala de GTA 6?
+
+[00:08.0 - 00:13.4] Neuro
+(empolgado) Ele chega dia dezenove de novembro, treze anos depois do GTA 5.
+
+[00:14.5 - 00:20.7] Bento
+(empolgado) O trailer dois virou o maior lançamento de vídeo da história em um dia!
+
+[00:22.0 - 00:28.2] Caio
+(surpreso) E tudo foi capturado dentro do jogo, num PS5. Olha esse reflexo na água!
+
+[00:29.5 - 00:35.3] Bento
+(sorrindo) Agora são dois protagonistas, a Lucia e o Jason, um casal no crime.
+
+[00:36.5 - 00:42.7] Caio
+(empolgado) O trailer dá pistas: academia, casa que evolui e redes sociais dentro do jogo.
+
+[00:44.5 - 00:51.1] Neuro
+(pensativo) A indústria sente: quatrocentos e cinquenta reais, rivais fugindo da data e caixa sem disco.
+
+[00:53.3 - 00:57.4] Bento
+(surpreso) Então todo jogo novo vai ser comparado com ele?
+
+[00:59.3 - 01:03.8] Neuro
+(empolgado) Exato! Ele vira a régua da nova geração de jogos.

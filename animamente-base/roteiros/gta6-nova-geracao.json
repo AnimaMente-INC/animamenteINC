@@ -170,8 +170,8 @@
       "titulo": "Impacto na _indústria_",
       "nos": [
         {
-          "titulo": "US$ 79,99",
-          "texto": "o preço vira o novo padrão",
+          "titulo": "R$ 449,90",
+          "texto": "o preço mais alto de um lançamento",
           "icone": "grafico",
           "cor": "coral"
         },
@@ -196,7 +196,7 @@
           "olhando": "frente"
         }
       ],
-      "narracao": "E a indústria sente: preço de oitenta dólares, rivais fugindo da data e caixa *sem disco*."
+      "narracao": "A indústria sente: *quatrocentos e cinquenta reais*, rivais fugindo da data e caixa sem disco."
     },
     {
       "tipo": "comparacao",

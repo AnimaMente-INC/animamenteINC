@@ -63,11 +63,11 @@ As palavras em **negrito** são os destaques da tela: dê ênfase a elas. O temp
 - **Jeito de falar:** empolgado, narração (aparece na cena e a boca mexe)
 - **Salvar como:** `fala06.wav` (cena 7, lista)
 
-### 7. Neuro · 0:44.5 → 0:51.5
+### 7. Neuro · 0:44.5 → 0:51.1
 
-> E a indústria sente: preço de oitenta dólares, rivais fugindo da data e caixa **sem disco**.
+> A indústria sente: **quatrocentos e cinquenta reais**, rivais fugindo da data e caixa sem disco.
 
-- **Cabe em:** cerca de 7,1s (16 palavras)
+- **Cabe em:** cerca de 6,7s (15 palavras)
 - **Jeito de falar:** pensativo, narração (aparece na cena e a boca mexe)
 - **Salvar como:** `fala07.wav` (cena 8, diagrama)
 

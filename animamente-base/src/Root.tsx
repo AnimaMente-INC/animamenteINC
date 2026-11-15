@@ -12,6 +12,7 @@ import modeloMapaMental from "../roteiros/modelo-mapa-mental.json";
 import modeloPassoAPasso from "../roteiros/modelo-passo-a-passo.json";
 import modeloQuiz from "../roteiros/modelo-quiz.json";
 import modeloTop3 from "../roteiros/modelo-top3.json";
+import binanceHack from "../roteiros/binance-hack-2026.json";
 import gta6VsZelda from "../roteiros/passeio/gta6-vs-zelda.json";
 import { duracaoPasseio, Passeio, RoteiroPasseio } from "./passeio/Passeio";
 import { Capa, CAPAS } from "./Capa";
@@ -56,6 +57,7 @@ const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "PiratariaGamesBrasil", roteiro: piratariaGames as Roteiro },
   { id: "SusVoceUsaSemSaber", roteiro: susVoceUsaSemSaber as Roteiro },
   { id: "TerrasRaras", roteiro: terrasRaras as Roteiro },
+  { id: "BinanceHack2026", roteiro: binanceHack as Roteiro },
   // modelos de vídeo (um exemplo de cada; copie o roteiro e troque o conteúdo)
   { id: "ModeloQuiz", roteiro: modeloQuiz as Roteiro },
   { id: "ModeloDuelo", roteiro: modeloDuelo as Roteiro },

@@ -1,0 +1,39 @@
+# Roteiro de locução (formato do Dublador Animamente)
+# Título: Como roubaram 6 bilhões da Binance?
+# Vídeo: binance-hack-2026.mp4 · vertical · duração 1:25.0
+# Como usar: abra o Dublador, clique em "Abrir vídeo" (o .mp4 renderizado deste roteiro)
+# e depois em "Abrir roteiro" (este arquivo). O texto entre parênteses é o jeito de falar e não é lido.
+# Arquivo gerado por "npm run locucao". Se o roteiro .json mudar, gere de novo.
+
+[00:02.5 - 00:06.7] Lia
+(surpreso) Roubaram seis bilhões da Binance? Como alguém faz isso?
+
+[00:07.8 - 00:13.6] Neuro
+(empolgado) Foi o maior roubo de cripto da história, quatro vezes o recorde anterior.
+
+[00:15.3 - 00:19.9] Teo
+(pensativo) Ninguém quebrou a blockchain. Eles entraram pelo computador dos funcionários.
+
+[00:21.8 - 00:26.8] Teo
+(pensativo) Foi um plano de meses, com três portas de entrada diferentes.
+
+[00:31.0 - 00:34.7] Caio
+(começa em dúvida e termina surpreso) Pera... o teste da vaga era um vírus?
+
+[00:37.8 - 00:43.2] Neuro
+(surpreso) Lá dentro, eles fizeram o próprio sistema da Binance assinar os saques.
+
+[00:46.8 - 00:52.2] Teo
+(sorrindo) Com ele, a carteira assinou uma procuração que deixava os hackers sacarem.
+
+[00:54.8 - 01:00.2] Rafa
+(sorrindo) Três bilhões foram congelados, e a Binance cobriu o prejuízo dos clientes.
+
+[01:04.0 - 01:09.0] Lia
+(pensativo) E o FBI aponta a Coreia do Norte. Mas eles negam.
+
+[01:12.0 - 01:15.7] Bento
+(surpreso) Então o perigo era um arquivo de recrutador!
+
+[01:17.5 - 01:21.2] Neuro
+(empolgado) Recrutador mandou um arquivo? Desconfie antes de abrir!
