@@ -50,11 +50,11 @@
     },
     "7": {
       "arquivo": "vozes/gta6-nova-geracao/cena07.wav",
-      "duracao": 5.09,
+      "duracao": 5.348,
       "quem": "neuro",
       "tipo": "narracao",
-      "texto": "E a indústria sente: preço de oitenta dólares, rivais fugindo da data e caixa sem disco.",
-      "chave": "a8ec4a6ac562"
+      "texto": "A indústria sente: quatrocentos e cinquenta reais, rivais fugindo da data e caixa sem disco.",
+      "chave": "193b215d6fd0"
     },
     "8": {
       "arquivo": "vozes/gta6-nova-geracao/cena08.wav",
