@@ -1,0 +1,109 @@
+{
+  "id": "modelo-passo-a-passo",
+  "titulo": "Estude com a técnica _Pomodoro_",
+  "categoria": "Passo a passo",
+  "formato": "vertical",
+  "musica": "frutinhas",
+  "vozesIA": true,
+  "estiloFala": "recado",
+  "estiloTexto": "maquina",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 5,
+      "titulo": "Não consegue *focar*?",
+      "estiloFala": "balao",
+      "personagens": [
+        {
+          "id": "bento",
+          "expressao": "confuso",
+          "fala": "Sento pra estudar e em cinco minutos já estou no celular!",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "passos",
+      "duracao": 6,
+      "passo": 1,
+      "passosDe": 3,
+      "titulo": "Escolha *uma* tarefa",
+      "cartao": {
+        "texto": "Só uma. E deixe o celular longe",
+        "icone": "alvo",
+        "cor": "coral"
+      },
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz",
+          "fala": "Passo um: escolha uma tarefa só e guarde o celular.",
+          "falaEm": 0.8
+        }
+      ]
+    },
+    {
+      "tipo": "passos",
+      "duracao": 6,
+      "passo": 2,
+      "passosDe": 3,
+      "titulo": "25 minutos de *foco*",
+      "cartao": {
+        "texto": "Ligue o timer e só pare quando tocar",
+        "icone": "relogio",
+        "cor": "amarelo"
+      },
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "empolgado",
+          "fala": "Passo dois: vinte e cinco minutos de foco total, sem parar.",
+          "falaEm": 0.8
+        }
+      ]
+    },
+    {
+      "tipo": "passos",
+      "duracao": 6,
+      "passo": 3,
+      "passosDe": 3,
+      "titulo": "Pausa de *5 minutos*",
+      "cartao": {
+        "texto": "Levante, beba água, estique o corpo",
+        "icone": "ampulheta",
+        "cor": "lavanda"
+      },
+      "personagens": [
+        {
+          "id": "teo",
+          "expressao": "feliz",
+          "fala": "Passo três: cinco minutos de pausa. Devagar... e sempre.",
+          "falaEm": 0.8
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 5,
+      "destaque": "A cada 4, pausa _longa_",
+      "estiloFala": "faixa",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Depois de quatro rodadas, descanse mais: de quinze a trinta minutos.",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Teste _hoje_ mesmo!",
+      "botao": "Salve para estudar"
+    }
+  ]
+}

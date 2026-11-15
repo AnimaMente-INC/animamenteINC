@@ -89,7 +89,7 @@ Este guia é a "lei" visual dos vídeos. Ele aplica a **identidade visual oficia
 | `fps` | 30 |
 | entrada | 12 frames, `cubic-bezier(0.34, 1.56, 0.64, 1)` (pequeno "pulo") |
 | saída | 8 frames, `cubic-bezier(0.4, 0, 1, 1)` |
-| transição entre cenas | 15 frames, deslizando da direita, sempre igual |
+| transição entre cenas | 15 frames, deslizando da direita, sempre igual (8 frames no `"ritmo": "rapido"`, ver seção 8) |
 | stagger | 4 frames |
 | troca de pose ou expressão | 6 frames |
 | texto | palavra por palavra, 3 frames entre palavras |
@@ -154,7 +154,7 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 
 ## 6.1 Áudio e vozes (regra do canal)
 
-**Todo vídeo:** tem **música de fundo baixa e animada** e **não tem vozes de IA**. Junto com cada vídeo é gerado o **roteiro de locução** (`npm run locucao`), e a equipe grava as falas.
+**Todo vídeo:** tem **música de fundo baixa e animada** e **vozes de IA** (`"vozesIA": true` + `scripts/gerar-vozes.py`). **Só quando o pedido for para dublar** o vídeo sai sem voz e com o **roteiro de locução** (`npm run locucao`), para a equipe gravar as falas.
 
 - **Música:** trilhas originais em `public/musica/`, em volume baixo (`audio.volumeMusica` = 0,16), com fade de entrada e de saída. Ela abaixa mais quando há voz gravada tocando.
 - **Uma fala por cena:** ou a `fala` de um personagem (com balão), ou uma `narracao` (sem balão; se o narrador estiver em cena, a boca dele mexe).
@@ -171,7 +171,7 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 | Rafa (elefante) | grave, confiante e motivador, como técnico de academia |
 | Caio (lontra) | brincalhão e travesso, com risadinha |
 
-- Vozes de IA só se o roteiro pedir `"vozesIA": true`, e nunca imitando a voz de uma pessoa real.
+- Vozes de IA são o padrão (`"vozesIA": true` no roteiro), sempre com as vozes de `src/tema/vozes.json` e nunca imitando a voz de uma pessoa real.
 
 ---
 
@@ -196,7 +196,21 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 | `BarraProgresso` | barra fina Coral no topo |
 | `MolduraImagem` | imagem de referência 16:9 em moldura de adesivo (borda Névoa, cantos 28), etiqueta Amarelo no canto, crédito em Lavanda e zoom lento (`amplitudes.zoomImagem`). Sem imagem, mostra um espaço reservado tracejado com ícone de câmera e a descrição do que entra ali |
 
-Ícones disponíveis: lampada, livro, atomo, grafico, relogio, ampulheta, interrogacao, alvo, certo, errado, calor, dados, play, camera, neuronio.
+| `CarimboAno` | adesivo Coral com borda Névoa e texto Névoa, inclinado 6°, que cai, bate e treme; ao bater solta um estouro de neurônios Amarelo |
+| `LinhaDoTempo` | nós de neurônio ligados: os que já passaram em Coral, o atual pulsando em Amarelo, os próximos em Ardósia |
+| `TextoImpacto` | frase que ocupa a tela, uma linha por vez, cada linha "carimbada"; linhas separadas por ` / `; o tamanho se ajusta à linha mais longa |
+| `FaixaCorrida` | letreiro Amarelo (texto Tinta) inclinado 3° que corre de ponta a ponta ("3 POR 10") |
+| `Objeto` | adesivo grande de uma coisa, com borda Névoa por fora da silhueta e movimento próprio (o disco gira, a seta quica, a cancela desce) |
+| `TelaRetro` | TV de tubo em adesivo, com antenas-neurônio, linhas de varredura e um joguinho de blocos original rodando |
+| `BarrasPreco` | barras que crescem com o número contando na ponta, para comparar preços |
+| `JanelaTerminal` / `TextoDigitado` | painel com três bolinhas e texto digitado letra por letra, cursor Amarelo e barra de progresso opcional (continua em Fredoka) |
+| `FaixaNarrador` | Neuro pequeno no topo narrando (a boca mexe) + etiqueta Lavanda "Neuro conta" + etiqueta Amarelo com a época |
+
+| `Fala` / `LegendaKaraoke` | os 6 modelos de fala (seção 8.1) |
+| `Quiz`, `Versus`, `NumeroGigante`, `Medalha`, `Chat` | peças dos modelos de vídeo novos (seção 8.3) |
+| `MapaMental` | o vídeo em câmera contínua (seção 8.4) |
+
+Ícones disponíveis: lampada, livro, atomo, grafico, relogio, ampulheta, interrogacao, alvo, certo, errado, calor, dados, play, camera, neuronio, sol, gota, folha, trofeu, balao.
 
 ---
 
@@ -216,9 +230,98 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 
 **Cena `imagem`:** use só para mostrar algo real que a animação não consegue desenhar (print de trailer, foto histórica) e sempre com `imagemCredito`. Prefira `narracao` a `fala` nessa cena, para sobrar espaço para a moldura no vertical. Para trocar o espaço reservado pela imagem: coloque o arquivo em `public/` (ex.: `public/gta6/trailer-01.jpg`), escreva `"imagem": "gta6/trailer-01.jpg"` na cena e renderize de novo.
 
+### Modo história (contar uma história em capítulos)
+
+Use quando o vídeo responde a uma pergunta por meio de uma história ou de uma linha do tempo. No topo do roteiro:
+
+- `"ritmo": "rapido"`: a transição cai de 15 para 8 frames (`tempos.transicaoRapida`) e cada `capitulo` entra de baixo para cima. As outras cenas continuam deslizando da direita.
+- `"narradorNoCanto": true` (só vertical): reserva 170px no topo para a `FaixaNarrador`. O Neuro aparece ali em toda cena em que ele não está entre os personagens (menos `intro` e `outro`), e a etiqueta mostra o `ano` do último `capitulo`.
+
+| Tipo | O que mostra | Campos |
+|---|---|---|
+| `capitulo` | carimbo da época + linha do tempo + título; cena curta (1,6 s), sem personagens | `ano`, `titulo?`, `etapas?`, `etapa?` |
+| `impacto` | frase carimbada linha por linha | `impacto` (até 4 linhas separadas por ` / `), `faixa?`, `personagens?`, `legenda?` |
+| `tela` | TV de tubo com joguinho + personagens jogando | `tela?` (`jogo` ou `texto`), `telaTexto?`, `titulo?` |
+| `objeto` | adesivo grande + título + letreiro | `objeto`, `titulo?`, `faixa?`, `legenda?` |
+| `preco` | barras comparando valores | `precos` (`rotulo`, `valor`, `texto?`, `cor?`), `titulo?` |
+| `terminal` | texto digitado numa janela + barra de progresso | `linhas`, `terminalTitulo?`, `progresso?`, `progressoAte?` |
+
+Objetos disponíveis: cartucho, disco, console, controle, chip, pc, nuvem, etiqueta, banca, clones, codigo, barreira. São desenhos genéricos, sem marca de fabricante. Para criar outro, siga o comentário no topo de `componentes/Objeto.tsx`.
+
+Movimentos novos (todos em `src/animacao`, com tempos em `tokens.ts`): `carimbar`/`estiloCarimbo` (8 frames de queda, escala 2,4 → 1, tremida de 12px), `digitar` (1,5 frame por letra), `cursorAceso`, `correr` (5px por frame), `girar` (uma volta a cada 4 s), `crescer` e `pulsar`.
+
+Nas cenas de história os personagens ficam menores (520px com fala, 560px sem) para sobrar espaço para o conteúdo. Exemplo completo: `roteiros/pirataria-games-brasil.json`.
+
 Qualquer cena aceita uma fala: `narracao`, `narrador` e `narracaoEm`, ou a `fala` de um personagem. Todas entram no roteiro de locução.
 
 **Estrutura recomendada (30 a 60s):** `intro` → `pergunta` → 1 a 3 cenas de `explicacao`/`diagrama`/`lista` → `comparacao` (opcional) → `resumo` → `outro`.
+
+
+---
+
+## 8.1 Modelos de fala (`estiloFala`)
+
+O jeito que a fala aparece na tela. Vai no topo do roteiro (vale para o vídeo todo) ou dentro de uma cena (só nela). A voz é a mesma em qualquer modelo. Código: `componentes/Fala.tsx`.
+
+| Modelo | Visual | Quando usar |
+|---|---|---|
+| `balao` (padrão) | balão Névoa com rabicho | conversa normal |
+| `pensamento` | balão bem redondo com bolinhas subindo da cabeça; **a boca fica fechada** | dúvida, pergunta para si mesmo, quiz |
+| `grito` | estouro Amarelo com 16 pontas e borda Névoa, texto Tinta em maiúsculas, cai como carimbo | surpresa, chamada, virada |
+| `legenda` | sem balão: etiqueta com o nome (na cor do personagem) + legenda **karaokê**, em que a palavra falada acende em Amarelo | vídeos rápidos, Shorts/Reels vistos sem som |
+| `faixa` | tarja de telejornal: aba com o nome + faixa Névoa com filete na cor do personagem, entra deslizando | duelo, notícia, entrevista |
+| `recado` | bilhete de papel recortado, inclinado 2,5°, preso com fita Amarelo, texto digitado e assinatura Coral | passo a passo, dica, lembrete |
+
+Cor de cada personagem (etiqueta, faixa, chat): Neuro e Caio Coral, Lia e Bento Amarelo, Teo e Rafa Lavanda (`COR_PERSONAGEM` em `personagens/tipos.ts`).
+
+## 8.2 Modelos de texto (`estiloTexto`)
+
+Como os **títulos** aparecem (e as legendas, nos modelos `maquina` e `marcador`). Também vai no topo do roteiro ou em uma cena. Código: `componentes/TextoAnimado.tsx`.
+
+| Modelo | Movimento |
+|---|---|
+| `palavra` (padrão) | palavra por palavra, com um pulinho |
+| `maquina` | digitado letra por letra (1,5 frame por letra), com cursor Amarelo |
+| `marcador` | o texto aparece e um marca-texto passa por trás dos destaques (10 frames); o destaque Amarelo fica com texto Tinta e o Coral com texto Névoa |
+| `onda` | letra por letra, subindo em onda; os destaques continuam balançando 5px |
+| `recorte` | cada palavra é um recorte de papel colado torto, que cai como carimbo: Névoa (normal), Amarelo (`*destaque*`) ou Coral (`_destaque_`) |
+
+Use **um** modelo de texto por vídeo. O `TextoImpacto` (cena `impacto`) continua sendo o sexto jeito: a frase carimbada.
+
+## 8.3 Modelos de vídeo novos
+
+Cada modelo tem um roteiro pronto em `roteiros/modelo-*.json`: copie, troque o conteúdo e mantenha a estrutura.
+
+| Tipo de cena | O que mostra | Campos |
+|---|---|---|
+| `quiz` | etiqueta "Quiz" + pergunta + alternativas com letra + barra de tempo; na hora certa, a correta vira Amarelo e as outras apagam | `titulo` (a pergunta), `opcoes` (2 a 4), `correta` (começa em 0), `revelarEm?` |
+| `versus` | dois painéis frente a frente com o selo "VS" carimbado | `lados` (2, cada um com `titulo`, `itens?` até 4, `cor?`), `vencedor?`, `revelarEm?`, `titulo?` |
+| `numero` | um dado gigante que conta até o valor, com sublinhado à mão | `numero`, `numeroPrefixo?`, `numeroSufixo?`, `numeroCasas?`, `numeroRotulo?`, `numeroCor?`, `titulo?` |
+| `ranking` | trilha de posições + medalha carimbada ("3º"; a do 1º é Amarelo) + nome | `posicao`, `rankingDe?`, `titulo`, `texto?` |
+| `passos` | trilha de etapas + etiqueta "Passo 2 de 3" + título + cartão | `passo`, `passosDe`, `titulo`, `cartao?` |
+| `chat` | a conversa como mensagens de celular, com o rosto de cada um; antes da mensagem nova aparecem os três pontinhos | `mensagens` (até 4, de 2 personagens), `titulo?` |
+
+- **Quiz e versus:** a resposta aparece 2 s antes do fim da cena (`tempos.revelarQuiz`), ou no segundo de `revelarEm`. Explique a resposta na cena seguinte.
+- **Chat:** a **última** mensagem é a fala da cena (voz de quem escreveu). Para continuar a conversa, repita as mensagens anteriores na próxima cena e acrescente uma. Cenas de chat seguidas trocam com fade. Não tem personagens embaixo.
+- **Ícones novos:** `sol`, `gota`, `folha`, `trofeu`, `balao`.
+
+| Modelo de vídeo | Roteiro de exemplo | Cenas principais | Fala · texto |
+|---|---|---|---|
+| Quiz relâmpago | `modelo-quiz.json` | `impacto` → (`quiz` → resposta) × 2 | `legenda` · `recorte` |
+| Duelo | `modelo-duelo.json` | `pergunta` → `versus` → `numero` → `comparacao` → `resumo` | `faixa` · `marcador` |
+| Top 3 | `modelo-top3.json` | `impacto` → `ranking` × 3 → `numero` (ritmo rápido) | `legenda` · `onda` |
+| Passo a passo | `modelo-passo-a-passo.json` | `pergunta` → `passos` × 3 → `resumo` | `recado` · `maquina` |
+| Conversa | `modelo-conversa.json` | `chat` × 6 → `resumo` | mensagens · `palavra` |
+| Mapa mental | `modelo-mapa-mental.json` | `no` × 7 → `outro` | karaokê no rodapé |
+
+## 8.4 Mapa mental (`"modelo": "mapa"`)
+
+O modelo mais diferente: **não tem cenas que trocam**. O vídeo inteiro é um mapa de neurônios em câmera contínua. O tema fica no centro (com o logo) e cada ideia é um nó ligado por um traço-neurônio. A câmera voa de um nó ao outro em 26 frames (afastando até 78% no meio do caminho), o traço se desenha e um impulso Amarelo corre por ele. Quem narra aparece no rodapé, com a etiqueta do nome e legenda karaokê. No `outro`, a câmera se afasta, mostra o mapa inteiro pulsando e entram a chamada, a marca e o botão.
+
+- Cenas do tipo `no`: `titulo`, `texto?`, `icone?`, `cor?`, `narracao`, `narrador?`, `expressao?` e `de?` (de qual nó este sai; padrão 0, o centro). O primeiro `no` é o centro.
+- Os nós ligados ao centro ficam em volta dele (1040px); os filhos de outro nó abrem em leque (900px, 42° entre irmãos). Medidas em `tokens.ts` (`mapa`).
+- De 5 a 8 nós por vídeo. Sem `personagens`: quem fala é o `narrador` de cada nó.
+- Código: `src/mapa/MapaMental.tsx`.
 
 ---
 
@@ -228,7 +331,8 @@ Qualquer cena aceita uma fala: `narracao`, `narrador` e `narracaoEm`, ou a `fala
 - [ ] Cores de destaque só Coral, Amarelo e Lavanda
 - [ ] Nenhuma legenda com mais de 2 linhas
 - [ ] Só um personagem falando por cena (e uma voz por cena)
-- [ ] Música de fundo baixa e animada tocando; nenhuma voz de IA
-- [ ] Roteiro de locução gerado (`npm run locucao -- roteiros/<video>.json`) e entregue para quem grava
+- [ ] Um só modelo de texto (`estiloTexto`) no vídeo; modelo de fala (`estiloFala`) trocado em uma cena só quando ajuda a contar
+- [ ] Música de fundo baixa e animada tocando; vozes de IA em todas as falas (ou nenhuma voz, se o vídeo foi pedido para dublar)
+- [ ] Só no modo dublagem: roteiro de locução gerado (`npm run locucao -- roteiros/<video>.json`) e entregue para quem grava
 - [ ] Começa com `intro` e termina com `outro`
 - [ ] Nada importante dentro da faixa de 350px de baixo (vertical)

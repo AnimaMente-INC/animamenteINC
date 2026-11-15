@@ -1,0 +1,106 @@
+{
+  "id": "modelo-quiz",
+  "titulo": "Quiz do _corpo humano_",
+  "categoria": "Quiz",
+  "formato": "vertical",
+  "musica": "polka",
+  "vozesIA": true,
+  "estiloFala": "legenda",
+  "estiloTexto": "recorte",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "impacto",
+      "duracao": 4,
+      "impacto": "Valendo / *2* / perguntas!",
+      "estiloFala": "grito",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "empolgado",
+          "fala": "Bora treinar o cérebro! Duas perguntas rápidas, valendo!",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "duracao": 8,
+      "titulo": "Qual é o *maior órgão* do corpo?",
+      "opcoes": [
+        "Fígado",
+        "Pele",
+        "Pulmão"
+      ],
+      "correta": 1,
+      "estiloFala": "pensamento",
+      "personagens": [
+        {
+          "id": "lia",
+          "pose": "pensando",
+          "expressao": "pensativo",
+          "fala": "Hum... qual será o maior órgão do corpo humano?",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 5,
+      "cartao": {
+        "titulo": "É a pele!",
+        "texto": "Cerca de 2 m² em um adulto",
+        "icone": "certo",
+        "cor": "amarelo"
+      },
+      "personagens": [
+        {
+          "id": "teo",
+          "expressao": "feliz",
+          "fala": "É a pele! Num adulto, ela cobre quase dois metros quadrados.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "duracao": 8,
+      "titulo": "Quantos *ossos* tem um adulto?",
+      "opcoes": [
+        "106",
+        "206",
+        "306"
+      ],
+      "correta": 1,
+      "personagens": [
+        {
+          "id": "bento",
+          "expressao": "empolgado",
+          "fala": "E quantos ossos tem um adulto? Pensa rápido!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "duracao": 5,
+      "numero": 206,
+      "numeroRotulo": "ossos no corpo de um adulto",
+      "personagens": [
+        {
+          "id": "teo",
+          "expressao": "feliz",
+          "fala": "Duzentos e seis! Os bebês nascem com mais, e alguns se juntam.",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Acertou as _duas_?",
+      "botao": "Comente seu placar"
+    }
+  ]
+}

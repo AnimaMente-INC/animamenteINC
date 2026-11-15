@@ -15,9 +15,9 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
 import vozes from "../src/tema/vozes.json";
-import { comPadroes, falaDaCena, framesCenas, Roteiro, vozDaCena } from "../src/roteiro";
+import { comPadroes, falaDaCena, framesCenas, Roteiro, transicaoDe, vozDaCena } from "../src/roteiro";
 import { IdPersonagem } from "../src/personagens/tipos";
-import { audio, fps, tempos } from "../src/tema/tokens";
+import { audio, fps } from "../src/tema/tokens";
 
 const NOMES: Record<IdPersonagem, string> = { neuro: "Neuro", lia: "Lia", bento: "Bento", teo: "Teo", caio: "Caio", rafa: "Rafa" };
 const PAPEIS: Record<IdPersonagem, string> = {
@@ -54,7 +54,8 @@ if (!arq) {
 const roteiro = JSON.parse(readFileSync(arq, "utf8")) as Roteiro;
 const id = roteiro.id ?? basename(arq, ".json");
 const frames = framesCenas(roteiro, null);
-const total = frames.reduce((a, b) => a + b, 0) - tempos.transicao * Math.max(0, frames.length - 1);
+const transicao = transicaoDe(roteiro);
+const total = frames.reduce((a, b) => a + b, 0) - transicao * Math.max(0, frames.length - 1);
 
 let inicio = 0;
 const falas: string[] = [];
@@ -94,7 +95,7 @@ roteiro.cenas.forEach((bruta, i) => {
       ].join("\n"),
     );
   }
-  inicio += frames[i] - tempos.transicao;
+  inicio += frames[i] - transicao;
 });
 
 const linhasElenco = [...elenco].map(

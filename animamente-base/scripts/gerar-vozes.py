@@ -36,12 +36,31 @@ def limpar(texto: str) -> str:
     return re.sub(r"[*_]", "", texto).strip()
 
 
+# Palavras que a voz lê errado em português: troca só no que é FALADO (a tela continua igual).
+PRONUNCIA = {
+    "videogame": "vídeo gueime",
+    "Steam": "istím",
+    "SUS": "sus",
+    "Enem": "enêm",
+}
+
+
+def pronunciar(texto: str) -> str:
+    for palavra, som in PRONUNCIA.items():
+        texto = re.sub(rf"\b{re.escape(palavra)}\b", som, texto, flags=re.IGNORECASE)
+    return texto
+
+
 def fala_da_cena(cena: dict):
     for p in cena.get("personagens") or []:
         if p.get("fala"):
             return p["id"], limpar(p["fala"]), "fala"
     if cena.get("narracao"):
         return cena.get("narrador", "neuro"), limpar(cena["narracao"]), "narracao"
+    # cena "chat": a última mensagem é a fala, na voz de quem a escreveu
+    if cena.get("tipo") == "chat" and cena.get("mensagens"):
+        ultima = cena["mensagens"][-1]
+        return ultima["quem"], limpar(ultima["texto"]), "narracao"
     return None
 
 
@@ -85,7 +104,8 @@ def main():
             continue
         quem, texto, tipo = f
         cfg = vozes[quem]
-        chave = hashlib.sha1(json.dumps([texto, cfg], sort_keys=True).encode()).hexdigest()[:12]
+        falado = pronunciar(texto)
+        chave = hashlib.sha1(json.dumps([falado, cfg], sort_keys=True).encode()).hexdigest()[:12]
         nome = f"cena{i:02d}.wav"
         destino = pasta / nome
         anterior = antigo["cenas"].get(str(i))
@@ -100,7 +120,7 @@ def main():
             kokoro = Kokoro(str(m / "kokoro-v1.0.onnx"), str(m / "voices-v1.0.bin"))
         import soundfile as sf
 
-        amostras, sr = kokoro.create(texto, voice=cfg["voz"], speed=cfg["velocidade"], lang="pt-br")
+        amostras, sr = kokoro.create(falado, voice=cfg["voz"], speed=cfg["velocidade"], lang="pt-br")
         with tempfile.TemporaryDirectory() as t:
             bruto = Path(t) / "bruto.wav"
             sf.write(str(bruto), amostras, sr)

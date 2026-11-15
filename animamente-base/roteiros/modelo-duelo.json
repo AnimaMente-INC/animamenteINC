@@ -1,0 +1,114 @@
+{
+  "id": "modelo-duelo",
+  "titulo": "Vírus ou _bactéria_?",
+  "categoria": "Duelo",
+  "formato": "vertical",
+  "musica": "ska",
+  "vozesIA": true,
+  "estiloFala": "faixa",
+  "estiloTexto": "marcador",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 4,
+      "titulo": "É tudo *igual*?",
+      "personagens": [
+        {
+          "id": "lia",
+          "pose": "pensando",
+          "expressao": "confuso",
+          "fala": "Gripe, dor de garganta... é tudo o mesmo bichinho?",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "versus",
+      "duracao": 8,
+      "titulo": "Quem é _quem_?",
+      "lados": [
+        {
+          "titulo": "Bactéria",
+          "cor": "amarelo",
+          "itens": [
+            "É uma célula viva",
+            "Se multiplica sozinha",
+            "Antibiótico funciona"
+          ]
+        },
+        {
+          "titulo": "Vírus",
+          "cor": "coral",
+          "itens": [
+            "É muito menor",
+            "Precisa invadir uma célula",
+            "Antibiótico não funciona"
+          ]
+        }
+      ],
+      "personagens": [
+        {
+          "id": "teo",
+          "expressao": "feliz",
+          "fala": "A bactéria vive sozinha. Já o vírus precisa invadir uma célula.",
+          "falaEm": 1.2
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "duracao": 5,
+      "titulo": "Dentro de você",
+      "numero": 38,
+      "numeroSufixo": " trilhões",
+      "numeroRotulo": "de bactérias vivem no seu corpo",
+      "estiloFala": "balao",
+      "personagens": [
+        {
+          "id": "neuro",
+          "expressao": "empolgado",
+          "fala": "Calma! No seu corpo vivem trilhões de bactérias, e a maioria ajuda você.",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 6,
+      "titulo": "Cuidado com o mito",
+      "mito": "Antibiótico cura gripe",
+      "verdade": "Gripe é vírus: ele não age",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz",
+          "fala": "Memória de elefante: antibiótico só funciona contra bactéria!",
+          "falaEm": 1.0
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 4,
+      "destaque": "Vírus não é _bactéria_",
+      "estiloFala": "grito",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Cada um pede um cuidado diferente!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Qual duelo vem _agora_?",
+      "botao": "Comente o próximo"
+    }
+  ]
+}

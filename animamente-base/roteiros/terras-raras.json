@@ -1,0 +1,156 @@
+{
+  "id": "terras-raras",
+  "titulo": "O que são terras _raras_?",
+  "categoria": "Caiu no Enem",
+  "formato": "vertical",
+  "musica": "arcade-rondo",
+  "vozesIA": true,
+  "estiloFala": "balao",
+  "estiloTexto": "onda",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "pergunta",
+      "duracao": 4,
+      "titulo": "Terras *raras*?",
+      "personagens": [
+        {
+          "id": "bento",
+          "expressao": "confuso",
+          "fala": "Terras raras caiu no Enem. É terra? É rara? Não entendi nada!",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "duracao": 5,
+      "titulo": "Não é terra",
+      "numero": 17,
+      "numeroRotulo": "elementos químicos da tabela periódica",
+      "personagens": [
+        {
+          "id": "teo",
+          "expressao": "feliz",
+          "fala": "Calma. São dezessete elementos químicos, com nomes como neodímio e ítrio.",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "lista",
+      "duracao": 7.5,
+      "titulo": "Onde elas *estão*?",
+      "itens": [
+        {
+          "texto": "Celular e fone de ouvido",
+          "icone": "play",
+          "cor": "coral"
+        },
+        {
+          "texto": "Carro elétrico",
+          "icone": "atomo",
+          "cor": "amarelo"
+        },
+        {
+          "texto": "Turbina de vento",
+          "icone": "folha",
+          "cor": "lavanda"
+        }
+      ],
+      "personagens": [
+        {
+          "id": "neuro",
+          "expressao": "empolgado",
+          "fala": "Elas fazem ímãs superfortes. Estão no celular, no carro elétrico e na turbina de vento.",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 6,
+      "titulo": "Cuidado com o mito",
+      "mito": "Terras raras são raras",
+      "verdade": "Difícil é separar cada uma",
+      "personagens": [
+        {
+          "id": "lia",
+          "expressao": "pensativo",
+          "fala": "E nem são tão raras! O difícil e caro é separar uma da outra.",
+          "falaEm": 1.0
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "duracao": 5,
+      "titulo": "No Brasil",
+      "numero": 23,
+      "numeroSufixo": "%",
+      "numeroRotulo": "das reservas conhecidas do mundo",
+      "personagens": [
+        {
+          "id": "caio",
+          "expressao": "empolgado",
+          "fala": "E adivinha quem tem quase um quarto das reservas do planeta? O Brasil!",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "versus",
+      "duracao": 9,
+      "titulo": "Quem _produz_?",
+      "lados": [
+        {
+          "titulo": "China",
+          "cor": "coral",
+          "itens": [
+            "Maior reserva",
+            "70% da produção",
+            "Domina o refino"
+          ]
+        },
+        {
+          "titulo": "Brasil",
+          "cor": "amarelo",
+          "itens": [
+            "2ª maior reserva",
+            "Menos de 1% da produção",
+            "Refino só começando"
+          ]
+        }
+      ],
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz",
+          "fala": "A China lidera tudo. O Brasil tem a segunda maior reserva, mas quase não produz.",
+          "falaEm": 1.2
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 4,
+      "destaque": "O desafio é _produzir_",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Por isso o mundo inteiro está de olho no subsolo brasileiro!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Qual questão eu _explico_?",
+      "botao": "Comente o tema"
+    }
+  ]
+}

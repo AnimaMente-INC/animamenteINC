@@ -1,0 +1,83 @@
+{
+  "id": "modelo-mapa-mental",
+  "modelo": "mapa",
+  "titulo": "Como funciona a _fotossíntese_?",
+  "categoria": "Mapa mental",
+  "formato": "vertical",
+  "musica": "calipso",
+  "vozesIA": true,
+  "cenas": [
+    {
+      "tipo": "no",
+      "duracao": 4,
+      "titulo": "Como funciona a _fotossíntese_?",
+      "narracao": "Vamos montar o mapa da fotossíntese, um nó de cada vez!",
+      "narrador": "neuro",
+      "expressao": "empolgado"
+    },
+    {
+      "tipo": "no",
+      "titulo": "Luz do Sol",
+      "texto": "A energia que move tudo",
+      "icone": "sol",
+      "cor": "amarelo",
+      "narracao": "Tudo começa com a luz do Sol, que traz a energia.",
+      "narrador": "teo"
+    },
+    {
+      "tipo": "no",
+      "titulo": "Água",
+      "texto": "Sobe das raízes até as folhas",
+      "icone": "gota",
+      "cor": "lavanda",
+      "narracao": "A água entra pelas raízes e sobe até as folhas.",
+      "narrador": "lia"
+    },
+    {
+      "tipo": "no",
+      "titulo": "Gás carbônico",
+      "texto": "Vem do ar e entra pelas folhas",
+      "icone": "atomo",
+      "cor": "coral",
+      "narracao": "Do ar, a planta puxa o gás carbônico pelas folhas.",
+      "narrador": "lia"
+    },
+    {
+      "tipo": "no",
+      "titulo": "Clorofila",
+      "texto": "O verde que captura a luz",
+      "icone": "folha",
+      "cor": "amarelo",
+      "narracao": "Na folha, a clorofila captura a luz. É ela que deixa a planta verde.",
+      "narrador": "teo"
+    },
+    {
+      "tipo": "no",
+      "de": 4,
+      "titulo": "Glicose",
+      "texto": "O alimento da planta",
+      "icone": "trofeu",
+      "cor": "coral",
+      "narracao": "Com tudo isso, a planta fabrica glicose, o alimento dela. Bora, bora!",
+      "narrador": "bento",
+      "expressao": "empolgado"
+    },
+    {
+      "tipo": "no",
+      "de": 4,
+      "titulo": "Oxigênio",
+      "texto": "Vai para o ar que respiramos",
+      "icone": "neuronio",
+      "cor": "lavanda",
+      "narracao": "E ainda solta oxigênio, o gás que a gente respira!",
+      "narrador": "neuro",
+      "expressao": "empolgado"
+    },
+    {
+      "tipo": "outro",
+      "duracao": 4,
+      "chamada": "Luz, água e ar viram _vida_!",
+      "botao": "Siga para mais"
+    }
+  ]
+}

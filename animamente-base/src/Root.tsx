@@ -3,7 +3,15 @@ import { CalculateMetadataFunction, Composition, Folder, staticFile } from "remo
 import apresentacaoCanal from "../roteiros/apresentacao-canal.json";
 import exemploEntropia from "../roteiros/exemplo-entropia.json";
 import gta6 from "../roteiros/gta6-tudo-que-sabemos.json";
-import gta6voz from "../roteiros/gta6-tudo-que-sabemos-voz-ia.json";
+import piratariaGames from "../roteiros/pirataria-games-brasil.json";
+import susVoceUsaSemSaber from "../roteiros/sus-voce-usa-sem-saber.json";
+import terrasRaras from "../roteiros/terras-raras.json";
+import modeloConversa from "../roteiros/modelo-conversa.json";
+import modeloDuelo from "../roteiros/modelo-duelo.json";
+import modeloMapaMental from "../roteiros/modelo-mapa-mental.json";
+import modeloPassoAPasso from "../roteiros/modelo-passo-a-passo.json";
+import modeloQuiz from "../roteiros/modelo-quiz.json";
+import modeloTop3 from "../roteiros/modelo-top3.json";
 import gta6VsZelda from "../roteiros/passeio/gta6-vs-zelda.json";
 import { duracaoPasseio, Passeio, RoteiroPasseio } from "./passeio/Passeio";
 import { Capa, CAPAS } from "./Capa";
@@ -45,7 +53,16 @@ const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "ApresentacaoCanal", roteiro: apresentacaoCanal as Roteiro },
   { id: "ExemploEntropia", roteiro: exemploEntropia as Roteiro },
   { id: "Gta6TudoQueSabemos", roteiro: gta6 as Roteiro },
-  { id: "Gta6VozIA", roteiro: gta6voz as Roteiro },
+  { id: "PiratariaGamesBrasil", roteiro: piratariaGames as Roteiro },
+  { id: "SusVoceUsaSemSaber", roteiro: susVoceUsaSemSaber as Roteiro },
+  { id: "TerrasRaras", roteiro: terrasRaras as Roteiro },
+  // modelos de vídeo (um exemplo de cada; copie o roteiro e troque o conteúdo)
+  { id: "ModeloQuiz", roteiro: modeloQuiz as Roteiro },
+  { id: "ModeloDuelo", roteiro: modeloDuelo as Roteiro },
+  { id: "ModeloTop3", roteiro: modeloTop3 as Roteiro },
+  { id: "ModeloPassoAPasso", roteiro: modeloPassoAPasso as Roteiro },
+  { id: "ModeloConversa", roteiro: modeloConversa as Roteiro },
+  { id: "ModeloMapaMental", roteiro: modeloMapaMental as Roteiro },
 ];
 
 export const Root: React.FC = () => (

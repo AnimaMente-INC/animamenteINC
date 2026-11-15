@@ -1,0 +1,142 @@
+{
+  "id": "sus-voce-usa-sem-saber",
+  "titulo": "Você usa o _SUS_ sem saber",
+  "categoria": "Caiu no Enem",
+  "formato": "vertical",
+  "musica": "charleston",
+  "vozesIA": true,
+  "estiloFala": "legenda",
+  "estiloTexto": "recorte",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "impacto",
+      "duracao": 4,
+      "impacto": "Você usa / o *SUS* / sem saber!",
+      "estiloFala": "grito",
+      "personagens": [
+        {
+          "id": "neuro",
+          "expressao": "empolgado",
+          "fala": "O SUS foi tema da redação do Enem. E você usa ele sem saber!",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "duracao": 7,
+      "titulo": "Quem *fiscaliza* a cozinha do restaurante?",
+      "opcoes": [
+        "A polícia",
+        "O SUS",
+        "O dono"
+      ],
+      "correta": 1,
+      "estiloFala": "pensamento",
+      "personagens": [
+        {
+          "id": "lia",
+          "pose": "pensando",
+          "expressao": "pensativo",
+          "fala": "Hum... quem confere se a cozinha do restaurante está limpa?",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 5,
+      "cartao": {
+        "titulo": "É o SUS!",
+        "texto": "A vigilância sanitária faz parte dele",
+        "icone": "certo",
+        "cor": "amarelo"
+      },
+      "personagens": [
+        {
+          "id": "teo",
+          "expressao": "feliz",
+          "fala": "É o SUS! A vigilância sanitária olha comida, remédio e até cosmético.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "duracao": 7,
+      "titulo": "Quem o *SAMU* atende no 192?",
+      "opcoes": [
+        "Só quem não tem plano",
+        "Todo mundo",
+        "Só quem paga"
+      ],
+      "correta": 1,
+      "personagens": [
+        {
+          "id": "bento",
+          "expressao": "empolgado",
+          "fala": "E a ambulância do SAMU, atende quem? Pensa rápido!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "duracao": 5,
+      "cartao": {
+        "titulo": "Todo mundo!",
+        "texto": "Com plano de saúde ou sem",
+        "icone": "certo",
+        "cor": "amarelo"
+      },
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz",
+          "fala": "Todo mundo! Com plano ou sem plano, o SAMU é do SUS.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "duracao": 5,
+      "titulo": "Por ano",
+      "numero": 2.8,
+      "numeroCasas": 1,
+      "numeroSufixo": " bilhões",
+      "numeroRotulo": "de atendimentos no SUS",
+      "personagens": [
+        {
+          "id": "neuro",
+          "expressao": "empolgado",
+          "fala": "São quase três bilhões de atendimentos por ano. Vacina e transplante entram na conta!",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "comparacao",
+      "duracao": 6,
+      "titulo": "Cuidado com o mito",
+      "mito": "SUS é só o postinho",
+      "verdade": "Ele está no seu dia a dia",
+      "personagens": [
+        {
+          "id": "lia",
+          "expressao": "feliz",
+          "fala": "Tem fila e tem problema, sim. Mas o SUS é bem maior que o postinho.",
+          "falaEm": 1.0
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Qual te _surpreendeu_?",
+      "botao": "Comente aqui"
+    }
+  ]
+}

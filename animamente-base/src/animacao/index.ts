@@ -118,3 +118,56 @@ export const contar = (frame: number, de: number, ate: number, atraso = 0, durac
 /** Zoom lento de imagem (1 → 1 + amplitudes.zoomImagem ao longo de `duracao` frames). */
 export const zoomLento = (frame: number, duracao: number) =>
   1 + amplitudes.zoomImagem * interpolate(frame, [0, Math.max(1, duracao)], [0, 1], { ...travar, easing: easeSuave });
+
+// ─── MODO HISTÓRIA ─────────────────────────────────────────────────────────
+
+/**
+ * Carimbo: o elemento cai grande, bate (escala 1) e treme um instante.
+ * Use com `estiloCarimbo` em textos de impacto e no CarimboAno.
+ */
+export const carimbar = (frame: number, atraso = 0) => {
+  const t = frame - atraso;
+  const prog = interpolate(t, [0, tempos.carimbo], [0, 1], { ...travar, easing: easeSaida });
+  const escala = amplitudes.carimboEscalaInicial + (1 - amplitudes.carimboEscalaInicial) * prog;
+  const opacidade = interpolate(t, [0, tempos.carimbo * 0.5], [0, 1], travar);
+  const pos = t - tempos.carimbo;
+  const tremor = pos >= 0 && pos < tempos.entrada ? Math.sin(pos * 2.4) * amplitudes.tremor * (1 - pos / tempos.entrada) : 0;
+  return { escala, opacidade, tremor, bateu: t >= tempos.carimbo };
+};
+
+export const estiloCarimbo = (frame: number, opcoes: { atraso?: number; giro?: number } = {}): React.CSSProperties => {
+  const { atraso = 0, giro = 0 } = opcoes;
+  const c = carimbar(frame, atraso);
+  return { opacity: c.opacidade, transform: `translate(${c.tremor}px, ${c.tremor * 0.5}px) rotate(${giro}deg) scale(${c.escala})` };
+};
+
+/** Texto digitado: quantas letras já apareceram. */
+export const digitar = (frame: number, total: number, atraso = 0, porLetra: number = tempos.porLetra) =>
+  Math.max(0, Math.min(total, Math.floor((frame - atraso) / porLetra)));
+
+/** Cursor do texto digitado (aceso / apagado). */
+export const cursorAceso = (frame: number) => Math.floor(frame / tempos.cursor) % 2 === 0;
+
+/** Deslocamento contínuo (FaixaCorrida, chão do joguinho). */
+export const correr = (frame: number, velocidade: number = amplitudes.velocidadeFaixa) => frame * velocidade;
+
+/** Giro contínuo em graus (disco). */
+export const girar = (frame: number, periodo: number = tempos.giro) => (frame / periodo) * 360;
+
+/** 0 → 1 suave (barras que crescem, linhas que se desenham). */
+export const crescer = (frame: number, atraso = 0, duracao: number = tempos.entrada * 2) =>
+  interpolate(frame - atraso, [0, duracao], [0, 1], { ...travar, easing: easeSuave });
+
+/** Pulso 0 → 1 → 0 (nó aceso da linha do tempo). */
+export const pulsar = (frame: number, periodo: number = tempos.pulsoNeuronio) => 0.5 * (1 - Math.cos((frame / periodo) * Math.PI * 2));
+
+// ─── MODELOS DE TEXTO, QUIZ E MAPA MENTAL ──────────────────────────────────
+
+/** Onda: sobe e desce `amplitude` px, com cada letra um pouco atrasada da anterior. */
+export const ondular = (frame: number, i: number, amplitude = 5) => Math.sin((frame - i * 3) / 6) * amplitude;
+
+/** 0 → 1 em linha reta (barra de tempo do quiz). */
+export const linear = (frame: number, inicio: number, fim: number) => interpolate(frame, [inicio, Math.max(inicio + 1, fim)], [0, 1], travar);
+
+/** Viagem de câmera: 0 → 1 suave em `duracao` frames. */
+export const viajar = (frame: number, duracao: number = tempos.viagemMapa) => interpolate(frame, [0, duracao], [0, 1], { ...travar, easing: easeSuave });

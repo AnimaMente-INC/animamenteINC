@@ -131,6 +131,21 @@ export const tempos = {
   intro: 2 * fps,
   outro: 3 * fps,
   porPalavra: 3, // frames entre palavras no texto "palavra por palavra"
+  // ── modo história (ritmo rápido) ──
+  transicaoRapida: 8, // transição curta dos roteiros com "ritmo": "rapido"
+  carimbo: 8, // queda do carimbo (CarimboAno, TextoImpacto) até bater
+  staggerImpacto: 7, // intervalo entre as linhas do TextoImpacto
+  porLetra: 1.5, // frames por letra no texto digitado (JanelaTerminal, TelaRetro)
+  cursor: 8, // pisca do cursor do texto digitado
+  giro: 4 * fps, // uma volta completa (disco girando)
+  // ── modelos de texto e de fala ──
+  marcador: 10, // passada do marcador de texto (modelo "marcador")
+  porLetraOnda: 1.2, // intervalo entre letras no modelo "onda"
+  digitandoChat: 14, // os três pontinhos antes da mensagem nova (cena chat)
+  // ── modelos de vídeo novos ──
+  revelarQuiz: 2 * fps, // quanto antes do fim da cena a resposta do quiz aparece
+  viagemMapa: 26, // a câmera do mapa mental vai de um nó ao outro
+  vozNoMapa: 1, // segundos até a narração começar em cada nó (depois que a câmera chega)
 } as const;
 
 export const easings = {
@@ -173,4 +188,43 @@ export const amplitudes = {
   deslizeTransicao: 120, // px
   popEscalaInicial: 0.6,
   zoomImagem: 0.06, // zoom lento ("Ken Burns") das imagens de referência: 1 → 1,06 durante a cena
+  // ── modo história ──
+  carimboEscalaInicial: 2.4, // o carimbo cai deste tamanho até 1
+  carimboGiro: 6, // graus de inclinação do carimbo
+  tremor: 12, // px de tremida depois que o carimbo bate
+  velocidadeFaixa: 5, // px por frame da FaixaCorrida
+} as const;
+
+// ─── MODO HISTÓRIA (tela retrô, faixa do narrador) ────────────────────────
+export const retro = {
+  varredura: 10, // px entre as linhas de varredura da TelaRetro
+  opacidadeVarredura: 0.12,
+  pixel: 28, // tamanho do "pixel" do joguinho da TelaRetro
+  bordaAdesivo: 8, // borda Névoa dos adesivos desenhados em SVG (Objeto, TelaRetro)
+} as const;
+
+export const narrador = {
+  faixa: 210, // altura reservada no topo (vertical) para o Neuro narrador e a legenda da fala dele
+  altura: 250, // altura do Neuro na faixa
+  alturaElenco: 520, // altura FIXA dos personagens em todas as cenas do modo história (nunca muda de tamanho)
+} as const;
+
+// ─── MODELOS DE FALA (balão, pensamento, grito, legenda, faixa, recado) ───
+export const falas = {
+  /** Espaço reservado acima dos personagens para cada modelo de fala (vertical; horizontal = 85%). */
+  reserva: { balao: 260, pensamento: 320, grito: 360, legenda: 380, faixa: 300, recado: 360 },
+  pontasGrito: 16, // pontas do balão de grito
+  giroRecado: -2.5, // graus de inclinação do recado de papel
+} as const;
+
+// ─── MAPA MENTAL (modelo de vídeo em câmera contínua) ─────────────────────
+export const mapa = {
+  raio: 1040, // distância do centro até os nós ligados a ele
+  raioFilho: 900, // distância de um nó até os filhos dele
+  abertura: 42, // graus entre irmãos que saem de um nó que não é o centro
+  larguraNo: 660, // largura do cartão de cada nó
+  rodape: 420, // faixa de baixo reservada para quem narra e a legenda
+  alturaNarrador: 460,
+  escalaFinal: 1.35, // no fim, com a câmera longe, os cartões crescem para continuar legíveis
+  zoomViagem: 0.78, // a câmera se afasta um pouco no meio da viagem
 } as const;

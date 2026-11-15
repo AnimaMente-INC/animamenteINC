@@ -1,0 +1,147 @@
+{
+  "id": "modelo-conversa",
+  "titulo": "Por que o céu é *azul?*",
+  "categoria": "Conversa",
+  "formato": "vertical",
+  "musica": "assobio",
+  "vozesIA": true,
+  "estiloFala": "balao",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "chat",
+      "duracao": 3,
+      "titulo": "Lia e Teo",
+      "mensagens": [
+        {
+          "quem": "lia",
+          "texto": "Teo, por que o céu é *azul*?"
+        }
+      ]
+    },
+    {
+      "tipo": "chat",
+      "duracao": 3,
+      "titulo": "Lia e Teo",
+      "mensagens": [
+        {
+          "quem": "lia",
+          "texto": "Teo, por que o céu é *azul*?"
+        },
+        {
+          "quem": "teo",
+          "texto": "A luz do Sol parece branca, mas é uma mistura de todas as cores."
+        }
+      ]
+    },
+    {
+      "tipo": "chat",
+      "duracao": 3,
+      "titulo": "Lia e Teo",
+      "mensagens": [
+        {
+          "quem": "lia",
+          "texto": "Teo, por que o céu é *azul*?"
+        },
+        {
+          "quem": "teo",
+          "texto": "A luz do Sol parece branca, mas é uma mistura de todas as cores."
+        },
+        {
+          "quem": "lia",
+          "texto": "Hum... e por que só o azul aparece?"
+        }
+      ]
+    },
+    {
+      "tipo": "chat",
+      "duracao": 3,
+      "titulo": "Lia e Teo",
+      "mensagens": [
+        {
+          "quem": "lia",
+          "texto": "Teo, por que o céu é *azul*?"
+        },
+        {
+          "quem": "teo",
+          "texto": "A luz do Sol parece branca, mas é uma mistura de todas as cores."
+        },
+        {
+          "quem": "lia",
+          "texto": "Hum... e por que só o azul aparece?"
+        },
+        {
+          "quem": "teo",
+          "texto": "O ar espalha muito mais a luz _azul_. Ela vem de todo lado!"
+        }
+      ]
+    },
+    {
+      "tipo": "chat",
+      "duracao": 3,
+      "titulo": "Lia e Teo",
+      "mensagens": [
+        {
+          "quem": "teo",
+          "texto": "A luz do Sol parece branca, mas é uma mistura de todas as cores."
+        },
+        {
+          "quem": "lia",
+          "texto": "Hum... e por que só o azul aparece?"
+        },
+        {
+          "quem": "teo",
+          "texto": "O ar espalha muito mais a luz _azul_. Ela vem de todo lado!"
+        },
+        {
+          "quem": "lia",
+          "texto": "E o pôr do sol laranja?"
+        }
+      ]
+    },
+    {
+      "tipo": "chat",
+      "duracao": 3,
+      "titulo": "Lia e Teo",
+      "mensagens": [
+        {
+          "quem": "lia",
+          "texto": "Hum... e por que só o azul aparece?"
+        },
+        {
+          "quem": "teo",
+          "texto": "O ar espalha muito mais a luz _azul_. Ela vem de todo lado!"
+        },
+        {
+          "quem": "lia",
+          "texto": "E o pôr do sol laranja?"
+        },
+        {
+          "quem": "teo",
+          "texto": "Ali a luz atravessa mais ar. O azul se perde e sobra o *laranja*."
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "duracao": 4,
+      "destaque": "O ar _espalha_ o azul",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Resumindo: o ar espalha o azul pelo céu inteiro!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Mande sua _pergunta_!",
+      "botao": "Comente aqui"
+    }
+  ]
+}

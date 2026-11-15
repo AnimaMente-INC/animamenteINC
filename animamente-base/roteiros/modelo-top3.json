@@ -1,0 +1,100 @@
+{
+  "id": "modelo-top3",
+  "titulo": "Os 3 *maiores* planetas",
+  "categoria": "Top 3",
+  "formato": "vertical",
+  "musica": "arcade-vibe",
+  "vozesIA": true,
+  "ritmo": "rapido",
+  "estiloFala": "legenda",
+  "estiloTexto": "onda",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "impacto",
+      "duracao": 4,
+      "impacto": "Contagem / dos / *gigantes*!",
+      "personagens": [
+        {
+          "id": "caio",
+          "expressao": "empolgado",
+          "fala": "Contagem regressiva dos gigantes do Sistema Solar!",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "ranking",
+      "duracao": 5,
+      "posicao": 3,
+      "rankingDe": 3,
+      "titulo": "_Urano_",
+      "texto": "51 mil km de diâmetro",
+      "personagens": [
+        {
+          "id": "bento",
+          "expressao": "empolgado",
+          "fala": "Em terceiro, Urano: quatro vezes mais largo que a Terra!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "ranking",
+      "duracao": 5,
+      "posicao": 2,
+      "rankingDe": 3,
+      "titulo": "_Saturno_",
+      "texto": "116 mil km de diâmetro",
+      "personagens": [
+        {
+          "id": "lia",
+          "expressao": "surpreso",
+          "fala": "Em segundo, Saturno, o dos anéis. Nove Terras lado a lado!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "ranking",
+      "duracao": 5,
+      "posicao": 1,
+      "rankingDe": 3,
+      "titulo": "*Júpiter*",
+      "texto": "140 mil km de diâmetro",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "E o campeão é Júpiter, o maior planeta do Sistema Solar!",
+          "falaEm": 0.6
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "duracao": 5,
+      "titulo": "Dentro de Júpiter cabem",
+      "numero": 1300,
+      "numeroRotulo": "planetas do tamanho da Terra",
+      "estiloFala": "pensamento",
+      "personagens": [
+        {
+          "id": "teo",
+          "pose": "pensando",
+          "expressao": "pensativo",
+          "fala": "Mil e trezentas Terras lá dentro... dá até sono de imaginar.",
+          "falaEm": 0.5
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Qual top 3 você _quer_?",
+      "botao": "Comente o tema"
+    }
+  ]
+}

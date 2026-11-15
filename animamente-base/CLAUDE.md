@@ -30,7 +30,11 @@ Resumo do fluxo (o detalhe está no prompt 1 e no `../CLAUDE.md`):
 
 1. Se o pedido não disser tema, formato (vertical ou horizontal), duração e público, pergunte antes.
 2. Crie só um roteiro novo em `roteiros/<id>.json` e registre em `src/Root.tsx`.
-3. Use música `animada-1`, `animada-2` ou `animada-3` e **nenhuma voz de IA**.
-4. Escreva uma fala por cena, com no máximo ~16 palavras. Cada cena dura pelo menos o tempo da fala (2,4 palavras/s) + 1 s, e todo personagem que fala tem `"expressao"`.
-5. Rode `npm run verificar-estilo`, renderize `out/<id>.mp4` e rode `npm run locucao -- roteiros/<id>.json`.
-6. Entregue os caminhos do `.mp4` e do `.dublador.txt` para abrir no Dublador. Depois faça a limpeza descrita no `../CLAUDE.md`.
+3. Use música `animada-1`, `animada-2` ou `animada-3` e, por padrão, **vozes de IA**: `"vozesIA": true` no roteiro e `python3 scripts/gerar-vozes.py roteiros/<id>.json` antes de renderizar. **Só faça sem voz quando o pedido for para dublar** ("para dublar", "para a equipe gravar", "para o Dublador", "sem voz", "com roteiro de locução").
+4. Escreva uma fala por cena, com no máximo ~16 palavras, e todo personagem que fala tem `"expressao"`. No modo dublagem, cada cena dura pelo menos o tempo da fala (2,4 palavras/s) + 1 s.
+5. Rode `npm run verificar-estilo` e renderize `out/<id>.mp4`. Só no modo dublagem, rode também `npm run locucao -- roteiros/<id>.json`.
+6. Entregue o caminho do `.mp4` pronto. No modo dublagem, entregue os caminhos do `.mp4` e do `.dublador.txt` para abrir no Dublador. Depois faça a limpeza descrita no `../CLAUDE.md`.
+
+## Modelos de vídeo, fala e texto
+
+Antes de escrever um roteiro, escolha o modelo (seções 8.1 a 8.4 do `STYLE_GUIDE.md`) e parta do exemplo em `roteiros/modelo-*.json`: quiz, duelo, top 3, passo a passo, conversa (chat) ou mapa mental (`"modelo": "mapa"`). `"estiloFala"` (balao, pensamento, grito, legenda, faixa, recado) e `"estiloTexto"` (palavra, maquina, marcador, onda, recorte) vão no topo do roteiro. Personagens, vozes, cores e fonte não mudam em nenhum modelo.

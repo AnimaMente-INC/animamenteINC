@@ -36,7 +36,7 @@ for (const arq of arquivos) {
   });
 }
 
-const TIPOS = ["intro", "pergunta", "explicacao", "diagrama", "comparacao", "lista", "imagem", "resumo", "outro"];
+const TIPOS = ["intro", "pergunta", "explicacao", "diagrama", "comparacao", "lista", "imagem", "resumo", "outro", "capitulo", "impacto", "tela", "objeto", "preco", "terminal", "quiz", "versus", "numero", "ranking", "passos", "chat", "no"];
 for (const n of readdirSync(join(raiz, "roteiros"))) {
   if (!n.endsWith(".json")) continue;
   try {

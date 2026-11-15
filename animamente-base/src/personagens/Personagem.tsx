@@ -34,6 +34,8 @@ export type PropsPersonagem = {
   narraEm?: number;
   /** Não desenha o balão (quando o grupo desenha o balão por cima de todos). */
   semBalao?: boolean;
+  /** A boca não mexe (fala no modelo "pensamento": ele pensa, não fala). */
+  calado?: boolean;
 };
 
 /** Ritmo das palavras no balão, acompanhando a duração do áudio. */
@@ -53,6 +55,7 @@ export const Personagem: React.FC<PropsPersonagem> = ({
   duracaoFala,
   narraEm,
   semBalao = false,
+  calado = false,
 }) => {
   const frame = useCurrentFrame();
   const { formato } = useEstilo();
@@ -63,7 +66,7 @@ export const Personagem: React.FC<PropsPersonagem> = ({
   const inicioFala = narraEm ?? falaEm;
   const fimFala = duracaoFala !== undefined ? inicioFala + duracaoFala : fala ? falaEm + duracaoTexto(fala) + tempos.entrada : 0;
   const temFala = !!fala || narraEm !== undefined;
-  const falando = temFala && frame >= inicioFala + (duracaoFala !== undefined ? 0 : 4) && frame < fimFala && (falaAte === undefined || frame < falaAte);
+  const falando = !calado && temFala && frame >= inicioFala + (duracaoFala !== undefined ? 0 : 4) && frame < fimFala && (falaAte === undefined || frame < falaAte);
   const porPalavra = fala ? ritmoFala(fala, duracaoFala) : undefined;
 
   // rabicho aponta para a cabeça

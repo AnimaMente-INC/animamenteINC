@@ -2,9 +2,9 @@
  * LEGENDA — Nunito, no máximo 2 linhas e 32 caracteres por linha.
  * Palavra-chave com *asteriscos* (Amarelo) ou _sublinhados_ (Coral).
  */
-import React from "react";
+import React, { useContext } from "react";
 import { legenda } from "../tema/tokens";
-import { TextoAnimado, textoLimpo } from "./TextoAnimado";
+import { TextoAnimado, TextoCtx, textoLimpo } from "./TextoAnimado";
 
 /** Avisa no console (e no Studio) quando a legenda passa do limite do padrão. */
 export const validarLegenda = (texto: string) => {
@@ -19,6 +19,9 @@ export const validarLegenda = (texto: string) => {
 
 export const Legenda: React.FC<{ texto: string; atraso?: number; inicioSaida?: number }> = ({ texto, atraso = 0, inicioSaida }) => {
   validarLegenda(texto);
+  // a legenda acompanha só os modelos de texto que continuam fáceis de ler em letra pequena
+  const doRoteiro = useContext(TextoCtx);
+  const modelo = doRoteiro === "maquina" || doRoteiro === "marcador" ? doRoteiro : "palavra";
   return (
     <TextoAnimado
       texto={texto}
@@ -26,6 +29,7 @@ export const Legenda: React.FC<{ texto: string; atraso?: number; inicioSaida?: n
       tamanho="legenda"
       atraso={atraso}
       inicioSaida={inicioSaida}
+      modelo={modelo}
       larguraMax={`${legenda.maxCaracteresPorLinha * 0.56}em`}
     />
   );

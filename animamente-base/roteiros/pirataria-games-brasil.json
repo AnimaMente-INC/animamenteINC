@@ -1,0 +1,532 @@
+{
+  "id": "pirataria-games-brasil",
+  "titulo": "Por que jogar era tão _barato_?",
+  "categoria": "História dos games",
+  "formato": "vertical",
+  "tema": "escuro",
+  "musica": "korobeiniki-arcade",
+  "volumeMusica": 0.5,
+  "musicaInicio": 5,
+  "vozesIA": true,
+  "ritmo": "rapido",
+  "narradorNoCanto": true,
+  "elencoContinuo": true,
+  "respiroVoz": 0.3,
+  "cenas": [
+    {
+      "tipo": "intro",
+      "narracao": "Hoje, a resposta vem numa história!",
+      "narracaoEm": 0.4
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "2004",
+      "titulo": "Na sala do _Rafa_"
+    },
+    {
+      "tipo": "tela",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz"
+        },
+        {
+          "id": "caio",
+          "pose": "pensando",
+          "expressao": "confuso",
+          "fala": "Rafa, como é que jogar videogame é tão *barato*?",
+          "falaEm": 0.3
+        }
+      ]
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "disco",
+      "faixa": "3 POR 10",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "apontando",
+          "expressao": "feliz",
+          "fala": "Ué, Caio! Três jogos por *dez reais* lá no camelô.",
+          "falaEm": 0.3
+        },
+        {
+          "id": "caio",
+          "expressao": "feliz"
+        }
+      ]
+    },
+    {
+      "tipo": "preco",
+      "titulo": "O mesmo _jogo_",
+      "precos": [
+        {
+          "rotulo": "Original, na loja",
+          "valor": 119,
+          "cor": "coral"
+        },
+        {
+          "rotulo": "No camelô",
+          "valor": 3.33,
+          "texto": "3 por R$ 10",
+          "cor": "amarelo"
+        }
+      ],
+      "legenda": "Preços do lançamento oficial, em *2009*",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        },
+        {
+          "id": "caio",
+          "expressao": "confuso"
+        }
+      ],
+      "narracao": "Só que, na loja, um jogo original custava cerca de cem reais."
+    },
+    {
+      "tipo": "pergunta",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "pensando",
+          "expressao": "surpreso",
+          "fala": "Cem reais? Então por que aqui sempre foi tão *barato*?",
+          "falaEm": 0.3,
+          "mudancas": [
+            {
+              "em": 1.4,
+              "expressao": "confuso"
+            }
+          ]
+        },
+        {
+          "id": "caio",
+          "expressao": "confuso"
+        }
+      ]
+    },
+    {
+      "tipo": "impacto",
+      "impacto": "Bora / voltar no / *tempo*!",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "Boa pergunta, Rafa! Pra responder, você vai viajar no tempo."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "Anos 80",
+      "titulo": "A era dos _clones_",
+      "etapas": [
+        "80",
+        "90",
+        "CD",
+        "PS2",
+        "Net",
+        "Hoje"
+      ],
+      "etapa": 0
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "barreira",
+      "titulo": "Importado? _Barrado!_",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "Nos anos oitenta, a reserva de mercado dificultava a entrada de eletrônicos importados."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "clones",
+      "titulo": "O *clone* nacional",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "pensando",
+          "expressao": "pensativo"
+        }
+      ],
+      "narracao": "Então, fábricas brasileiras copiavam os consoles de fora. Eram os famosos clones."
+    },
+    {
+      "tipo": "impacto",
+      "impacto": "1991: / fim da / _reserva_",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "neutro"
+        }
+      ],
+      "narracao": "A reserva acabou no começo dos anos noventa. Mas o costume ficou."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "Anos 90",
+      "titulo": "A era do _cartucho_",
+      "etapas": [
+        "80",
+        "90",
+        "CD",
+        "PS2",
+        "Net",
+        "Hoje"
+      ],
+      "etapa": 1
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "cartucho",
+      "faixa": "LOCADORA  •  ALUGA-SE",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz"
+        }
+      ],
+      "narracao": "Nos anos noventa, cartucho original era caro. A galera alugava na locadora."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "1997",
+      "titulo": "A era do _CD_",
+      "etapas": [
+        "80",
+        "90",
+        "CD",
+        "PS2",
+        "Net",
+        "Hoje"
+      ],
+      "etapa": 2
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "disco",
+      "titulo": "O jogo agora vem em *CD*",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "pensativo"
+        }
+      ],
+      "narracao": "Com o PlayStation, o jogo passou a vir em CD. E CD é fácil de copiar."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "chip",
+      "titulo": "O _chip_ de desbloqueio",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "Um chip instalado no console fazia ele aceitar os discos copiados."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "banca",
+      "faixa": "3 POR 10",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "fala": "Olha a banca do camelô! Agora o jogo cabe no *bolso*.",
+          "falaEm": 0.3
+        }
+      ]
+    },
+    {
+      "tipo": "impacto",
+      "impacto": "Videogame / pra muita / *gente*",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz"
+        }
+      ],
+      "narracao": "Foi assim que muita gente de baixa renda conseguiu jogar pela primeira vez."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "Anos 2000",
+      "titulo": "A era do _PS2_",
+      "etapas": [
+        "80",
+        "90",
+        "CD",
+        "PS2",
+        "Net",
+        "Hoje"
+      ],
+      "etapa": 3
+    },
+    {
+      "tipo": "tela",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "fala": "Ei, é a minha sala! E o meu PS2 _desbloqueado_.",
+          "falaEm": 0.3
+        }
+      ]
+    },
+    {
+      "tipo": "impacto",
+      "impacto": "9 anos / de *atraso*",
+      "legenda": "Japão: 2000 · Brasil: _2009_",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "O PS2 só foi lançado oficialmente no Brasil em dois mil e nove."
+    },
+    {
+      "tipo": "preco",
+      "titulo": "Lançamento _oficial_",
+      "precos": [
+        {
+          "rotulo": "O console",
+          "valor": 799,
+          "cor": "coral"
+        },
+        {
+          "rotulo": "Cada jogo novo",
+          "valor": 119,
+          "cor": "amarelo"
+        }
+      ],
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "Chegou custando setecentos e noventa e nove reais. E cada jogo, uns cem."
+    },
+    {
+      "tipo": "pergunta",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "comemorando",
+          "expressao": "empolgado",
+          "fala": "Agora entendi! O original era _caro demais_ pra maioria.",
+          "falaEm": 0.3
+        }
+      ]
+    },
+    {
+      "tipo": "impacto",
+      "impacto": "Barato / era o / _pirata_",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "pensando",
+          "expressao": "pensativo"
+        }
+      ],
+      "narracao": "Barato mesmo era o pirata. Só que quem criava o jogo não recebia nada."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "Anos 2010",
+      "titulo": "A era do _download_",
+      "etapas": [
+        "80",
+        "90",
+        "CD",
+        "PS2",
+        "Net",
+        "Hoje"
+      ],
+      "etapa": 4
+    },
+    {
+      "tipo": "terminal",
+      "terminalTitulo": "banda larga",
+      "linhas": [
+        "> procurando jogo...",
+        "> baixando da internet"
+      ],
+      "progresso": "Baixando",
+      "progressoAte": 87,
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "pensando",
+          "expressao": "pensativo"
+        }
+      ],
+      "narracao": "Com a banda larga, a pirataria trocou o camelô pelo download."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "etiqueta",
+      "titulo": "Steam em *reais*",
+      "legenda": "Novembro de 2012",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "Mas em dois mil e doze, a Steam passou a vender em reais."
+    },
+    {
+      "tipo": "impacto",
+      "impacto": "Do pirata / pra *loja*",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "comemorando",
+          "expressao": "empolgado"
+        }
+      ],
+      "narracao": "Quando o original ficou acessível, muita gente trocou o pirata pela loja."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "Hoje",
+      "titulo": "A era do _port nativo_",
+      "etapas": [
+        "80",
+        "90",
+        "CD",
+        "PS2",
+        "Net",
+        "Hoje"
+      ],
+      "etapa": 5
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "pc",
+      "titulo": "Do console pro *PC*",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz"
+        }
+      ],
+      "narracao": "Hoje, até jogos exclusivos de PlayStation ganham versão oficial para PC."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "codigo",
+      "titulo": "Port nativo _de fãs_",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "surpreso"
+        }
+      ],
+      "narracao": "E fãs recriam o código de clássicos pra eles rodarem direto no PC."
+    },
+    {
+      "tipo": "terminal",
+      "terminalTitulo": "port nativo",
+      "linhas": [
+        "> código recriado por fãs",
+        "> roda sem emulador",
+        "> 4K e tela larga"
+      ],
+      "legenda": "Mas pede a *sua cópia* do jogo",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "pensando",
+          "expressao": "pensativo"
+        }
+      ],
+      "narracao": "Sem emulador e em alta resolução. Mas pedem a sua cópia original do jogo."
+    },
+    {
+      "tipo": "pergunta",
+      "personagens": [
+        {
+          "id": "rafa",
+          "expressao": "feliz",
+          "fala": "Do clone ao port nativo. Que _jornada_, hein, Neuro?",
+          "falaEm": 0.3
+        },
+        {
+          "id": "neuro",
+          "pose": "acenando",
+          "expressao": "feliz"
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "destaque": "Acesso vence _pirataria_",
+      "narracao": "Moral da história: piratear é ilegal. O que vence a pirataria é o acesso."
+    },
+    {
+      "tipo": "capitulo",
+      "duracao": 1.6,
+      "ano": "2004",
+      "titulo": "De volta à _sala_"
+    },
+    {
+      "tipo": "tela",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "pensando",
+          "expressao": "pensativo"
+        },
+        {
+          "id": "caio",
+          "expressao": "feliz",
+          "fala": "E aí, Rafa? Descobriu por que é tão *barato*?",
+          "falaEm": 0.3
+        }
+      ]
+    },
+    {
+      "tipo": "pergunta",
+      "personagens": [
+        {
+          "id": "rafa",
+          "pose": "apontando",
+          "expressao": "feliz",
+          "fala": "Descobri. É uma longa história, Caio. Passa o _controle_!",
+          "falaEm": 0.3
+        },
+        {
+          "id": "caio",
+          "expressao": "empolgado"
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Qual era o seu _jogo_?",
+      "botao": "Comenta aí!",
+      "narracao": "E você, qual jogo marcou a sua infância? Conta nos comentários!"
+    }
+  ]
+}

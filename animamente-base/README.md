@@ -27,9 +27,9 @@ npm run render:galeria                                   # out/galeria.png
 
 > Se o Remotion não encontrar o navegador, use `--browser-executable=/caminho/do/chrome`.
 
-## Áudio: música de fundo + locução da equipe (padrão do canal)
+## Áudio: música de fundo + vozes de IA (padrão do canal)
 
-Todo vídeo sai com **música de fundo baixa e animada** e **sem vozes de IA**. Junto com o vídeo é gerado um **roteiro de locução** com tudo o que é falado, para a equipe gravar.
+Todo vídeo sai com **música de fundo baixa e animada** e **vozes de IA** (Kokoro, offline): `"vozesIA": true` no roteiro + `python3 scripts/gerar-vozes.py roteiros/meu-video.json` antes de renderizar. A instalação está explicada no topo do script. **Só quando o vídeo é pedido para dublar** ele sai sem voz, com um **roteiro de locução** para a equipe gravar; os itens abaixo sobre falas sem voz, roteiro de locução e Dublador valem para esse modo.
 
 - **Música:** trilhas originais compostas por código (sem direitos de terceiros) em `public/musica/`: `animada-1` (padrão, 112 bpm), `animada-2` (120 bpm) e `animada-3` (100 bpm, com swing). Para escolher outra, use `"musica": "animada-2"` no roteiro; para tirar a música, `"musica": false`. O volume fica em `audio.volumeMusica` (tokens). Para gerar de novo ou criar variações, rode `npm run musica`.
 - **Falas sem voz:** cada fala ganha o tempo estimado de leitura (2,4 palavras por segundo + folga). A boca do personagem mexe nesse tempo e o balão acompanha.
@@ -38,11 +38,10 @@ Todo vídeo sai com **música de fundo baixa e animada** e **sem vozes de IA**. 
 - **Alternativa (o vídeo se ajusta à voz):** salvem como `fala01.wav`, `fala02.m4a`... numa pasta e rodem
   `python3 scripts/importar-gravacoes.py roteiros/meu-video.json pasta/`.
   O script corta os silêncios e normaliza o volume. O vídeo passa a tocar as vozes, ajusta o tempo das cenas, sincroniza boca e balão e abaixa a música.
-- *(Opcional, fora do padrão)* Vozes de IA (Kokoro, offline): `"vozesIA": true` no roteiro + `scripts/gerar-vozes.py`. A instalação está explicada no topo do script.
 
 ## Criando um vídeo novo (4 passos)
 
-> Regra do canal: **sempre** gerar o vídeo com música de fundo baixa e animada, sem vozes de IA, e **sempre** gerar o roteiro de locução junto.
+> Regra do canal: **sempre** gerar o vídeo com música de fundo baixa e animada e com vozes de IA. Só quando o pedido for para dublar, gerar sem voz e com o roteiro de locução junto.
 
 **1. Escreva o roteiro** em `roteiros/meu-video.json`:
 

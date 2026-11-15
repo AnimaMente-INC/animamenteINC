@@ -1,0 +1,96 @@
+# Roteiro de locução (formato do Dublador Animamente)
+# Título: Por que jogar era tão barato?
+# Vídeo: pirataria-games-brasil.mp4 · vertical · duração 3:05.7
+# Como usar: abra o Dublador, clique em "Abrir vídeo" (o .mp4 renderizado deste roteiro)
+# e depois em "Abrir roteiro" (este arquivo). O texto entre parênteses é o jeito de falar e não é lido.
+# Arquivo gerado por "npm run locucao". Se o roteiro .json mudar, gere de novo.
+
+[00:00.4 - 00:03.3] Neuro
+Hoje, a resposta vem numa história!
+
+[00:05.5 - 00:09.7] Caio
+(em dúvida) Rafa, como é que jogar videogame é tão barato?
+
+[00:10.3 - 00:14.8] Rafa
+(sorrindo) Ué, Caio! Três jogos por dez reais lá no camelô.
+
+[00:15.4 - 00:20.8] Neuro
+Só que, na loja, um jogo original custava cerca de cem reais.
+
+[00:21.4 - 00:26.0] Rafa
+(começa surpreso e termina em dúvida) Cem reais? Então por que aqui sempre foi tão barato?
+
+[00:26.6 - 00:31.2] Neuro
+Boa pergunta, Rafa! Pra responder, você vai viajar no tempo.
+
+[00:33.4 - 00:39.2] Neuro
+Nos anos oitenta, a reserva de mercado dificultava a entrada de eletrônicos importados.
+
+[00:39.8 - 00:45.2] Neuro
+Então, fábricas brasileiras copiavam os consoles de fora. Eram os famosos clones.
+
+[00:45.8 - 00:51.2] Neuro
+A reserva acabou no começo dos anos noventa. Mas o costume ficou.
+
+[00:53.4 - 00:58.8] Neuro
+Nos anos noventa, cartucho original era caro. A galera alugava na locadora.
+
+[01:01.0 - 01:08.1] Neuro
+Com o PlayStation, o jogo passou a vir em CD. E CD é fácil de copiar.
+
+[01:08.7 - 01:13.7] Neuro
+Um chip instalado no console fazia ele aceitar os discos copiados.
+
+[01:14.3 - 01:19.3] Rafa
+(empolgado) Olha a banca do camelô! Agora o jogo cabe no bolso.
+
+[01:19.9 - 01:25.7] Neuro
+Foi assim que muita gente de baixa renda conseguiu jogar pela primeira vez.
+
+[01:27.9 - 01:32.5] Rafa
+(empolgado) Ei, é a minha sala! E o meu PS2 desbloqueado.
+
+[01:33.1 - 01:38.9] Neuro
+O PS2 só foi lançado oficialmente no Brasil em dois mil e nove.
+
+[01:39.5 - 01:45.3] Neuro
+Chegou custando setecentos e noventa e nove reais. E cada jogo, uns cem.
+
+[01:45.9 - 01:50.1] Rafa
+(empolgado) Agora entendi! O original era caro demais pra maioria.
+
+[01:50.7 - 01:56.9] Neuro
+Barato mesmo era o pirata. Só que quem criava o jogo não recebia nada.
+
+[01:59.1 - 02:04.1] Neuro
+Com a banda larga, a pirataria trocou o camelô pelo download.
+
+[02:04.7 - 02:10.6] Neuro
+Mas em dois mil e doze, a Steam passou a vender em reais.
+
+[02:11.2 - 02:16.6] Neuro
+Quando o original ficou acessível, muita gente trocou o pirata pela loja.
+
+[02:18.8 - 02:23.8] Neuro
+Hoje, até jogos exclusivos de PlayStation ganham versão oficial para PC.
+
+[02:24.4 - 02:30.2] Neuro
+E fãs recriam o código de clássicos pra eles rodarem direto no PC.
+
+[02:30.8 - 02:37.0] Neuro
+Sem emulador e em alta resolução. Mas pedem a sua cópia original do jogo.
+
+[02:37.6 - 02:41.8] Rafa
+(sorrindo) Do clone ao port nativo. Que jornada, hein, Neuro?
+
+[02:42.4 - 02:48.6] Neuro
+(empolgado) Moral da história: piratear é ilegal. O que vence a pirataria é o acesso.
+
+[02:50.8 - 02:55.0] Caio
+(sorrindo) E aí, Rafa? Descobriu por que é tão barato?
+
+[02:55.6 - 02:59.8] Rafa
+(sorrindo) Descobri. É uma longa história, Caio. Passa o controle!
+
+[03:00.4 - 03:05.4] Neuro
+(sorrindo) E você, qual jogo marcou a sua infância? Conta nos comentários!

@@ -78,10 +78,10 @@
     "semantic_hash": "237d8d664cae8a854d8faf0182ed6d2d"
   },
   "animamente-base/scripts/gerar-vozes.py": {
-    "mtime": 1794678038.0,
-    "seen": 1794705023.7478955,
-    "ast_hash": "9d9aff73af2db4ee2afa7f4b58cc3bc4",
-    "semantic_hash": "9d9aff73af2db4ee2afa7f4b58cc3bc4"
+    "mtime": 1794774384.0186975,
+    "seen": 1794778778.2440698,
+    "ast_hash": "76e5db0e866a01166d5711808570a05c",
+    "semantic_hash": "76e5db0e866a01166d5711808570a05c"
   },
   "animamente-base/scripts/importar-gravacoes.py": {
     "mtime": 1794678946.0,
@@ -90,22 +90,22 @@
     "semantic_hash": "d76e7eef0b8cef349cef3c44aa79bd8c"
   },
   "animamente-base/scripts/roteiro-locucao.ts": {
-    "mtime": 1794683070.9342208,
-    "seen": 1794705023.747899,
-    "ast_hash": "ea7b4cedd566bd64a209c4033143affe",
-    "semantic_hash": "ea7b4cedd566bd64a209c4033143affe"
+    "mtime": 1794756237.5245466,
+    "seen": 1794778778.244406,
+    "ast_hash": "d9a8a671f4a729a3f351cb0c233209de",
+    "semantic_hash": "d9a8a671f4a729a3f351cb0c233209de"
   },
   "animamente-base/scripts/verificar-estilo.mjs": {
-    "mtime": 1794688789.3997507,
-    "seen": 1794705023.747901,
-    "ast_hash": "fd710eb83761557955f749a5e9dcf0f2",
-    "semantic_hash": "fd710eb83761557955f749a5e9dcf0f2"
+    "mtime": 1794774384.3361506,
+    "seen": 1794778778.244409,
+    "ast_hash": "bba905e88ac7d510b802b98d53599ee6",
+    "semantic_hash": "bba905e88ac7d510b802b98d53599ee6"
   },
   "animamente-base/src/Capa.tsx": {
-    "mtime": 1794703101.2007797,
-    "seen": 1794705023.7479026,
-    "ast_hash": "88a243cf82a99c40168b1501792a7f27",
-    "semantic_hash": "88a243cf82a99c40168b1501792a7f27"
+    "mtime": 1794770945.3496056,
+    "seen": 1794778778.2444122,
+    "ast_hash": "bce97d9ffa998283d8dbfbe335eaf263",
+    "semantic_hash": "bce97d9ffa998283d8dbfbe335eaf263"
   },
   "animamente-base/src/Elenco.tsx": {
     "mtime": 1794683624.5367916,
@@ -114,40 +114,40 @@
     "semantic_hash": "901b2c2129b7cc4232b31cb4a1c51745"
   },
   "animamente-base/src/Galeria.tsx": {
-    "mtime": 1794688789.3997507,
-    "seen": 1794705023.7479062,
-    "ast_hash": "572567a32f9e421d426d64d7d4d7deae",
-    "semantic_hash": "572567a32f9e421d426d64d7d4d7deae"
+    "mtime": 1794774384.6949866,
+    "seen": 1794778778.2447608,
+    "ast_hash": "84982a50f78a93a74f1d0f051a9948e4",
+    "semantic_hash": "84982a50f78a93a74f1d0f051a9948e4"
   },
   "animamente-base/src/Root.tsx": {
-    "mtime": 1794703007.2988067,
-    "seen": 1794705023.7479086,
-    "ast_hash": "2510094806f8a7960d4ce510a75171bd",
-    "semantic_hash": "2510094806f8a7960d4ce510a75171bd"
+    "mtime": 1794774385.0621235,
+    "seen": 1794778778.2447639,
+    "ast_hash": "53010d029844d94a331e48386da71178",
+    "semantic_hash": "53010d029844d94a331e48386da71178"
   },
   "animamente-base/src/Video.tsx": {
-    "mtime": 1794683066.3042965,
-    "seen": 1794705023.7479103,
-    "ast_hash": "77d97daa11de39a1c13c8badb449bc79",
-    "semantic_hash": "77d97daa11de39a1c13c8badb449bc79"
+    "mtime": 1794774385.387994,
+    "seen": 1794778778.2447667,
+    "ast_hash": "042ff6b463c576055427cac74e9b0404",
+    "semantic_hash": "042ff6b463c576055427cac74e9b0404"
   },
   "animamente-base/src/animacao/index.ts": {
-    "mtime": 1794688789.4087498,
-    "seen": 1794705023.747912,
-    "ast_hash": "f7c6a49e4ce9b8d7a43df32de28f60c2",
-    "semantic_hash": "f7c6a49e4ce9b8d7a43df32de28f60c2"
+    "mtime": 1794774386.047253,
+    "seen": 1794778778.2447727,
+    "ast_hash": "d96dd0794b1a381e331416bb823a9b3b",
+    "semantic_hash": "d96dd0794b1a381e331416bb823a9b3b"
   },
   "animamente-base/src/cenas/LayoutCena.tsx": {
-    "mtime": 1794678265.0,
-    "seen": 1794705023.747914,
-    "ast_hash": "10878b3151c208941e3286461fa2f8c5",
-    "semantic_hash": "10878b3151c208941e3286461fa2f8c5"
+    "mtime": 1794774386.3883152,
+    "seen": 1794778778.2447746,
+    "ast_hash": "f69336db004708df6b6f3d620af2be2a",
+    "semantic_hash": "f69336db004708df6b6f3d620af2be2a"
   },
   "animamente-base/src/cenas/index.tsx": {
-    "mtime": 1794688789.4154713,
-    "seen": 1794705023.747916,
-    "ast_hash": "04bfd0bedd09e2cad9d5c8db21e4d750",
-    "semantic_hash": "04bfd0bedd09e2cad9d5c8db21e4d750"
+    "mtime": 1794774386.7186813,
+    "seen": 1794778778.2447767,
+    "ast_hash": "c6f2fcbd586ef6e9d18ef8186eefc3c7",
+    "semantic_hash": "c6f2fcbd586ef6e9d18ef8186eefc3c7"
   },
   "animamente-base/src/componentes/BalaoDeFala.tsx": {
     "mtime": 1794677967.0,
@@ -198,10 +198,10 @@
     "semantic_hash": "0eb1c7009033e0dc9c6d8eaa17387b75"
   },
   "animamente-base/src/componentes/Icone.tsx": {
-    "mtime": 1794676791.0,
-    "seen": 1794705023.7479322,
-    "ast_hash": "6d0f60ed611d78ef08301b04695fb85f",
-    "semantic_hash": "6d0f60ed611d78ef08301b04695fb85f"
+    "mtime": 1794774387.867907,
+    "seen": 1794778778.2478573,
+    "ast_hash": "2dbb973de56e7406f091cf9229b36326",
+    "semantic_hash": "2dbb973de56e7406f091cf9229b36326"
   },
   "animamente-base/src/componentes/Imagem.tsx": {
     "mtime": 1794688313.912776,
@@ -210,10 +210,10 @@
     "semantic_hash": "52220417e12d33763fdb722056c22fa0"
   },
   "animamente-base/src/componentes/Legenda.tsx": {
-    "mtime": 1794676829.0,
-    "seen": 1794705023.7479355,
-    "ast_hash": "f8aab5674fa0bfc278915a739c27cfd0",
-    "semantic_hash": "f8aab5674fa0bfc278915a739c27cfd0"
+    "mtime": 1794774388.2464063,
+    "seen": 1794778778.248177,
+    "ast_hash": "34ff735498ded5733bfe2857d6b77657",
+    "semantic_hash": "34ff735498ded5733bfe2857d6b77657"
   },
   "animamente-base/src/componentes/Logo.tsx": {
     "mtime": 1794676838.0,
@@ -240,16 +240,16 @@
     "semantic_hash": "c840e7dae571f22ecc094dd702533f5f"
   },
   "animamente-base/src/componentes/TextoAnimado.tsx": {
-    "mtime": 1794677101.0,
-    "seen": 1794705023.747944,
-    "ast_hash": "d1a430eed387e64a47da53fe4cd3a063",
-    "semantic_hash": "d1a430eed387e64a47da53fe4cd3a063"
+    "mtime": 1794774389.2504325,
+    "seen": 1794778778.2498262,
+    "ast_hash": "5fa9b6024941ee1610e6f6a2f4743359",
+    "semantic_hash": "5fa9b6024941ee1610e6f6a2f4743359"
   },
   "animamente-base/src/componentes/Titulo.tsx": {
-    "mtime": 1794674729.0,
-    "seen": 1794705023.7479458,
-    "ast_hash": "3798f6b2450d31f572aa8f7aae052f2e",
-    "semantic_hash": "3798f6b2450d31f572aa8f7aae052f2e"
+    "mtime": 1794774389.5824785,
+    "seen": 1794778778.2498314,
+    "ast_hash": "9fbda8b71850dd4814d785794db3e1dd",
+    "semantic_hash": "9fbda8b71850dd4814d785794db3e1dd"
   },
   "animamente-base/src/index.ts": {
     "mtime": 1794674963.0,
@@ -270,10 +270,10 @@
     "semantic_hash": "1092473c761800d47f0ecf02955ba6b0"
   },
   "animamente-base/src/personagens/Personagem.tsx": {
-    "mtime": 1794683624.2639968,
-    "seen": 1794705023.7479532,
-    "ast_hash": "b418975329d575e167867384962a02ae",
-    "semantic_hash": "b418975329d575e167867384962a02ae"
+    "mtime": 1794774390.5602834,
+    "seen": 1794778778.250871,
+    "ast_hash": "b6b9443d038f2428b7d476fd42933a4c",
+    "semantic_hash": "b6b9443d038f2428b7d476fd42933a4c"
   },
   "animamente-base/src/personagens/colagem/Busto.tsx": {
     "mtime": 1794683623.6764007,
@@ -354,22 +354,22 @@
     "semantic_hash": "a1990fc16ab40f54956d47d2737ba5e4"
   },
   "animamente-base/src/personagens/tipos.ts": {
-    "mtime": 1794683067.1986568,
-    "seen": 1794705023.74798,
-    "ast_hash": "c36b26a5877bee5cc8e43f6deb2ef705",
-    "semantic_hash": "c36b26a5877bee5cc8e43f6deb2ef705"
+    "mtime": 1794774390.8934646,
+    "seen": 1794778778.2550247,
+    "ast_hash": "13b74916b30e060140ff6bce3aefa43e",
+    "semantic_hash": "13b74916b30e060140ff6bce3aefa43e"
   },
   "animamente-base/src/roteiro.ts": {
-    "mtime": 1794688789.4244518,
-    "seen": 1794705023.7479818,
-    "ast_hash": "d9662eb43bfb59fb2e3f3b8f896e13da",
-    "semantic_hash": "d9662eb43bfb59fb2e3f3b8f896e13da"
+    "mtime": 1794774385.7294624,
+    "seen": 1794778778.2550282,
+    "ast_hash": "78da62597cda285697b7a70b26592a99",
+    "semantic_hash": "78da62597cda285697b7a70b26592a99"
   },
   "animamente-base/src/tema/Estilo.tsx": {
-    "mtime": 1794676528.0,
-    "seen": 1794705023.7479835,
-    "ast_hash": "6194cd6d3a582fe1c93824d198fe8c5f",
-    "semantic_hash": "6194cd6d3a582fe1c93824d198fe8c5f"
+    "mtime": 1794756242.836389,
+    "seen": 1794778778.2550309,
+    "ast_hash": "89c381e1ae00988c0c2562ef8eb4b556",
+    "semantic_hash": "89c381e1ae00988c0c2562ef8eb4b556"
   },
   "animamente-base/src/tema/carregarFontes.ts": {
     "mtime": 1794676523.0,
@@ -384,10 +384,10 @@
     "semantic_hash": "b6d3591889f6afd571911ccb90b2a5f2"
   },
   "animamente-base/src/tema/tokens.ts": {
-    "mtime": 1794688789.4254546,
-    "seen": 1794705023.747989,
-    "ast_hash": "78e950732ebca41d52ba8cae0766a31c",
-    "semantic_hash": "78e950732ebca41d52ba8cae0766a31c"
+    "mtime": 1794774391.266989,
+    "seen": 1794778778.2556665,
+    "ast_hash": "d5ac66a0302bccbd18778e82edbb1380",
+    "semantic_hash": "d5ac66a0302bccbd18778e82edbb1380"
   },
   "animamente-base/src/tema/vozes.json": {
     "mtime": 1794704527.9233303,
@@ -408,10 +408,10 @@
     "semantic_hash": "9b31786b637be3c13978bec4c2330752"
   },
   "CLAUDE.md": {
-    "mtime": 1794704639.311604,
-    "seen": 1794705023.7479966,
-    "ast_hash": "26e090ee7b8d449d12f159f3815f249d",
-    "semantic_hash": "26e090ee7b8d449d12f159f3815f249d"
+    "mtime": 1794774407.5346825,
+    "seen": 1794778778.2563226,
+    "ast_hash": "5b4ca44d0da276c7577d2458937ba73e",
+    "semantic_hash": "5b4ca44d0da276c7577d2458937ba73e"
   },
   "Dublador/LEIA-ME.md": {
     "mtime": 1794681245.8549502,
@@ -498,22 +498,22 @@
     "semantic_hash": "4244e7e0df2f4d81fbbe141ccb4b3a94"
   },
   "animamente-base/README.md": {
-    "mtime": 1794683625.7271132,
-    "seen": 1794705023.7480264,
-    "ast_hash": "e7d4fcf74acbbf8e8beff9312db79766",
-    "semantic_hash": "e7d4fcf74acbbf8e8beff9312db79766"
+    "mtime": 1794757794.2186196,
+    "seen": 1794778778.2563398,
+    "ast_hash": "ca10eb34c58fe62564487f0f01a8f8cf",
+    "semantic_hash": "ca10eb34c58fe62564487f0f01a8f8cf"
   },
   "animamente-base/STYLE_GUIDE.md": {
-    "mtime": 1794688789.373751,
-    "seen": 1794705023.7480283,
-    "ast_hash": "929fd194cdf46acf0daf2845cd571263",
-    "semantic_hash": "929fd194cdf46acf0daf2845cd571263"
+    "mtime": 1794774380.0164218,
+    "seen": 1794778778.256342,
+    "ast_hash": "e0355ad86cad62dcb9e32aa4c602a4e8",
+    "semantic_hash": "e0355ad86cad62dcb9e32aa4c602a4e8"
   },
   "animamente-base/prompt-base-animacao-animamente.md": {
-    "mtime": 1794704411.105419,
-    "seen": 1794705023.7480302,
-    "ast_hash": "d61a6b318e0b88e10c338712b810cc27",
-    "semantic_hash": "d61a6b318e0b88e10c338712b810cc27"
+    "mtime": 1794774380.35114,
+    "seen": 1794778778.2563443,
+    "ast_hash": "c23cdea096805f5d2dff796a83ea1400",
+    "semantic_hash": "c23cdea096805f5d2dff796a83ea1400"
   },
   "animamente-base/vozes-referencia/LEIA-ME.md": {
     "mtime": 1794704527.9334757,
@@ -523,309 +523,309 @@
   },
   "VIDEOS E ROTEIROS/Explica\u00e7\u00e3o Canal/capas/capa-video1-o-que-e.png": {
     "mtime": 1794684607.2280302,
-    "seen": 1794704633.3319232,
+    "seen": 1794778778.2563517,
     "ast_hash": "994bd61a537e3d42fddfb27054e8a8a4",
-    "semantic_hash": ""
+    "semantic_hash": "994bd61a537e3d42fddfb27054e8a8a4"
   },
   "VIDEOS E ROTEIROS/Explica\u00e7\u00e3o Canal/capas/capa-video2-temas.png": {
     "mtime": 1794684608.468651,
-    "seen": 1794704633.3319244,
+    "seen": 1794778778.2563543,
     "ast_hash": "f2b0952bb865fdc048dad51f034ffcb2",
-    "semantic_hash": ""
+    "semantic_hash": "f2b0952bb865fdc048dad51f034ffcb2"
   },
   "VIDEOS E ROTEIROS/Explica\u00e7\u00e3o Canal/capas/capa-video3-voce-escolhe.png": {
     "mtime": 1794684609.4161913,
-    "seen": 1794704633.3319259,
+    "seen": 1794778778.2563572,
     "ast_hash": "fb1c4a0e22b5e9846c0b62f38df932b8",
-    "semantic_hash": ""
+    "semantic_hash": "fb1c4a0e22b5e9846c0b62f38df932b8"
   },
   "VIDEOS E ROTEIROS/Explica\u00e7\u00e3o Canal/capas/previa-grid-instagram.png": {
     "mtime": 1794684610.5316854,
-    "seen": 1794704633.3319268,
+    "seen": 1794778778.2563596,
     "ast_hash": "8a37d467159b18574f8b89bd059a8af3",
-    "semantic_hash": ""
+    "semantic_hash": "8a37d467159b18574f8b89bd059a8af3"
   },
   "VIDEOS E ROTEIROS/GTA6/capa-gta6-tudo-que-sabemos.png": {
     "mtime": 1794703099.6436934,
-    "seen": 1794704633.331928,
+    "seen": 1794778778.256362,
     "ast_hash": "d4efe9d720221a3d68aedc82fd1937d4",
-    "semantic_hash": ""
+    "semantic_hash": "d4efe9d720221a3d68aedc82fd1937d4"
   },
   "VIDEOS E ROTEIROS/GTA6/capa-gta6-vs-zelda.png": {
     "mtime": 1794703100.9041548,
-    "seen": 1794704633.3319292,
+    "seen": 1794778778.2563643,
     "ast_hash": "0e76bca34bf289004da94cff1c784b0f",
-    "semantic_hash": ""
+    "semantic_hash": "0e76bca34bf289004da94cff1c784b0f"
   },
   "animamente-base/referencia/elenco-colagem.png": {
     "mtime": 1794683626.9751532,
-    "seen": 1794704633.3319302,
+    "seen": 1794778778.256369,
     "ast_hash": "7e60974a7bcf1777541b08bfeedbc5cc",
-    "semantic_hash": ""
+    "semantic_hash": "7e60974a7bcf1777541b08bfeedbc5cc"
   },
   "animamente-base/referencia/galeria.png": {
-    "mtime": 1794683629.6823864,
-    "seen": 1794704633.331931,
-    "ast_hash": "7fc1a8182da7be4f0827a50b83cef96c",
-    "semantic_hash": ""
+    "mtime": 1794774381.6819503,
+    "seen": 1794778778.2563713,
+    "ast_hash": "dafc8bc8f570da623dc3f30648e6ffdd",
+    "semantic_hash": "dafc8bc8f570da623dc3f30648e6ffdd"
   },
   "animamente-identidade-visual/00-visao-geral.png": {
     "mtime": 1794676356.0,
-    "seen": 1794704633.331932,
+    "seen": 1794778778.2563732,
     "ast_hash": "c15dcf86838fc51b058ed358b849c5aa",
-    "semantic_hash": ""
+    "semantic_hash": "c15dcf86838fc51b058ed358b849c5aa"
   },
   "animamente-identidade-visual/guia-identidade-visual.png": {
     "mtime": 1794676348.0,
-    "seen": 1794704633.3319335,
+    "seen": 1794778778.2563753,
     "ast_hash": "350382367a5dee3e50e9886b91b2de0e",
-    "semantic_hash": ""
+    "semantic_hash": "350382367a5dee3e50e9886b91b2de0e"
   },
   "animamente-identidade-visual/guia-identidade-visual.svg": {
     "mtime": 1794676348.0,
-    "seen": 1794704633.3319345,
+    "seen": 1794778778.256377,
     "ast_hash": "f81b604e4ee40e76600507e27079baf5",
-    "semantic_hash": ""
+    "semantic_hash": "f81b604e4ee40e76600507e27079baf5"
   },
   "animamente-identidade-visual/instagram-01-foto-perfil.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319354,
+    "seen": 1794778778.256379,
     "ast_hash": "7885cd91f35710fd590f48ce1003ef78",
-    "semantic_hash": ""
+    "semantic_hash": "7885cd91f35710fd590f48ce1003ef78"
   },
   "animamente-identidade-visual/instagram-01-foto-perfil.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319368,
+    "seen": 1794778778.2563813,
     "ast_hash": "90ba67d47c621a5156847d7bfc58a845",
-    "semantic_hash": ""
+    "semantic_hash": "90ba67d47c621a5156847d7bfc58a845"
   },
   "animamente-identidade-visual/instagram-02-post-modelo-1080x1350.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319378,
+    "seen": 1794778778.2563834,
     "ast_hash": "b4cc894a4bec4facb8e22f4a807dc519",
-    "semantic_hash": ""
+    "semantic_hash": "b4cc894a4bec4facb8e22f4a807dc519"
   },
   "animamente-identidade-visual/instagram-02-post-modelo-1080x1350.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319387,
+    "seen": 1794778778.2563853,
     "ast_hash": "5b52c5eb51fe276d1de47d4fda8d1b50",
-    "semantic_hash": ""
+    "semantic_hash": "5b52c5eb51fe276d1de47d4fda8d1b50"
   },
   "animamente-identidade-visual/instagram-03-carrossel-slide-1080x1350.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.33194,
+    "seen": 1794778778.2563872,
     "ast_hash": "31b950e7b6ffd861465a52db18327567",
-    "semantic_hash": ""
+    "semantic_hash": "31b950e7b6ffd861465a52db18327567"
   },
   "animamente-identidade-visual/instagram-03-carrossel-slide-1080x1350.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.331941,
+    "seen": 1794778778.2563894,
     "ast_hash": "9dbc82a330817df54b6b8b169480fb48",
-    "semantic_hash": ""
+    "semantic_hash": "9dbc82a330817df54b6b8b169480fb48"
   },
   "animamente-identidade-visual/instagram-04-story-1080x1920.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319418,
+    "seen": 1794778778.2563918,
     "ast_hash": "da29379ca0018f57637bf0de15dea7cf",
-    "semantic_hash": ""
+    "semantic_hash": "da29379ca0018f57637bf0de15dea7cf"
   },
   "animamente-identidade-visual/instagram-04-story-1080x1920.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319428,
+    "seen": 1794778778.2563934,
     "ast_hash": "32ec1b6024ddea5f5b93853defced6df",
-    "semantic_hash": ""
+    "semantic_hash": "32ec1b6024ddea5f5b93853defced6df"
   },
   "animamente-identidade-visual/instagram-05-capa-reels-1080x1920.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319442,
+    "seen": 1794778778.2563956,
     "ast_hash": "dd3bc2d27cf0a9ef501ec69e85aec9bc",
-    "semantic_hash": ""
+    "semantic_hash": "dd3bc2d27cf0a9ef501ec69e85aec9bc"
   },
   "animamente-identidade-visual/instagram-05-capa-reels-1080x1920.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319452,
+    "seen": 1794778778.256399,
     "ast_hash": "783f3a7d1543c1a9a3fa46bf34a46397",
-    "semantic_hash": ""
+    "semantic_hash": "783f3a7d1543c1a9a3fa46bf34a46397"
   },
   "animamente-identidade-visual/instagram-06-destaque-1-ciencia.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319461,
+    "seen": 1794778778.2564013,
     "ast_hash": "e8b29d5644cc1500030ae6a8dfc837f1",
-    "semantic_hash": ""
+    "semantic_hash": "e8b29d5644cc1500030ae6a8dfc837f1"
   },
   "animamente-identidade-visual/instagram-06-destaque-1-ciencia.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319473,
+    "seen": 1794778778.2564032,
     "ast_hash": "e9d871054612bc04a9936bc4e86e18b9",
-    "semantic_hash": ""
+    "semantic_hash": "e9d871054612bc04a9936bc4e86e18b9"
   },
   "animamente-identidade-visual/instagram-06-destaque-2-historia.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319483,
+    "seen": 1794778778.2564049,
     "ast_hash": "d3d9fda7e93d4b99a979b4b432f38321",
-    "semantic_hash": ""
+    "semantic_hash": "d3d9fda7e93d4b99a979b4b432f38321"
   },
   "animamente-identidade-visual/instagram-06-destaque-2-historia.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319492,
+    "seen": 1794778778.2564068,
     "ast_hash": "cbbc3b16d3b28f2f4db011f2199b7aa9",
-    "semantic_hash": ""
+    "semantic_hash": "cbbc3b16d3b28f2f4db011f2199b7aa9"
   },
   "animamente-identidade-visual/instagram-06-destaque-3-curiosidades.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319504,
+    "seen": 1794778778.256409,
     "ast_hash": "76a580ccc46d8e6819c92db2b4f5c261",
-    "semantic_hash": ""
+    "semantic_hash": "76a580ccc46d8e6819c92db2b4f5c261"
   },
   "animamente-identidade-visual/instagram-06-destaque-3-curiosidades.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319514,
+    "seen": 1794778778.2564108,
     "ast_hash": "f4f11b36e36ec1a225b61ecbfd69e74c",
-    "semantic_hash": ""
+    "semantic_hash": "f4f11b36e36ec1a225b61ecbfd69e74c"
   },
   "animamente-identidade-visual/instagram-06-destaque-4-bastidores.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319523,
+    "seen": 1794778778.2564132,
     "ast_hash": "afa00f3b7946bd350e341dc9c732b463",
-    "semantic_hash": ""
+    "semantic_hash": "afa00f3b7946bd350e341dc9c732b463"
   },
   "animamente-identidade-visual/instagram-06-destaque-4-bastidores.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319535,
+    "seen": 1794778778.256415,
     "ast_hash": "3939891486f881d4a606db1a16dd237d",
-    "semantic_hash": ""
+    "semantic_hash": "3939891486f881d4a606db1a16dd237d"
   },
   "animamente-identidade-visual/instagram-06-destaque-5-videos.png": {
     "mtime": 1794676348.0,
-    "seen": 1794704633.3319547,
+    "seen": 1794778778.256417,
     "ast_hash": "ac45c1f6a06ccdaecb7d1abaf4ac2ef5",
-    "semantic_hash": ""
+    "semantic_hash": "ac45c1f6a06ccdaecb7d1abaf4ac2ef5"
   },
   "animamente-identidade-visual/instagram-06-destaque-5-videos.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319557,
+    "seen": 1794778778.2564192,
     "ast_hash": "cebc80d02720de0d65cbedb29563f5ff",
-    "semantic_hash": ""
+    "semantic_hash": "cebc80d02720de0d65cbedb29563f5ff"
   },
   "animamente-identidade-visual/logo-01-simbolo-fundo-escuro.png": {
     "mtime": 1794676346.0,
-    "seen": 1794704633.3319564,
+    "seen": 1794778778.2564213,
     "ast_hash": "22d7d8c9506e4acae610e3ea3e30f684",
-    "semantic_hash": ""
+    "semantic_hash": "22d7d8c9506e4acae610e3ea3e30f684"
   },
   "animamente-identidade-visual/logo-01-simbolo-fundo-escuro.svg": {
     "mtime": 1794676346.0,
-    "seen": 1794704633.3319578,
+    "seen": 1794778778.2564235,
     "ast_hash": "ae7b73cc7c86ef3df1fd75f2c4c9b298",
-    "semantic_hash": ""
+    "semantic_hash": "ae7b73cc7c86ef3df1fd75f2c4c9b298"
   },
   "animamente-identidade-visual/logo-02-simbolo-transparente.png": {
     "mtime": 1794676346.0,
-    "seen": 1794704633.3319588,
+    "seen": 1794778778.2564256,
     "ast_hash": "3daa8912153fa835927465c524ad9eec",
-    "semantic_hash": ""
+    "semantic_hash": "3daa8912153fa835927465c524ad9eec"
   },
   "animamente-identidade-visual/logo-02-simbolo-transparente.svg": {
     "mtime": 1794676346.0,
-    "seen": 1794704633.33196,
+    "seen": 1794778778.2564282,
     "ast_hash": "a7b83428ec7e72d9262e319a9d53d124",
-    "semantic_hash": ""
+    "semantic_hash": "a7b83428ec7e72d9262e319a9d53d124"
   },
   "animamente-identidade-visual/logo-03-nome-fundo-escuro.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319614,
+    "seen": 1794778778.2564309,
     "ast_hash": "4469dc21914352c3f880b4d11db82b35",
-    "semantic_hash": ""
+    "semantic_hash": "4469dc21914352c3f880b4d11db82b35"
   },
   "animamente-identidade-visual/logo-03-nome-fundo-escuro.svg": {
     "mtime": 1794676346.0,
-    "seen": 1794704633.3319626,
+    "seen": 1794778778.256433,
     "ast_hash": "c6b1a0550175097e087a69e6a1b4db4d",
-    "semantic_hash": ""
+    "semantic_hash": "c6b1a0550175097e087a69e6a1b4db4d"
   },
   "animamente-identidade-visual/logo-04-nome-transparente.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.331964,
+    "seen": 1794778778.2564352,
     "ast_hash": "f5b1edaeef8f516265765ccaeaf34085",
-    "semantic_hash": ""
+    "semantic_hash": "f5b1edaeef8f516265765ccaeaf34085"
   },
   "animamente-identidade-visual/logo-04-nome-transparente.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.331965,
+    "seen": 1794778778.2564373,
     "ast_hash": "af91c606efa0ef83b57ab866606b9c12",
-    "semantic_hash": ""
+    "semantic_hash": "af91c606efa0ef83b57ab866606b9c12"
   },
   "animamente-identidade-visual/logo-05-completa-fundo-escuro.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319662,
+    "seen": 1794778778.2564394,
     "ast_hash": "9087cafb269f61904e9022f49b081bc4",
-    "semantic_hash": ""
+    "semantic_hash": "9087cafb269f61904e9022f49b081bc4"
   },
   "animamente-identidade-visual/logo-05-completa-fundo-escuro.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.331967,
+    "seen": 1794778778.2564416,
     "ast_hash": "b4e0a8b571dafedf16e5815d97865c90",
-    "semantic_hash": ""
+    "semantic_hash": "b4e0a8b571dafedf16e5815d97865c90"
   },
   "animamente-identidade-visual/youtube-01-foto-perfil.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319683,
+    "seen": 1794778778.256444,
     "ast_hash": "e438613776d1d50ec7cc6e6b6feb7731",
-    "semantic_hash": ""
+    "semantic_hash": "e438613776d1d50ec7cc6e6b6feb7731"
   },
   "animamente-identidade-visual/youtube-01-foto-perfil.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319693,
+    "seen": 1794778778.256446,
     "ast_hash": "1d9b6418bd97bfd0c4b85dce7f24cf1b",
-    "semantic_hash": ""
+    "semantic_hash": "1d9b6418bd97bfd0c4b85dce7f24cf1b"
   },
   "animamente-identidade-visual/youtube-02-banner-2560x1440.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319702,
+    "seen": 1794778778.256448,
     "ast_hash": "b81988cb97ed55d6e676b2b5585bcc40",
-    "semantic_hash": ""
+    "semantic_hash": "b81988cb97ed55d6e676b2b5585bcc40"
   },
   "animamente-identidade-visual/youtube-02-banner-2560x1440.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319714,
+    "seen": 1794778778.2564504,
     "ast_hash": "46c6d25ae0f30552d1d2eb5e62fdf628",
-    "semantic_hash": ""
+    "semantic_hash": "46c6d25ae0f30552d1d2eb5e62fdf628"
   },
   "animamente-identidade-visual/youtube-03-thumbnail-modelo.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319724,
+    "seen": 1794778778.2564526,
     "ast_hash": "ef73f0b782cbebe5def6f56f04247752",
-    "semantic_hash": ""
+    "semantic_hash": "ef73f0b782cbebe5def6f56f04247752"
   },
   "animamente-identidade-visual/youtube-03-thumbnail-modelo.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319736,
+    "seen": 1794778778.256455,
     "ast_hash": "2889083d3c0b1957247c1a8e73bab6e0",
-    "semantic_hash": ""
+    "semantic_hash": "2889083d3c0b1957247c1a8e73bab6e0"
   },
   "animamente-identidade-visual/youtube-04-marca-dagua-150.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.331975,
+    "seen": 1794778778.2564573,
     "ast_hash": "061155de34c75f31b930a666f0b8e426",
-    "semantic_hash": ""
+    "semantic_hash": "061155de34c75f31b930a666f0b8e426"
   },
   "animamente-identidade-visual/youtube-04-marca-dagua-150.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319862,
+    "seen": 1794778778.2564595,
     "ast_hash": "ce4b6cc1e89f61b577e89e88ebf9004b",
-    "semantic_hash": ""
+    "semantic_hash": "ce4b6cc1e89f61b577e89e88ebf9004b"
   },
   "animamente-identidade-visual/youtube-05-tela-final-1920x1080.png": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319874,
+    "seen": 1794778778.2564616,
     "ast_hash": "9679fd635b2d3dabfa7141461b6214f6",
-    "semantic_hash": ""
+    "semantic_hash": "9679fd635b2d3dabfa7141461b6214f6"
   },
   "animamente-identidade-visual/youtube-05-tela-final-1920x1080.svg": {
     "mtime": 1794676347.0,
-    "seen": 1794704633.3319888,
+    "seen": 1794778778.2564633,
     "ast_hash": "0f05278f00cf1f12665a669fe11f8446",
-    "semantic_hash": ""
+    "semantic_hash": "0f05278f00cf1f12665a669fe11f8446"
   },
   "VIDEOS E ROTEIROS/Apresenta\u00e7\u00e3o do Canal/apresentacao-canal.mp4": {
     "mtime": 1794679754.364135,
@@ -912,9 +912,345 @@
     "semantic_hash": "eb242140805b4ae4c93aa2358f4e8e46"
   },
   "animamente-base/CLAUDE.md": {
-    "mtime": 1794706279.0204215,
-    "seen": 1794706524.9279397,
-    "ast_hash": "e159d3b6b33926ba883314c446506d13",
-    "semantic_hash": "e159d3b6b33926ba883314c446506d13"
+    "mtime": 1794774379.6467328,
+    "seen": 1794778778.2563374,
+    "ast_hash": "a77f1dc0ac62f132bce430b1bc27b39a",
+    "semantic_hash": "a77f1dc0ac62f132bce430b1bc27b39a"
+  },
+  "animamente-base/roteiros/pirataria-games-brasil.json": {
+    "mtime": 1794768358.259571,
+    "seen": 1794778778.2433543,
+    "ast_hash": "02b187b16768321b4e647b6d26ec6f79",
+    "semantic_hash": "02b187b16768321b4e647b6d26ec6f79"
+  },
+  "animamente-base/src/componentes/BarrasPreco.tsx": {
+    "mtime": 1794756240.199023,
+    "seen": 1794778778.2454424,
+    "ast_hash": "4d4b8e577f3f15634e5d0268ec841ea9",
+    "semantic_hash": "4d4b8e577f3f15634e5d0268ec841ea9"
+  },
+  "animamente-base/src/componentes/Carimbo.tsx": {
+    "mtime": 1794756240.5369303,
+    "seen": 1794778778.245446,
+    "ast_hash": "ecaf1219a59e566118c532893e37367d",
+    "semantic_hash": "ecaf1219a59e566118c532893e37367d"
+  },
+  "animamente-base/src/componentes/FaixaCorrida.tsx": {
+    "mtime": 1794756240.870583,
+    "seen": 1794778778.2478473,
+    "ast_hash": "9c5ea8079a96ce3202fbc396e43a6bce",
+    "semantic_hash": "9c5ea8079a96ce3202fbc396e43a6bce"
+  },
+  "animamente-base/src/componentes/FaixaNarrador.tsx": {
+    "mtime": 1794758531.5421226,
+    "seen": 1794778778.2478518,
+    "ast_hash": "dfb31c9f56a5f7aeee3cea8f99191592",
+    "semantic_hash": "dfb31c9f56a5f7aeee3cea8f99191592"
+  },
+  "animamente-base/src/componentes/JanelaTerminal.tsx": {
+    "mtime": 1794756241.470356,
+    "seen": 1794778778.2481742,
+    "ast_hash": "8e10ed3574e0f226224141ab307ed390",
+    "semantic_hash": "8e10ed3574e0f226224141ab307ed390"
+  },
+  "animamente-base/src/componentes/Objeto.tsx": {
+    "mtime": 1794756241.8357217,
+    "seen": 1794778778.2494116,
+    "ast_hash": "794640455e7bc0444c1f4eb1e4a569d1",
+    "semantic_hash": "794640455e7bc0444c1f4eb1e4a569d1"
+  },
+  "animamente-base/src/componentes/TelaRetro.tsx": {
+    "mtime": 1794756242.1474464,
+    "seen": 1794778778.2498221,
+    "ast_hash": "2f88876dfc51bb76f3f167d4b6acad96",
+    "semantic_hash": "2f88876dfc51bb76f3f167d4b6acad96"
+  },
+  "animamente-base/src/componentes/TextoImpacto.tsx": {
+    "mtime": 1794756242.5044127,
+    "seen": 1794778778.249829,
+    "ast_hash": "d3bfc37c3c27a0ec359640d61f458700",
+    "semantic_hash": "d3bfc37c3c27a0ec359640d61f458700"
+  },
+  "PROMPT-NEURO-COMENTARIOS.md": {
+    "mtime": 1794755016.378798,
+    "seen": 1794778778.2563262,
+    "ast_hash": "c3a772962f42fc4765ea3c9474071c0d",
+    "semantic_hash": "c3a772962f42fc4765ea3c9474071c0d"
+  },
+  "VIDEOS E ROTEIROS/PIRATARIA DE GAMES/pirataria-games-brasil.dublador.txt": {
+    "mtime": 1794756243.488039,
+    "seen": 1794778778.2563314,
+    "ast_hash": "ef98f067ff505afbef6c89b9a866a133",
+    "semantic_hash": "ef98f067ff505afbef6c89b9a866a133"
+  },
+  "VIDEOS E ROTEIROS/PIRATARIA DE GAMES/pirataria-games-brasil.md": {
+    "mtime": 1794756243.8233893,
+    "seen": 1794778778.2563343,
+    "ast_hash": "4899d84c7938dff2ba43317bd375dc40",
+    "semantic_hash": "4899d84c7938dff2ba43317bd375dc40"
+  },
+  "VIDEOS E ROTEIROS/PIRATARIA DE GAMES/pirataria-games-brasil.mp4": {
+    "mtime": 1794756267.8665857,
+    "seen": 1794778778.2593436,
+    "ast_hash": "88d4f5fd61408bd33a91265373035b19",
+    "semantic_hash": "88d4f5fd61408bd33a91265373035b19"
+  },
+  "animamente-base/roteiros/modelo-conversa.json": {
+    "mtime": 1794774382.046811,
+    "seen": 1794778778.243031,
+    "ast_hash": "a1c86ec9a861d7172bd431f2c9060e5a",
+    "semantic_hash": "a1c86ec9a861d7172bd431f2c9060e5a"
+  },
+  "animamente-base/roteiros/modelo-duelo.json": {
+    "mtime": 1794774382.38689,
+    "seen": 1794778778.2430372,
+    "ast_hash": "86e313a5dc03f71793b52deae40d5730",
+    "semantic_hash": "86e313a5dc03f71793b52deae40d5730"
+  },
+  "animamente-base/roteiros/modelo-mapa-mental.json": {
+    "mtime": 1794774382.7151742,
+    "seen": 1794778778.2430403,
+    "ast_hash": "dde62d513d832becbaf984670bf04ae2",
+    "semantic_hash": "dde62d513d832becbaf984670bf04ae2"
+  },
+  "animamente-base/roteiros/modelo-passo-a-passo.json": {
+    "mtime": 1794774383.0350008,
+    "seen": 1794778778.2430427,
+    "ast_hash": "d26c503d8b4b3d4d259a3f9eeba81079",
+    "semantic_hash": "d26c503d8b4b3d4d259a3f9eeba81079"
+  },
+  "animamente-base/roteiros/modelo-quiz.json": {
+    "mtime": 1794774383.3669322,
+    "seen": 1794778778.2430453,
+    "ast_hash": "17cce8b97065c138163f48570a8ee847",
+    "semantic_hash": "17cce8b97065c138163f48570a8ee847"
+  },
+  "animamente-base/roteiros/modelo-top3.json": {
+    "mtime": 1794774383.6838534,
+    "seen": 1794778778.2430475,
+    "ast_hash": "07ec7a74e4c36cb3d2ab24df153ce226",
+    "semantic_hash": "07ec7a74e4c36cb3d2ab24df153ce226"
+  },
+  "animamente-base/src/componentes/Chat.tsx": {
+    "mtime": 1794774387.0509741,
+    "seen": 1794778778.2457764,
+    "ast_hash": "ca62eed1aa3dcfcf38ad5e0d4ed3cdfa",
+    "semantic_hash": "ca62eed1aa3dcfcf38ad5e0d4ed3cdfa"
+  },
+  "animamente-base/src/componentes/Fala.tsx": {
+    "mtime": 1794774387.5174487,
+    "seen": 1794778778.247855,
+    "ast_hash": "876665608367bab35bd0d579d1563028",
+    "semantic_hash": "876665608367bab35bd0d579d1563028"
+  },
+  "animamente-base/src/componentes/NumeroGigante.tsx": {
+    "mtime": 1794774388.5620148,
+    "seen": 1794778778.2494068,
+    "ast_hash": "796a5096d5c78db0c0bae659f6dc4754",
+    "semantic_hash": "796a5096d5c78db0c0bae659f6dc4754"
+  },
+  "animamente-base/src/componentes/Quiz.tsx": {
+    "mtime": 1794774388.9107096,
+    "seen": 1794778778.249415,
+    "ast_hash": "b8a4817e9693054a2250ba136455d0ee",
+    "semantic_hash": "b8a4817e9693054a2250ba136455d0ee"
+  },
+  "animamente-base/src/componentes/Versus.tsx": {
+    "mtime": 1794774389.9026184,
+    "seen": 1794778778.249834,
+    "ast_hash": "5c5cfcd331e46e9238fc391f540bbcd9",
+    "semantic_hash": "5c5cfcd331e46e9238fc391f540bbcd9"
+  },
+  "animamente-base/src/mapa/MapaMental.tsx": {
+    "mtime": 1794774390.241446,
+    "seen": 1794778778.2502282,
+    "ast_hash": "42cee0c237754e358e1e2950ef71f515",
+    "semantic_hash": "42cee0c237754e358e1e2950ef71f515"
+  },
+  "VIDEOS E ROTEIROS/LEGENDAS-YOUTUBE-INSTAGRAM.md": {
+    "mtime": 1794775940.8359594,
+    "seen": 1794778778.2563293,
+    "ast_hash": "72c8a59ef16efd9a5412d91068b5fb39",
+    "semantic_hash": "72c8a59ef16efd9a5412d91068b5fb39"
+  },
+  "animamente-base/public/musica/CATALOGO.md": {
+    "mtime": 1794766704.6900036,
+    "seen": 1794778778.2563465,
+    "ast_hash": "bf95c8f7a2c2a92e43ee213a4dfbd435",
+    "semantic_hash": "bf95c8f7a2c2a92e43ee213a4dfbd435"
+  },
+  "animamente-base/public/musica/LICENCA-CC0.txt": {
+    "mtime": 1794766705.0343323,
+    "seen": 1794778778.2563481,
+    "ast_hash": "c2997f7f98954d4db1c7bf37a0dfc9ab",
+    "semantic_hash": "c2997f7f98954d4db1c7bf37a0dfc9ab"
+  },
+  "VIDEOS E ROTEIROS/PIRATARIA DE GAMES/pirataria-games-brasil-capa.png": {
+    "mtime": 1794770945.0417447,
+    "seen": 1794778778.2563667,
+    "ast_hash": "eaa54974b400b9f77bac4d4288fd29b0",
+    "semantic_hash": "eaa54974b400b9f77bac4d4288fd29b0"
+  },
+  "VIDEOS E ROTEIROS/GTA6/gta6-tudo-que-sabemos-voz-ia.mp4": {
+    "mtime": 1794776763.4425504,
+    "seen": 1794778778.2586887,
+    "ast_hash": "6876d9786d1f8d2e7ec5ffa012c44b65",
+    "semantic_hash": "6876d9786d1f8d2e7ec5ffa012c44b65"
+  },
+  "VIDEOS E ROTEIROS/MODELOS NOVOS/modelo-conversa.mp4": {
+    "mtime": 1794774393.8546503,
+    "seen": 1794778778.2593255,
+    "ast_hash": "cdf71456cddcd5f7ba524939fef916e9",
+    "semantic_hash": "cdf71456cddcd5f7ba524939fef916e9"
+  },
+  "VIDEOS E ROTEIROS/MODELOS NOVOS/modelo-duelo.mp4": {
+    "mtime": 1794774396.263764,
+    "seen": 1794778778.2593293,
+    "ast_hash": "5a56fbce129c33872a9abd56729c4aa9",
+    "semantic_hash": "5a56fbce129c33872a9abd56729c4aa9"
+  },
+  "VIDEOS E ROTEIROS/MODELOS NOVOS/modelo-mapa-mental.mp4": {
+    "mtime": 1794774398.5848014,
+    "seen": 1794778778.2593324,
+    "ast_hash": "a7a0c594fb87b59302ab2ad97167e8cb",
+    "semantic_hash": "a7a0c594fb87b59302ab2ad97167e8cb"
+  },
+  "VIDEOS E ROTEIROS/MODELOS NOVOS/modelo-passo-a-passo.mp4": {
+    "mtime": 1794774401.4163723,
+    "seen": 1794778778.2593348,
+    "ast_hash": "6627e83138cbc07c63ba2c0a1fdfd30c",
+    "semantic_hash": "6627e83138cbc07c63ba2c0a1fdfd30c"
+  },
+  "VIDEOS E ROTEIROS/MODELOS NOVOS/modelo-quiz.mp4": {
+    "mtime": 1794774404.3127143,
+    "seen": 1794778778.259337,
+    "ast_hash": "05450960b51bcaa5a1f55309ba6b48ff",
+    "semantic_hash": "05450960b51bcaa5a1f55309ba6b48ff"
+  },
+  "VIDEOS E ROTEIROS/MODELOS NOVOS/modelo-top3.mp4": {
+    "mtime": 1794774406.3367062,
+    "seen": 1794778778.2593393,
+    "ast_hash": "17229b8ec2b5a092973c5fefb0692322",
+    "semantic_hash": "17229b8ec2b5a092973c5fefb0692322"
+  },
+  "VIDEOS E ROTEIROS/PIRATARIA DE GAMES/pirataria-games-brasil-voz-ia.mp4": {
+    "mtime": 1794769903.2022626,
+    "seen": 1794778778.2593415,
+    "ast_hash": "f655932b2d03cc3ace2f710d085aecf7",
+    "semantic_hash": "f655932b2d03cc3ace2f710d085aecf7"
+  },
+  "animamente-base/public/musica/arcade-inverno.mp3": {
+    "mtime": 1794766710.9240594,
+    "seen": 1794778778.2602777,
+    "ast_hash": "67be4db1ca119524c2b63891d9a29926",
+    "semantic_hash": "67be4db1ca119524c2b63891d9a29926"
+  },
+  "animamente-base/public/musica/arcade-rondo.mp3": {
+    "mtime": 1794766706.1142259,
+    "seen": 1794778778.2602804,
+    "ast_hash": "757cdf43be95a58d6a344335806a75eb",
+    "semantic_hash": "757cdf43be95a58d6a344335806a75eb"
+  },
+  "animamente-base/public/musica/arcade-vibe.mp3": {
+    "mtime": 1794766707.279502,
+    "seen": 1794778778.2602825,
+    "ast_hash": "1fb4676989a0160be1a86cb1ee4dbff1",
+    "semantic_hash": "1fb4676989a0160be1a86cb1ee4dbff1"
+  },
+  "animamente-base/public/musica/assobio.mp3": {
+    "mtime": 1794766728.7168128,
+    "seen": 1794778778.2602847,
+    "ast_hash": "45c348626a1a29f967c6c78deac88abf",
+    "semantic_hash": "45c348626a1a29f967c6c78deac88abf"
+  },
+  "animamente-base/public/musica/calipso.mp3": {
+    "mtime": 1794766722.394584,
+    "seen": 1794778778.2602866,
+    "ast_hash": "8113bfd1ad00bcff6af4f91214f98d5d",
+    "semantic_hash": "8113bfd1ad00bcff6af4f91214f98d5d"
+  },
+  "animamente-base/public/musica/charleston.mp3": {
+    "mtime": 1794766726.8604586,
+    "seen": 1794778778.2602885,
+    "ast_hash": "d8bf54e22bbecbed8b497b5dcc270da8",
+    "semantic_hash": "d8bf54e22bbecbed8b497b5dcc270da8"
+  },
+  "animamente-base/public/musica/denparcade.mp3": {
+    "mtime": 1794766709.4003978,
+    "seen": 1794778778.2602901,
+    "ast_hash": "e1390c13913a25839c45169c1bb7f01e",
+    "semantic_hash": "e1390c13913a25839c45169c1bb7f01e"
+  },
+  "animamente-base/public/musica/desvio-veloz.mp3": {
+    "mtime": 1794766718.591012,
+    "seen": 1794778778.2602923,
+    "ast_hash": "3acebacaccc347b441dea85d3045dcb9",
+    "semantic_hash": "3acebacaccc347b441dea85d3045dcb9"
+  },
+  "animamente-base/public/musica/frutinhas.mp3": {
+    "mtime": 1794766716.1509504,
+    "seen": 1794778778.2602942,
+    "ast_hash": "a439c403faf42ee2cd8b1b9a2a7854aa",
+    "semantic_hash": "a439c403faf42ee2cd8b1b9a2a7854aa"
+  },
+  "animamente-base/public/musica/jiga.mp3": {
+    "mtime": 1794766725.0349064,
+    "seen": 1794778778.260296,
+    "ast_hash": "bade4fd1396a0f0984f9fa2edcd8561c",
+    "semantic_hash": "bade4fd1396a0f0984f9fa2edcd8561c"
+  },
+  "animamente-base/public/musica/jogo-de-ritmo.mp3": {
+    "mtime": 1794766714.7934425,
+    "seen": 1794778778.2602985,
+    "ast_hash": "695308ef27461bf72e0a671d649ce34c",
+    "semantic_hash": "695308ef27461bf72e0a671d649ce34c"
+  },
+  "animamente-base/public/musica/korobeiniki-arcade.mp3": {
+    "mtime": 1794766711.894076,
+    "seen": 1794778778.2603006,
+    "ast_hash": "f8a11a05b838031c904f5ffbb4a6fcb6",
+    "semantic_hash": "f8a11a05b838031c904f5ffbb4a6fcb6"
+  },
+  "animamente-base/public/musica/korobeiniki-boombap.mp3": {
+    "mtime": 1794766712.4610808,
+    "seen": 1794778778.260302,
+    "ast_hash": "b9f03903272add2d0f50d61001ba6335",
+    "semantic_hash": "b9f03903272add2d0f50d61001ba6335"
+  },
+  "animamente-base/public/musica/marcha-engracada.mp3": {
+    "mtime": 1794766721.2919984,
+    "seen": 1794778778.260304,
+    "ast_hash": "044477a92530801f6a2298654f1de468",
+    "semantic_hash": "044477a92530801f6a2298654f1de468"
+  },
+  "animamente-base/public/musica/polka.mp3": {
+    "mtime": 1794766720.1749651,
+    "seen": 1794778778.260306,
+    "ast_hash": "59acfdef32882083c14231d01c79ecf4",
+    "semantic_hash": "59acfdef32882083c14231d01c79ecf4"
+  },
+  "animamente-base/public/musica/puzzle-2048.mp3": {
+    "mtime": 1794766717.8259165,
+    "seen": 1794778778.2603078,
+    "ast_hash": "715ad58e802fc40dc1ebfe2092cecd1f",
+    "semantic_hash": "715ad58e802fc40dc1ebfe2092cecd1f"
+  },
+  "animamente-base/public/musica/rei-da-montanha.mp3": {
+    "mtime": 1794766713.429252,
+    "seen": 1794778778.2603095,
+    "ast_hash": "a8b242e1441388ce010080dcddab1ad6",
+    "semantic_hash": "a8b242e1441388ce010080dcddab1ad6"
+  },
+  "animamente-base/public/musica/ritmo-febre.mp3": {
+    "mtime": 1794766707.9368112,
+    "seen": 1794778778.2603114,
+    "ast_hash": "d950efd1dbd284d533a864b0b7087072",
+    "semantic_hash": "d950efd1dbd284d533a864b0b7087072"
+  },
+  "animamente-base/public/musica/ska.mp3": {
+    "mtime": 1794766723.91824,
+    "seen": 1794778778.2603137,
+    "ast_hash": "1fcf89a1871965b3a3eef97d75a8dda1",
+    "semantic_hash": "1fcf89a1871965b3a3eef97d75a8dda1"
   }
 }

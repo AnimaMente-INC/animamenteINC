@@ -6,18 +6,32 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { BalaoDeFala } from "./componentes/BalaoDeFala";
+import { BarrasPreco } from "./componentes/BarrasPreco";
+import { CarimboAno, LinhaDoTempo } from "./componentes/Carimbo";
 import { Cartao } from "./componentes/Cartao";
+import { Chat } from "./componentes/Chat";
+import { ESTILOS_FALA, Fala } from "./componentes/Fala";
+import { Medalha, NumeroGigante } from "./componentes/NumeroGigante";
+import { Quiz } from "./componentes/Quiz";
+import { ESTILOS_TEXTO } from "./componentes/TextoAnimado";
+import { Versus } from "./componentes/Versus";
 import { ComparacaoMitoVerdade } from "./componentes/ComparacaoMitoVerdade";
 import { Constelacao } from "./componentes/Constelacao";
 import { Contador } from "./componentes/Contador";
 import { Destaque } from "./componentes/Destaque";
 import { Etiqueta } from "./componentes/Etiqueta";
+import { FaixaCorrida } from "./componentes/FaixaCorrida";
+import { FaixaNarrador } from "./componentes/FaixaNarrador";
 import { Icone, ICONES } from "./componentes/Icone";
+import { JanelaTerminal } from "./componentes/JanelaTerminal";
 import { Legenda } from "./componentes/Legenda";
 import { Logo, Marca } from "./componentes/Logo";
 import { Lousa } from "./componentes/Lousa";
 import { MolduraImagem } from "./componentes/MolduraImagem";
+import { Objeto, OBJETOS } from "./componentes/Objeto";
 import { Conector, Seta } from "./componentes/Seta";
+import { TelaRetro } from "./componentes/TelaRetro";
+import { TextoImpacto } from "./componentes/TextoImpacto";
 import { Titulo } from "./componentes/Titulo";
 import { Personagem } from "./personagens/Personagem";
 import { EXPRESSOES, IdPersonagem, PERSONAGENS, POSES } from "./personagens/tipos";
@@ -27,7 +41,7 @@ import { comAlfa, cores, fontes, forma, NomeCor, tamanhosBase } from "./tema/tok
 
 carregarFontes();
 
-export const GALERIA = { largura: 2400, altura: 8300 };
+export const GALERIA = { largura: 2400, altura: 13800 };
 
 const Secao: React.FC<{ titulo: string; children: React.ReactNode }> = ({ titulo, children }) => {
   const { fonte, p } = useEstilo();
@@ -182,6 +196,96 @@ const ConteudoGaleria: React.FC = () => {
                 <Rotulo>{i}</Rotulo>
               </div>
             ))}
+          </div>
+        </Secao>
+
+        <Secao titulo="Modo história (capitulo, impacto, tela, objeto, preco, terminal)">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <LinhaDoTempo etapas={["80", "90", "CD", "PS2", "Net", "Hoje"]} atual={2} />
+              <CarimboAno texto="Anos 80" />
+              <Rotulo>LinhaDoTempo + CarimboAno (cena capitulo)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <TextoImpacto texto="Bora / voltar no / *tempo*!" escala={0.8} />
+              <Rotulo>TextoImpacto (cena impacto)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <TelaRetro parado largura={640} />
+              <Rotulo>TelaRetro (cena tela)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <JanelaTerminal linhas={["> código recriado por fãs", "> roda sem emulador"]} titulo="terminal" progresso="Baixando" progressoAte={87} />
+              <Rotulo>JanelaTerminal + TextoDigitado (cena terminal)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <BarrasPreco itens={[{ rotulo: "Original, na loja", valor: 119, cor: "coral" }, { rotulo: "No camelô", valor: 3.33, texto: "3 por R$ 10", cor: "amarelo" }]} />
+              <Rotulo>BarrasPreco (cena preco)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 40, overflow: "hidden", padding: "30px 0" }}>
+              <FaixaCorrida texto="3 POR 10" />
+              <FaixaNarrador epoca="Anos 80" parado />
+              <Rotulo>FaixaCorrida e FaixaNarrador (Neuro narrando no canto)</Rotulo>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+            {OBJETOS.map((o) => (
+              <div key={o} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, width: 340 }}>
+                <Objeto nome={o} tamanho={300} parado />
+                <Rotulo>{o}</Rotulo>
+              </div>
+            ))}
+          </div>
+        </Secao>
+
+        <Secao titulo="Modelos de fala (estiloFala)">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 90, alignItems: "center", justifyItems: "center" }}>
+            {ESTILOS_FALA.map((e) => (
+              <div key={e} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 70 }}>
+                <Fala estilo={e} quem="lia" texto="Hum... será _mesmo_ assim?" duracaoFala={30} larguraMax={560} />
+                <Rotulo>{e}</Rotulo>
+              </div>
+            ))}
+          </div>
+        </Secao>
+
+        <Secao titulo="Modelos de texto (estiloTexto)">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 70, alignItems: "center" }}>
+            {ESTILOS_TEXTO.map((m) => (
+              <div key={m} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+                <Titulo texto="Por que o céu é *azul?*" tamanho="subtitulo" modelo={m} />
+                <Rotulo>{m}</Rotulo>
+              </div>
+            ))}
+          </div>
+        </Secao>
+
+        <Secao titulo="Modelos de vídeo (quiz, versus, numero, ranking, passos, chat) e mapa mental">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 90, alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <Quiz opcoes={["Fígado", "Pele", "Pulmão"]} correta={1} revelarEm={0} parado />
+              <Rotulo>Quiz (cena quiz): alternativas, barra de tempo e resposta</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, paddingTop: 60 }}>
+              <Versus parado lados={[{ titulo: "Bactéria", cor: "amarelo", itens: ["É uma célula viva", "Antibiótico funciona"] }, { titulo: "Vírus", cor: "coral", itens: ["É muito menor", "Antibiótico não funciona"] }]} />
+              <Rotulo>Versus (cena versus)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <NumeroGigante valor={206} rotulo="ossos no corpo de um adulto" parado escala={0.7} />
+              <Rotulo>NumeroGigante (cena numero)</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <div style={{ display: "flex", gap: 40 }}>
+                <Medalha posicao={3} parado tamanho={220} />
+                <Medalha posicao={2} parado tamanho={220} />
+                <Medalha posicao={1} parado tamanho={220} />
+              </div>
+              <Rotulo>Medalha (cena ranking) · a cena passos usa LinhaDoTempo + Etiqueta + Cartao</Rotulo>
+            </div>
+          </div>
+          <div style={{ width: 1100, alignSelf: "center", display: "flex", flexDirection: "column", gap: 20 }}>
+            <Chat parado mensagens={[{ quem: "lia", texto: "Teo, por que o céu é *azul*?" }, { quem: "teo", texto: "Porque o ar espalha mais a luz _azul_." }]} />
+            <Rotulo>Chat (cena chat): a última mensagem é a fala da cena · Mapa mental: ver roteiros/modelo-mapa-mental.json</Rotulo>
           </div>
         </Secao>
       </div>

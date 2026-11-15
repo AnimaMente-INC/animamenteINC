@@ -23,12 +23,14 @@ export type PropsCapa = {
   versus?: [string, string];
   /** Frase de apoio abaixo do título (Lavanda). */
   sub?: string;
+  /** Posição vertical do selo redondo quando há personagens (padrão 1020; suba se ele tapar um personagem). */
+  seloTopo?: number;
   /** Pílula de chamada no pé da capa. */
   chamada?: string;
   personagens?: { id: IdPersonagem; expressao: Expressao; pose: Pose }[];
 };
 
-const Miolo: React.FC<PropsCapa> = ({ etiqueta, titulo, selo, versus, sub, chamada, personagens = [] }) => {
+const Miolo: React.FC<PropsCapa> = ({ etiqueta, titulo, selo, versus, sub, chamada, seloTopo, personagens = [] }) => {
   const semElenco = personagens.length === 0;
   const pontas = Array.from({ length: 32 }, (_, i) => {
     const r = i % 2 ? 232 : 280;
@@ -73,7 +75,7 @@ const Miolo: React.FC<PropsCapa> = ({ etiqueta, titulo, selo, versus, sub, chama
         </div>
       )}
       {selo && !semElenco && (
-        <div style={{ position: "absolute", right: 60, top: 1020, width: 330, height: 330, borderRadius: "50%", background: cores[selo.cor], border: `${forma.borda}px solid ${cores.nevoa}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", transform: "rotate(9deg)", color: selo.cor === "coral" ? cores.nevoa : cores.tinta }}>
+        <div style={{ position: "absolute", right: 60, top: seloTopo ?? 1020, width: 330, height: 330, borderRadius: "50%", background: cores[selo.cor], border: `${forma.borda}px solid ${cores.nevoa}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", transform: "rotate(9deg)", color: selo.cor === "coral" ? cores.nevoa : cores.tinta }}>
           <div style={{ ...fonte("titulo", "subtitulo") }}>{selo.texto}</div>
           {selo.sub && <div style={{ ...fonte("texto", "nota") }}>{selo.sub}</div>}
         </div>
@@ -106,5 +108,8 @@ export const Capa: React.FC<PropsCapa> = (props) => (
 export const CAPAS: { id: string; props: PropsCapa }[] = [
   { id: "CapaGta6TudoQueSabemos", props: { etiqueta: "Antes de jogar", titulo: "GTA 6: tudo que você _precisa saber_", sub: "Data, plataformas, PC, história e mapa em menos de 2 minutos", selo: { texto: "19/11", sub: "é o dia!", cor: "amarelo" } } },
   { id: "CapaGta6VozIa", props: { etiqueta: "Prepare o bolso", titulo: "Quanto custa o GTA 6 no *Brasil*?", sub: "E o PC, quando sai?", selo: { texto: "R$ 449,90", sub: "e isso é a edição padrão", cor: "coral" } } },
+  { id: "CapaPiratariaGames", props: { etiqueta: "História dos games", titulo: "Por que jogar era tão _barato_?", sub: "A história da pirataria de games", selo: { texto: "R$ 10", sub: "3 jogos", cor: "amarelo" }, seloTopo: 820, personagens: [{ id: "rafa", expressao: "surpreso", pose: "parado" }, { id: "caio", expressao: "confuso", pose: "parado" }] } },
   { id: "CapaGta6VsZelda", props: { etiqueta: "Jogo do Ano 2026", titulo: "*GTA 6* ou _Zelda_: quem leva?", sub: "Dá pra ganhar só por gráfico?", versus: ["GTA 6", "Zelda"], chamada: "Comenta o seu voto!" } },
+  { id: "CapaSusVoceUsaSemSaber", props: { etiqueta: "Caiu no Enem", titulo: "Você usa o _SUS_ sem saber", sub: "Faça o quiz e descubra onde", selo: { texto: "Quiz", sub: "2 perguntas", cor: "amarelo" } } },
+  { id: "CapaTerrasRaras", props: { etiqueta: "Caiu no Enem", titulo: "O que são terras _raras_?", sub: "Não é terra e nem é tão rara", selo: { texto: "23%", sub: "estão no Brasil", cor: "amarelo" } } },
 ];

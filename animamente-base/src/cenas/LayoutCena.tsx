@@ -3,12 +3,12 @@
  * Vertical:   [conteúdo] / [legenda] / [personagens]  (de cima para baixo, dentro da área segura)
  * Horizontal: [personagens] | [conteúdo + legenda]    (personagens à esquerda)
  */
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { estiloEntrada, stagger } from "../animacao";
 import { Constelacao } from "../componentes/Constelacao";
 import { Legenda } from "../componentes/Legenda";
-import { BalaoDeFala } from "../componentes/BalaoDeFala";
+import { Fala, FalaCtx, reservaDaFala } from "../componentes/Fala";
 import { Personagem, ritmoFala } from "../personagens/Personagem";
 import { mudancasEmFrames, PersonagemRoteiro, seg } from "../roteiro";
 import { useEstilo } from "../tema/Estilo";
@@ -24,9 +24,16 @@ export const Fundo: React.FC<{ children?: React.ReactNode; semente?: number }> =
   );
 };
 
+/** true quando a cena continua o mesmo elenco da anterior: os personagens já estão em cena, não "entram" de novo. */
+export const ContinuaCtx = createContext(false);
+/** Altura fixa dos personagens (px) quando o roteiro pede elenco contínuo; undefined = cada cena decide. */
+export const AlturaFixaCtx = createContext<number | undefined>(undefined);
+
 export const GrupoPersonagens: React.FC<{ personagens: PersonagemRoteiro[]; atraso?: number; altura?: number }> = ({ personagens, atraso = 0, altura }) => {
   const frame = useCurrentFrame();
   const { formato } = useEstilo();
+  const continua = useContext(ContinuaCtx);
+  const estiloFala = useContext(FalaCtx);
   const n = personagens.length;
   const iFala = personagens.findIndex((p) => p.fala);
   const quemFala = iFala >= 0 ? personagens[iFala] : null;
@@ -36,11 +43,14 @@ export const GrupoPersonagens: React.FC<{ personagens: PersonagemRoteiro[]; atra
     <div style={{ position: "relative", display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 24 }}>
       {quemFala?.fala && (
         <div style={{ position: "absolute", bottom: "calc(100% + 24px)", left: "50%", transform: "translateX(-50%)", width: "max-content", maxWidth: formato === "vertical" ? 900 : 700 }}>
-          <BalaoDeFala
+          <Fala
+            estilo={estiloFala}
             texto={quemFala.fala}
+            quem={quemFala.id}
             atraso={quemFala.falaEm !== undefined ? seg(quemFala.falaEm) : 10}
             rabicho={rabicho}
             porPalavra={ritmoFala(quemFala.fala, quemFala._duracaoFala)}
+            duracaoFala={quemFala._duracaoFala}
           />
         </div>
       )}
@@ -48,7 +58,7 @@ export const GrupoPersonagens: React.FC<{ personagens: PersonagemRoteiro[]; atra
         // padrão: o primeiro olha para a direita, o segundo para a esquerda (um olha para o outro)
         const olhando = pr.olhando ?? (personagens.length > 1 ? (i === 0 ? "direita" : "esquerda") : "frente");
         return (
-          <div key={i} style={{ ...estiloEntrada(frame, { atraso: stagger(i, atraso), tipo: "subir" }), transformOrigin: "50% 100%" }}>
+          <div key={i} style={{ ...(continua ? {} : estiloEntrada(frame, { atraso: stagger(i, atraso), tipo: "subir" })), transformOrigin: "50% 100%" }}>
             <Personagem
               id={pr.id}
               pose={pr.pose}
@@ -61,6 +71,7 @@ export const GrupoPersonagens: React.FC<{ personagens: PersonagemRoteiro[]; atra
               duracaoFala={pr._duracaoFala}
               narraEm={pr._narraEm}
               semBalao
+              calado={estiloFala === "pensamento"}
             />
           </div>
         );
@@ -76,10 +87,13 @@ export const LayoutCena: React.FC<{
   legendaEm?: number; // frames
   alturaPersonagem?: number;
   semente?: number;
-}> = ({ conteudo, personagens = [], legenda, legendaEm = 20, alturaPersonagem, semente }) => {
+}> = ({ conteudo, personagens = [], legenda, legendaEm = 20, alturaPersonagem: alturaDaCena, semente }) => {
   const { formato, area } = useEstilo();
+  const alturaFixa = useContext(AlturaFixaCtx);
+  const estiloFala = useContext(FalaCtx);
+  const alturaPersonagem = alturaFixa ?? alturaDaCena;
   const temFala = personagens.some((p) => p.fala);
-  const reservaBalao = temFala ? (formato === "vertical" ? 260 : 220) : 0;
+  const reservaBalao = temFala ? reservaDaFala(estiloFala, formato === "vertical") : 0;
 
   const blocoPersonagens = personagens.length > 0 && (
     <div style={{ paddingTop: reservaBalao, display: "flex", justifyContent: "center" }}>

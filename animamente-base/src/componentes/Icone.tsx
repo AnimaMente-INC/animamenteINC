@@ -21,11 +21,17 @@ export type NomeIcone =
   | "dados"
   | "play"
   | "camera"
-  | "neuronio";
+  | "neuronio"
+  | "sol"
+  | "gota"
+  | "folha"
+  | "trofeu"
+  | "balao";
 
 export const ICONES: NomeIcone[] = [
   "lampada", "livro", "atomo", "grafico", "relogio", "ampulheta", "interrogacao", "alvo",
   "certo", "errado", "calor", "dados", "play", "camera", "neuronio",
+  "sol", "gota", "folha", "trofeu", "balao",
 ];
 
 export const Icone: React.FC<{ nome: NomeIcone; tamanho?: number; cor?: NomeCor; semCirculo?: boolean }> = ({
@@ -118,6 +124,26 @@ export const Icone: React.FC<{ nome: NomeIcone; tamanho?: number; cor?: NomeCor;
         <circle cx={46} cy={18} r={2.2} {...cheio} />
       </>
     ),
+    sol: (
+      <>
+        <circle cx={32} cy={32} r={8} {...t} />
+        <path d="M 32 15 L 32 19 M 32 45 L 32 49 M 15 32 L 19 32 M 45 32 L 49 32 M 20 20 L 23 23 M 41 41 L 44 44 M 44 20 L 41 23 M 23 41 L 20 44" {...t} />
+      </>
+    ),
+    gota: <path d="M 32 16 Q 44 30 44 37 A 12 12 0 0 1 20 37 Q 20 30 32 16 Z" {...t} />,
+    folha: (
+      <>
+        <path d="M 18 46 Q 16 22 46 18 Q 46 46 18 46 Z" {...t} />
+        <path d="M 18 46 L 36 28" {...t} />
+      </>
+    ),
+    trofeu: (
+      <>
+        <path d="M 23 18 L 41 18 L 41 27 Q 41 36 32 36 Q 23 36 23 27 Z" {...t} />
+        <path d="M 23 21 Q 16 21 17 27 Q 18 31 24 31 M 41 21 Q 48 21 47 27 Q 46 31 40 31 M 32 36 L 32 43 M 25 46 L 39 46" {...t} />
+      </>
+    ),
+    balao: <path d="M 18 20 Q 18 16 22 16 L 42 16 Q 46 16 46 20 L 46 34 Q 46 38 42 38 L 31 38 L 24 46 L 25 38 L 22 38 Q 18 38 18 34 Z" {...t} />,
   };
   return (
     <svg width={tamanho} height={tamanho} viewBox="0 0 64 64" style={{ overflow: "visible", flexShrink: 0 }}>
