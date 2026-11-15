@@ -4,7 +4,9 @@ import apresentacaoCanal from "../roteiros/apresentacao-canal.json";
 import exemploEntropia from "../roteiros/exemplo-entropia.json";
 import gta6 from "../roteiros/gta6-tudo-que-sabemos.json";
 import gta6voz from "../roteiros/gta6-tudo-que-sabemos-voz-ia.json";
-import gta6NovaGeracao from "../roteiros/gta6-nova-geracao.json";
+import gta6VsZelda from "../roteiros/passeio/gta6-vs-zelda.json";
+import { duracaoPasseio, Passeio, RoteiroPasseio } from "./passeio/Passeio";
+import { Capa, CAPAS } from "./Capa";
 import { Galeria, GALERIA } from "./Galeria";
 import { ELENCO, FolhaElenco, PREVIA, PreviaElenco } from "./Elenco";
 import { duracaoTotal, ManifestoVozes, Roteiro } from "./roteiro";
@@ -44,7 +46,6 @@ const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "ExemploEntropia", roteiro: exemploEntropia as Roteiro },
   { id: "Gta6TudoQueSabemos", roteiro: gta6 as Roteiro },
   { id: "Gta6VozIA", roteiro: gta6voz as Roteiro },
-  { id: "Gta6NovaGeracao", roteiro: gta6NovaGeracao as Roteiro },
 ];
 
 export const Root: React.FC = () => (
@@ -63,6 +64,12 @@ export const Root: React.FC = () => (
         height={1080}
         durationInFrames={1}
       />
+      <Composition id="Gta6VsZelda" component={Passeio} defaultProps={{ roteiro: gta6VsZelda as RoteiroPasseio }} fps={fps} width={1080} height={1920} durationInFrames={duracaoPasseio(gta6VsZelda as RoteiroPasseio)} />
+    </Folder>
+    <Folder name="Capas">
+      {CAPAS.map((c) => (
+        <Composition key={c.id} id={c.id} component={Capa} defaultProps={c.props} fps={fps} width={1080} height={1920} durationInFrames={1} />
+      ))}
     </Folder>
     <Folder name="DesignSystem">
       <Composition id="Galeria" component={Galeria} fps={fps} width={GALERIA.largura} height={GALERIA.altura} durationInFrames={90} />

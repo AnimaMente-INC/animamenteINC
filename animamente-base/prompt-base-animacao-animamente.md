@@ -79,7 +79,7 @@ Regra de áudio: gere o vídeo com música de fundo baixa e animada e SEM vozes 
 - todo personagem que fala tem "expressao" definida;
 - NÃO importe gravações nem ajuste o vídeo à voz: o vídeo é renderizado uma vez só.
 
-Entregue, nesta ordem:
+Entregue, nesta ordem (e ao final mova o .mp4 para VIDEOS E ROTEIROS/<tema>/ e limpe out/; mantenha só o roteiro .json como referência, sem áudios nem arquivos temporários):
 1. roteiros/<id>.json, registrado em src/Root.tsx;
 2. o vídeo renderizado em out/<id>.mp4;
 3. o roteiro de locução no formato do Dublador: rode "npm run locucao -- roteiros/<id>.json" e confira roteiros/locucao/<id>.dublador.txt (blocos "[mm:ss.d - mm:ss.d] Quem fala" + texto, em ordem de tempo, sem sobreposição, e com o último bloco terminando antes do fim do vídeo). Se alguma fala não couber na cena, encurte a fala ou aumente a "duracao" da cena, e gere o vídeo e o roteiro de novo.

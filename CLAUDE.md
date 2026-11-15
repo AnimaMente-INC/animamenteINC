@@ -38,8 +38,37 @@ Se o pedido não disser tema, formato (vertical ou horizontal), duração e púb
 
 `[início - fim] Quem fala`, texto na linha de baixo, `(parênteses)` = jeito de falar (não é lido), `#` = comentário, pelo menos 0,3 s de respiro entre falas. Os tempos vêm de `npm run locucao`, nunca escritos à mão. Regras completas em `Dublador/LEIA-ME.md`.
 
+## Organização e limpeza (obrigatório ao terminar um vídeo)
+
+- `animamente-base/` guarda **só código, prompt e referências**: `src/`, `scripts/`, `roteiros/*.json`, `STYLE_GUIDE.md`, `prompt-base-animacao-animamente.md`, `public/musica/` e `referencia/` (galeria e elenco, para os próximos vídeos saírem parecidos).
+- Vídeo pronto: **mova** o `.mp4` final (e, se quiser, o roteiro de locução e a capa) de `out/` para `VIDEOS E ROTEIROS/<tema>/`. Depois deixe `out/` vazio.
+- **Não salve** o que sobra do processo: `.wav`, vozes, gravações do Dublador (`Dublador/projetos`), `.venv`, `__pycache__`, renders de teste, imagens/trailers usados só naquele vídeo, `_to_delete`.
+- Em `Dublador/` ficam só o código, os `.bat`/`.md` e `videos_finalizados/` (apenas `.mp4`).
+- Mantenha o roteiro `.json` de cada vídeo em `animamente-base/roteiros/` como referência de estilo.
+
+## Vozes dos personagens (padrão fixo)
+
+- A modulação de cada personagem (voz, velocidade, tom, direção) fica em `animamente-base/src/tema/vozes.json`, igual à do vídeo gta6-vs-zelda. Amostras em `animamente-base/vozes-referencia/`. Nunca mude sem pedido; use sempre esse arquivo nas falas e no roteiro de locução.
+
+## Graphify (grafo de conhecimento do projeto)
+
+- O grafo está em `graphify-out/` (`GRAPH_REPORT.md`, `graph.html`, `graph.json`). Antes de buscar em arquivos, consulte-o: `graphify query "<pergunta>"`.
+- Depois de mudar código, atualize com `graphify update .` (sem IA). Para docs e imagens, use `/graphify . --update`.
+- No Windows, instale uma vez: `pip install graphifyy` (ou `uv tool install graphifyy`). Os hooks em `.claude/settings.json` chamam o comando `graphify`.
+
 ## Outras regras
 
 - Nenhuma cor, fonte, tamanho ou tempo fora de `src/tema/tokens.ts`.
 - Não instale `node_modules` nem `.venv` por um ambiente Linux dentro desta pasta: ela é usada no Windows.
 - Não faça commit no git sem pedido.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- When graphify-out/graph.json exists, run `graphify query "<question>"` before your first grep, search or source-file read for a codebase question, and put this rule in every subagent prompt that explores code. Read raw files only for lines the graph or an earlier read already located. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+- A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.

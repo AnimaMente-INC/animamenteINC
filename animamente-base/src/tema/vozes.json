@@ -1,39 +1,47 @@
 {
-  "_comentario": "Voz de cada personagem. 'direcao' orienta quem GRAVA a fala (padrão do canal). voz/velocidade/tom só valem se o roteiro pedir vozesIA: true (Kokoro TTS).",
+  "_comentario": "PADRÃO DE VOZ DO CANAL (vindo do vídeo gta6-vs-zelda). Cada personagem tem sempre a mesma modulação: 'voz' (modelo Kokoro), 'velocidade' e 'tom' (semitons, aplicado com ffmpeg asetrate/atempo), mais 'direcao' (jeito de falar para quem grava). 'amostra' = áudio de referência em vozes-referencia/. Não altere sem pedido: todos os vídeos devem manter as mesmas vozes. voz/velocidade/tom só valem se o roteiro pedir vozesIA: true.",
   "neuro": {
     "voz": "pm_alex",
     "velocidade": 1.08,
     "tom": 3,
-    "direcao": "animado e simpático, voz um pouco mais aguda, como personagem de desenho"
+    "direcao": "animado e simpático, voz um pouco mais aguda, como personagem de desenho",
+    "origem": "gta6-vs-zelda",
+    "amostra": "vozes-referencia/neuro.wav"
   },
   "lia": {
     "voz": "pf_dora",
     "velocidade": 1.05,
     "tom": 1,
-    "direcao": "curiosa e desconfiada, meio irônica, como quem pergunta 'hum... será mesmo?'"
+    "direcao": "curiosa e desconfiada, meio irônica, como quem pergunta 'hum... será mesmo?'",
+    "origem": "gta6-vs-zelda",
+    "amostra": "vozes-referencia/lia.wav"
   },
   "teo": {
     "voz": "pm_santa",
     "velocidade": 0.95,
     "tom": -1,
-    "direcao": "calmo, sábio e bem devagar, com sono, como um bicho-preguiça tomando café"
+    "direcao": "calmo, sábio e bem devagar, com sono, como um bicho-preguiça tomando café",
+    "origem": "gta6-vs-zelda"
   },
   "caio": {
     "voz": "pm_alex",
     "velocidade": 1.14,
     "tom": 1,
-    "direcao": "brincalhão e travesso, com risadinha, como quem vai contar uma piada"
+    "direcao": "brincalhão e travesso, com risadinha, como quem vai contar uma piada",
+    "origem": "gta6-vs-zelda"
   },
   "rafa": {
     "voz": "pm_santa",
     "velocidade": 1.02,
     "tom": -3,
-    "direcao": "grave, confiante e motivador, como um técnico de academia"
+    "direcao": "grave, confiante e motivador, como um técnico de academia",
+    "origem": "gta6-vs-zelda"
   },
   "bento": {
     "voz": "pm_santa",
     "velocidade": 1.15,
     "tom": 2,
-    "direcao": "empolgadíssimo e otimista, rápido, como cachorro feliz que topa tudo"
+    "direcao": "empolgadíssimo e otimista, rápido, como cachorro feliz que topa tudo",
+    "origem": "gta6-vs-zelda"
   }
 }
