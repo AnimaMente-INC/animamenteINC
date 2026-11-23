@@ -13,6 +13,7 @@ import { Chat } from "./componentes/Chat";
 import { ESTILOS_FALA, Fala } from "./componentes/Fala";
 import { Medalha, NumeroGigante } from "./componentes/NumeroGigante";
 import { Quiz } from "./componentes/Quiz";
+import { Pentagrama } from "./componentes/Pentagrama";
 import { ESTILOS_TEXTO } from "./componentes/TextoAnimado";
 import { Versus } from "./componentes/Versus";
 import { ComparacaoMitoVerdade } from "./componentes/ComparacaoMitoVerdade";
@@ -41,7 +42,7 @@ import { comAlfa, cores, fontes, forma, NomeCor, tamanhosBase } from "./tema/tok
 
 carregarFontes();
 
-export const GALERIA = { largura: 2400, altura: 13800 };
+export const GALERIA = { largura: 2400, altura: 15200 };
 
 const Secao: React.FC<{ titulo: string; children: React.ReactNode }> = ({ titulo, children }) => {
   const { fonte, p } = useEstilo();
@@ -287,6 +288,29 @@ const ConteudoGaleria: React.FC = () => {
             <Chat parado mensagens={[{ quem: "lia", texto: "Teo, por que o céu é *azul*?" }, { quem: "teo", texto: "Porque o ar espalha mais a luz _azul_." }]} />
             <Rotulo>Chat (cena chat): a última mensagem é a fala da cena · Mapa mental: ver roteiros/modelo-mapa-mental.json</Rotulo>
           </div>
+        </Secao>
+
+        <Secao titulo="Tema música (pauta, Neuro maestro, contagem e fundo musical)">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 90, alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <Pentagrama notas={["sol4", "la4", "si4", "do5", "re5", "mi5", "fa#5", "sol5"]} destaque={[6]} corDestaque="coral" rotulos />
+              <Rotulo>Pentagrama (campo pauta no quiz e na explicacao): clave de sol, sustenido, nomes e destaque</Rotulo>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+              <Pentagrama notas={["do4", "re4", "mi4", "?"]} rotulos destacarClave />
+              <Rotulo>Nota misteriosa "?" e clave em destaque</Rotulo>
+            </div>
+          </div>
+          <ProvedorEstilo formato="horizontal" figurino="maestro" fundo="musical">
+            <div style={{ display: "flex", gap: 60, alignItems: "flex-end", justifyContent: "center" }}>
+              {(["regendo", "parado", "apontando", "comemorando"] as const).map((po) => (
+                <div key={po} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, width: 380 }}>
+                  <Personagem id="neuro" pose={po} expressao="feliz" altura={360} />
+                  <Rotulo>maestro · {po}</Rotulo>
+                </div>
+              ))}
+            </div>
+          </ProvedorEstilo>
         </Secao>
       </div>
     </AbsoluteFill>

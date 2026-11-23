@@ -11,7 +11,7 @@ import { separarPalavras } from "./componentes/TextoAnimado";
 import { Busto } from "./personagens/colagem/Busto";
 import { Expressao, IdPersonagem, Pose } from "./personagens/tipos";
 import { carregarFontes } from "./tema/carregarFontes";
-import { ProvedorEstilo, useEstilo } from "./tema/Estilo";
+import { NomeFigurino, NomeFundo, ProvedorEstilo, useEstilo } from "./tema/Estilo";
 import { cores, forma, NomeCor } from "./tema/tokens";
 
 carregarFontes();
@@ -28,6 +28,9 @@ export type PropsCapa = {
   /** Pílula de chamada no pé da capa. */
   chamada?: string;
   personagens?: { id: IdPersonagem; expressao: Expressao; pose: Pose }[];
+  /** Tema música: fundo com notas e Neuro maestro (iguais aos do vídeo). */
+  fundo?: NomeFundo;
+  figurino?: NomeFigurino;
 };
 
 const Miolo: React.FC<PropsCapa> = ({ etiqueta, titulo, selo, versus, sub, chamada, seloTopo, personagens = [] }) => {
@@ -100,7 +103,7 @@ const Miolo: React.FC<PropsCapa> = ({ etiqueta, titulo, selo, versus, sub, chama
 };
 
 export const Capa: React.FC<PropsCapa> = (props) => (
-  <ProvedorEstilo formato="vertical">
+  <ProvedorEstilo formato="vertical" fundo={props.fundo} figurino={props.figurino}>
     <Miolo {...props} />
   </ProvedorEstilo>
 );
@@ -112,4 +115,7 @@ export const CAPAS: { id: string; props: PropsCapa }[] = [
   { id: "CapaGta6VsZelda", props: { etiqueta: "Jogo do Ano 2026", titulo: "*GTA 6* ou _Zelda_: quem leva?", sub: "Dá pra ganhar só por gráfico?", versus: ["GTA 6", "Zelda"], chamada: "Comenta o seu voto!" } },
   { id: "CapaSusVoceUsaSemSaber", props: { etiqueta: "Caiu no Enem", titulo: "Você usa o _SUS_ sem saber", sub: "Faça o quiz e descubra onde", selo: { texto: "Quiz", sub: "2 perguntas", cor: "amarelo" } } },
   { id: "CapaTerrasRaras", props: { etiqueta: "Caiu no Enem", titulo: "O que são terras _raras_?", sub: "Não é terra e nem é tão rara", selo: { texto: "23%", sub: "estão no Brasil", cor: "amarelo" } } },
+  { id: "CapaQuizMusica", props: { etiqueta: "Quiz musical · nível 1", titulo: "Você consegue _responder_?", sub: "Notas, pauta e escalas: do fácil ao médio", selo: { texto: "6 s", sub: "por pergunta", cor: "amarelo" }, seloTopo: 900, fundo: "musical", figurino: "maestro", personagens: [{ id: "neuro", expressao: "empolgado", pose: "regendo" }] } },
+  { id: "CapaQuizMusica2", props: { etiqueta: "Quiz musical · nível 2", titulo: "Só quem estuda _música_ acerta", sub: "Intervalos, semitons e sustenidos", selo: { texto: "6 s", sub: "por pergunta", cor: "amarelo" }, seloTopo: 900, fundo: "musical", figurino: "maestro", personagens: [{ id: "neuro", expressao: "pensativo", pose: "regendo" }] } },
+  { id: "CapaQuizMusica3", props: { etiqueta: "Quiz musical · nível 3", titulo: "Só *maestro* acerta as 6", sub: "Nível extremamente difícil", selo: { texto: "6 s", sub: "por pergunta", cor: "coral" }, seloTopo: 900, fundo: "musical", figurino: "maestro", personagens: [{ id: "neuro", expressao: "surpreso", pose: "regendo" }] } },
 ];

@@ -6,7 +6,7 @@
 import React from "react";
 import { useCurrentFrame } from "remotion";
 import { useEstilo } from "../tema/Estilo";
-import { cores, constelacao } from "../tema/tokens";
+import { cores, constelacao, musica } from "../tema/tokens";
 
 const aleatorio = (n: number) => {
   const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
@@ -15,7 +15,8 @@ const aleatorio = (n: number) => {
 
 export const Constelacao: React.FC<{ semente?: number; opacidade?: number }> = ({ semente = 1, opacidade = constelacao.opacidade }) => {
   const frame = useCurrentFrame();
-  const { dim } = useEstilo();
+  const { dim, fundo } = useEstilo();
+  const musical = fundo === "musical";
   const { largura: W, altura: H } = dim;
   const n = Math.round((constelacao.pontos * (W * H)) / (1080 * 1920));
   const pts = Array.from({ length: n }, (_, i) => {
@@ -25,6 +26,9 @@ export const Constelacao: React.FC<{ semente?: number; opacidade?: number }> = (
       x: aleatorio(semente * 31 + i * 2.17) * W + Math.sin(frame / (40 * vel) + fase) * constelacao.deriva,
       y: aleatorio(semente * 53 + i * 5.31) * H + Math.cos(frame / (46 * vel) + fase) * constelacao.deriva,
       grande: aleatorio(semente * 11 + i) > 0.62,
+      // fundo "musical": alguns nós viram notas (cabeça oval + haste + bandeirinha de colcheia)
+      nota: musical && aleatorio(semente * 17 + i * 7.7) < musica.notasNoFundo,
+      colcheia: aleatorio(semente * 23 + i * 3.3) > 0.45,
     };
   });
   // cada nó liga aos 2 vizinhos mais próximos (como nas peças da identidade)
@@ -46,9 +50,20 @@ export const Constelacao: React.FC<{ semente?: number; opacidade?: number }> = (
         {ligacoes.map(([i, j], k) => (
           <line key={k} x1={pts[i].x} y1={pts[i].y} x2={pts[j].x} y2={pts[j].y} strokeWidth={constelacao.traco} />
         ))}
-        {pts.map((p, i) => (
-          <circle key={i} cx={p.x} cy={p.y} r={p.grande ? constelacao.raioGrande : constelacao.raioPequeno} stroke="none" />
-        ))}
+        {pts.map((p, i) => {
+          const r = p.grande ? constelacao.raioGrande : constelacao.raioPequeno;
+          if (!p.nota) return <circle key={i} cx={p.x} cy={p.y} r={r} stroke="none" />;
+          const rx = r * 1.25;
+          const xh = p.x + rx * 0.85;
+          const topo = p.y - r * 4.6;
+          return (
+            <g key={i}>
+              <ellipse cx={p.x} cy={p.y} rx={rx} ry={r * 0.9} transform={`rotate(${musica.cabeca.giro} ${p.x} ${p.y})`} stroke="none" />
+              <line x1={xh} y1={p.y} x2={xh} y2={topo} strokeWidth={constelacao.traco} />
+              {p.colcheia && <path d={`M ${xh} ${topo} Q ${xh + r * 1.6} ${topo + r * 1.2} ${xh + r * 1.4} ${topo + r * 2.6}`} fill="none" strokeWidth={constelacao.traco} />}
+            </g>
+          );
+        })}
       </g>
     </svg>
   );

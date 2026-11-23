@@ -8,22 +8,33 @@ type ValorEstilo = {
   p: Paleta;
   /** Faixa reservada no topo da área útil (Neuro narrador no modo história). */
   reservaTopo: number;
+  /** Fundo da constelação: "neuronios" (padrão) ou "musical" (alguns nós viram notas musicais). */
+  fundo: NomeFundo;
+  /** Roupa do Neuro no vídeo todo: "padrao" (gravata-borboleta) ou "maestro" (fraque e batuta). */
+  figurino: NomeFigurino;
 };
+
+export type NomeFundo = "neuronios" | "musical";
+export type NomeFigurino = "padrao" | "maestro";
 
 const Ctx = createContext<ValorEstilo>({
   formato: "vertical",
   tema: TEMA_PADRAO,
   p: paleta(TEMA_PADRAO),
   reservaTopo: 0,
+  fundo: "neuronios",
+  figurino: "padrao",
 });
 
 export const ProvedorEstilo: React.FC<{
   formato: NomeFormato;
   tema?: NomeTema;
   reservaTopo?: number;
+  fundo?: NomeFundo;
+  figurino?: NomeFigurino;
   children: React.ReactNode;
-}> = ({ formato, tema = TEMA_PADRAO, reservaTopo = 0, children }) => (
-  <Ctx.Provider value={{ formato, tema, p: paleta(tema), reservaTopo }}>{children}</Ctx.Provider>
+}> = ({ formato, tema = TEMA_PADRAO, reservaTopo = 0, fundo = "neuronios", figurino = "padrao", children }) => (
+  <Ctx.Provider value={{ formato, tema, p: paleta(tema), reservaTopo, fundo, figurino }}>{children}</Ctx.Provider>
 );
 
 /** Acesso ao padrão visual de dentro de qualquer componente. */

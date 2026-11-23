@@ -146,6 +146,11 @@ export const tempos = {
   revelarQuiz: 2 * fps, // quanto antes do fim da cena a resposta do quiz aparece
   viagemMapa: 26, // a câmera do mapa mental vai de um nó ao outro
   vozNoMapa: 1, // segundos até a narração começar em cada nó (depois que a câmera chega)
+  // ── tema música (quiz musical) ──
+  respostaQuiz: 10 * fps, // contagem padrão para responder um quiz com "tempoResposta"
+  esperaContagem: 6, // frames entre o fim da pergunta falada e o começo da contagem
+  popContagem: 6, // pulinho do número da contagem a cada segundo
+  compasso: 15, // um tempo da regência do Neuro maestro (120 bpm)
 } as const;
 
 export const easings = {
@@ -180,6 +185,7 @@ export const audio = {
   fadeSaida: 45, // frames
   palavrasPorSegundo: 2.4, // ritmo confortável de locução (para estimar o tempo de cada fala)
   folgaFala: 0.4, // segundos extras por fala
+  rampaVoz: 8, // frames: a música desce e sobe suave quando uma fala começa e termina
 } as const;
 
 export const amplitudes = {
@@ -227,4 +233,17 @@ export const mapa = {
   alturaNarrador: 460,
   escalaFinal: 1.35, // no fim, com a câmera longe, os cartões crescem para continuar legíveis
   zoomViagem: 0.78, // a câmera se afasta um pouco no meio da viagem
+} as const;
+
+// ─── TEMA MÚSICA (pauta, Neuro maestro, fundo com notas) ──────────────────
+export const musica = {
+  espacoLinha: 30, // px entre as linhas da pauta (vertical; horizontal = 75%)
+  larguraPauta: 880, // largura da pauta (vertical)
+  traco: 4, // linhas da pauta e hastes das notas
+  cabeca: { rx: 19, ry: 14, giro: -22 }, // cabeça da nota (oval inclinada), em px no vertical
+  haste: 3.4, // altura da haste em espaços
+  clave: 7, // traço da clave de sol
+  notasNoFundo: 0.34, // fração dos nós da constelação que viram notas musicais no fundo "musical"
+  contagem: 96, // diâmetro do círculo da contagem regressiva do quiz
+  contagemAlerta: 3, // segundos finais em Coral
 } as const;

@@ -255,3 +255,48 @@ Não é terra e nem é tão rara: são 17 elementos químicos que fazem os ímã
 
 #enem #terrasraras #animamente #Shorts
 ```
+
+## 18. Quiz musical: você consegue responder? 🎼 Nível 1
+Arquivo: `QUIZ MUSICAL/quiz-musica.mp4` · Capa: `QUIZ MUSICAL/quiz-musica-capa.png`
+
+**Título** (48/100):
+```
+Quiz musical: você consegue responder? 🎼 Nível 1
+```
+**Descrição:**
+```
+O Neuro virou maestro! São 6 perguntas de música, do fácil ao médio, e você tem 6 segundos para cada uma: o que é nota, qual nota vem depois do Mi, que nota é essa na pauta e qual nota fica de fora da escala. Depois de cada resposta vem uma explicação rapidinha.
+👇 Quantas você acertou? Comenta seu placar!
+
+#musica #quiz #animamente #Shorts
+```
+
+## 19. Só quem estuda música acerta! 🎼 Quiz musical nível 2
+Arquivo: `QUIZ MUSICAL/quiz-musica-2.mp4` · Capa: `QUIZ MUSICAL/quiz-musica-2-capa.png`
+
+**Título** (52/100):
+```
+Só quem estuda música acerta! 🎼 Quiz musical nível 2
+```
+**Descrição:**
+```
+Nível 2 do quiz musical do Neuro maestro: notas fora da pauta, semitons da oitava, intervalos e sustenidos de Ré maior e Lá maior. São 6 perguntas, do médio ao difícil, com 6 segundos para responder cada uma.
+👇 Quantas você acertou? Comenta seu placar!
+
+#musica #teoriamusical #quiz #Shorts
+```
+
+## 20. Só maestro acerta as 6! 🎼 Quiz musical nível 3 (extremamente difícil)
+Arquivo: `QUIZ MUSICAL/quiz-musica-3.mp4` · Capa: `QUIZ MUSICAL/quiz-musica-3-capa.png`
+
+**Título** (69/100):
+```
+Só maestro acerta as 6! 🎼 Quiz musical nível 3 (extremamente difícil)
+```
+**Descrição:**
+```
+O nível mais difícil do quiz musical: linha suplementar, escala relativa menor, o trítono, a armadura de Mi maior, qual acorde as notas formam e a escala de Si maior. São 6 perguntas e só 6 segundos para cada uma. Se acertar todas, a batuta é sua!
+👇 Quantas você acertou? Comenta seu placar!
+
+#musica #teoriamusical #quiz #Shorts
+```

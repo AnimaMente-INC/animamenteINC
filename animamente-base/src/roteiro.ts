@@ -9,6 +9,8 @@ import { ESTILOS_TEXTO, EstiloTexto } from "./componentes/TextoAnimado";
 import type { LadoVersus } from "./componentes/Versus";
 import { NomeIcone, ICONES } from "./componentes/Icone";
 import { NomeObjeto, OBJETOS } from "./componentes/Objeto";
+import { NOTAS_VALIDAS } from "./componentes/Pentagrama";
+import type { NomeFigurino, NomeFundo } from "./tema/Estilo";
 import { validarLegenda } from "./componentes/Legenda";
 import { EXPRESSOES, Expressao, IdPersonagem, Mudanca, Olhar, PERSONAGENS, POSES, Pose } from "./personagens/tipos";
 import { NomeFormato } from "./tema/formatos";
@@ -103,6 +105,15 @@ export type CenaRoteiro = {
   correta?: number;
   /** quiz / versus: segundo em que a resposta (ou o vencedor) aparece. Padrão: 2 s antes do fim da cena. */
   revelarEm?: number;
+  /**
+   * quiz: segundos para responder (ex.: 10). A contagem regressiva começa quando a pergunta falada termina,
+   * a resposta aparece no fim dela e a cena se ajusta sozinha a isso (ignora `revelarEm`).
+   */
+  tempoResposta?: number;
+  /** quiz: texto da etiqueta no topo (padrão "Quiz"), ex.: "Pergunta 3 de 6". */
+  etiqueta?: string;
+  /** quiz / explicacao: pauta musical (tema música) com as notas, as que ficam em destaque e os nomes embaixo. */
+  pauta?: { notas: string[]; destaque?: number[]; corDestaque?: NomeCor; rotulos?: boolean; destacarClave?: boolean };
   /** versus: os dois lados e, se quiser, quem ganha (0 ou 1). */
   lados?: LadoVersus[];
   vencedor?: number;
@@ -172,6 +183,10 @@ export type Roteiro = {
   modelo?: "cenas" | "mapa";
   /** Modelo de fala do vídeo: balao (padrão), pensamento, grito, legenda, faixa ou recado. */
   estiloFala?: EstiloFala;
+  /** Fundo da constelação: "neuronios" (padrão) ou "musical" (alguns nós viram notas musicais). */
+  fundo?: NomeFundo;
+  /** Roupa do Neuro no vídeo todo: "padrao" ou "maestro" (fraque e batuta). */
+  figurino?: NomeFigurino;
   /** Modelo de texto dos títulos: palavra (padrão), maquina, marcador, onda ou recorte. */
   estiloTexto?: EstiloTexto;
   titulo: string;
@@ -266,8 +281,22 @@ export const falaDaCena = (c: CenaRoteiro): { quem: IdPersonagem; texto: string;
   return null;
 };
 
+/**
+ * Quiz com `tempoResposta`: frame em que a contagem começa (quando a pergunta falada termina) e em que a resposta aparece.
+ * `vozFrames` = duração da fala em frames (voz de IA ou tempo estimado).
+ */
+export const tempoDoQuiz = (c: CenaRoteiro, vozFrames?: number) => {
+  const f = falaDaCena(c);
+  const fimFala = f ? f.em + (vozFrames ?? seg(estimarFala(f.texto))) : tempos.entrada * 3;
+  const inicio = Math.max(tempos.entrada * 3, fimFala + tempos.esperaContagem);
+  const total = c.tempoResposta !== undefined ? seg(c.tempoResposta) : tempos.respostaQuiz;
+  return { inicio, revela: inicio + total };
+};
+
 /** Duração da cena em frames (sem contar a sobreposição da transição). A voz estica a cena se precisar. */
 export const duracaoCena = (c: CenaRoteiro, voz?: { duracao: number }, respiro: number = RESPIRO_VOZ) => {
+  // quiz com contagem: pergunta falada + contagem + a resposta na tela por `tempos.revelarQuiz`
+  if (c.tipo === "quiz" && c.tempoResposta !== undefined) return tempoDoQuiz(c, voz ? seg(voz.duracao) : undefined).revela + tempos.revelarQuiz;
   const base = c.tipo === "intro" ? tempos.intro : c.tipo === "outro" ? tempos.outro : seg(c.duracao ?? 4);
   const f = falaDaCena(c);
   if (!voz || !f) return base;
@@ -358,6 +387,15 @@ export const validarRoteiro = (r: Roteiro): string[] => {
       if (!c.titulo) erros.push(`${onde}: a pergunta do quiz vai em "titulo"`);
       if (!c.opcoes || c.opcoes.length < 2 || c.opcoes.length > 4) erros.push(`${onde}: precisa de 2 a 4 "opcoes"`);
       else if (c.correta === undefined || c.correta < 0 || c.correta >= c.opcoes.length) erros.push(`${onde}: "correta" precisa apontar para uma das "opcoes" (começa em 0)`);
+    }
+    if (c.tempoResposta !== undefined && (c.tipo !== "quiz" || c.tempoResposta < 3 || c.tempoResposta > 30)) erros.push(`${onde}: "tempoResposta" é só para quiz, de 3 a 30 segundos`);
+    if (c.pauta) {
+      if (!c.pauta.notas?.length || c.pauta.notas.length > 9) erros.push(`${onde}: a pauta precisa de 1 a 9 "notas"`);
+      c.pauta.notas?.forEach((n) => {
+        if (!NOTAS_VALIDAS(n)) erros.push(`${onde}: nota "${n}" inválida (use do4, re4, fa#4, sol4... ou "?")`);
+      });
+      if (c.pauta.destaque?.some((d) => d < 0 || d >= (c.pauta?.notas.length ?? 0))) erros.push(`${onde}: "destaque" aponta para uma nota que não existe`);
+      if (c.pauta.corDestaque && !coresDestaque.includes(c.pauta.corDestaque)) erros.push(`${onde}: corDestaque "${c.pauta.corDestaque}" não é de destaque`);
     }
     if (c.tipo === "versus") {
       if (c.lados?.length !== 2) erros.push(`${onde}: precisa de exatamente 2 "lados"`);

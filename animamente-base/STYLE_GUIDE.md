@@ -209,8 +209,9 @@ Os personagens têm uma **identidade própria dentro da marca**: são **colagens
 | `Fala` / `LegendaKaraoke` | os 6 modelos de fala (seção 8.1) |
 | `Quiz`, `Versus`, `NumeroGigante`, `Medalha`, `Chat` | peças dos modelos de vídeo novos (seção 8.3) |
 | `MapaMental` | o vídeo em câmera contínua (seção 8.4) |
+| `Pentagrama` | pauta musical com clave de sol, notas e nomes (seção 8.5) |
 
-Ícones disponíveis: lampada, livro, atomo, grafico, relogio, ampulheta, interrogacao, alvo, certo, errado, calor, dados, play, camera, neuronio, sol, gota, folha, trofeu, balao.
+Ícones disponíveis: lampada, livro, atomo, grafico, relogio, ampulheta, interrogacao, alvo, certo, errado, calor, dados, play, camera, neuronio, sol, gota, folha, trofeu, balao, nota.
 
 ---
 
@@ -322,6 +323,24 @@ O modelo mais diferente: **não tem cenas que trocam**. O vídeo inteiro é um m
 - Os nós ligados ao centro ficam em volta dele (1040px); os filhos de outro nó abrem em leque (900px, 42° entre irmãos). Medidas em `tokens.ts` (`mapa`).
 - De 5 a 8 nós por vídeo. Sem `personagens`: quem fala é o `narrador` de cada nó.
 - Código: `src/mapa/MapaMental.tsx`.
+
+## 8.5 Tema música (`"fundo": "musical"` + `"figurino": "maestro"`)
+
+Para vídeos de música. Exemplo completo: `roteiros/quiz-musica.json` (quiz de 6 perguntas com o Neuro maestro).
+
+| Peça | Onde | O que faz |
+|---|---|---|
+| `"fundo": "musical"` | topo do roteiro | a constelação continua igual, mas cerca de 1/3 dos nós vira nota musical (cabeça oval + haste, algumas com bandeirinha de colcheia), no mesmo Coral a 16% |
+| `"figurino": "maestro"` | topo do roteiro | o Neuro veste **fraque de papel Ardósia** com lapelas Tinta, peitilho Névoa com botões, lencinho Coral no bolso, mangas Ardósia com punhos Névoa e segura a **batuta** (vareta Névoa com nó Amarelo). A gravata-borboleta Amarelo continua. Vale para o vídeo todo, inclusive o `outro` |
+| pose `regendo` | `personagens[].pose` | a mão da batuta desenha o compasso 4/4 (baixo, dentro, fora, cima), um tempo a cada `tempos.compasso` (15 frames = 120 bpm); a outra mão marca o tempo. Sem figurino maestro, o Neuro rege com a mão-nó |
+| `pauta` | cenas `quiz` e `explicacao` | `Pentagrama`: 5 linhas Névoa com nó de neurônio nas pontas, clave de sol em traço, notas com cabeça oval chapada e haste com nó na ponta, linha suplementar, sustenido em traços e nome embaixo. Campos: `notas` (`"do4"`, `"fa#5"`... ou `"?"` para a nota misteriosa, até 9), `destaque` (índices em Amarelo ou `corDestaque`), `rotulos`, `destacarClave` |
+| `tempoResposta` | cena `quiz` | segundos para responder (3 a 30). A barra fica cheia enquanto a pergunta é lida; quando a fala termina, começa a **contagem regressiva** (círculo Amarelo com o número, Coral nos últimos 3 s, com pulinho a cada segundo), a resposta aparece no fim e fica 2 s na tela. A duração da cena é calculada sozinha |
+| `etiqueta` | cena `quiz` | texto da etiqueta no topo ("Pergunta 3 de 6") |
+| ícone `nota` | cartões e ícones | colcheia em traço |
+
+**Quiz com contagem:** a pergunta vai na tela (`titulo`) e é **falada como `narracao`** do Neuro (que está em cena sem `fala`): assim não precisa de balão e sobra espaço para a pauta e as alternativas. Depois de cada quiz, uma `explicacao` com a resposta e a pauta. Medidas da pauta e da contagem em `tokens.ts` (`musica`).
+
+**Música abaixa nas falas:** em todo vídeo com voz, a trilha fica em `audio.volumeMusica` e desce para `audio.volumeMusicaComVoz` só enquanto alguém fala (rampa de `audio.rampaVoz` frames). Nas contagens do quiz, a música volta ao volume normal.
 
 ---
 

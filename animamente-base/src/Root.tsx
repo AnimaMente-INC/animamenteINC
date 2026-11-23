@@ -13,6 +13,9 @@ import modeloPassoAPasso from "../roteiros/modelo-passo-a-passo.json";
 import modeloQuiz from "../roteiros/modelo-quiz.json";
 import modeloTop3 from "../roteiros/modelo-top3.json";
 import binanceHack from "../roteiros/binance-hack-2026.json";
+import quizMusica from "../roteiros/quiz-musica.json";
+import quizMusica2 from "../roteiros/quiz-musica-2.json";
+import quizMusica3 from "../roteiros/quiz-musica-3.json";
 import gta6VsZelda from "../roteiros/passeio/gta6-vs-zelda.json";
 import { duracaoPasseio, Passeio, RoteiroPasseio } from "./passeio/Passeio";
 import { Capa, CAPAS } from "./Capa";
@@ -58,6 +61,9 @@ const videos: { id: string; roteiro: Roteiro }[] = [
   { id: "SusVoceUsaSemSaber", roteiro: susVoceUsaSemSaber as Roteiro },
   { id: "TerrasRaras", roteiro: terrasRaras as Roteiro },
   { id: "BinanceHack2026", roteiro: binanceHack as Roteiro },
+  { id: "QuizMusica", roteiro: quizMusica as Roteiro },
+  { id: "QuizMusica2", roteiro: quizMusica2 as Roteiro },
+  { id: "QuizMusica3", roteiro: quizMusica3 as Roteiro },
   // modelos de vídeo (um exemplo de cada; copie o roteiro e troque o conteúdo)
   { id: "ModeloQuiz", roteiro: modeloQuiz as Roteiro },
   { id: "ModeloDuelo", roteiro: modeloDuelo as Roteiro },

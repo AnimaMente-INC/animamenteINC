@@ -43,6 +43,8 @@ A base tem modelos prontos (detalhes em `animamente-base/STYLE_GUIDE.md`, seçõ
 - **Fala** (`"estiloFala"`): balao, pensamento, grito, legenda (karaokê), faixa ou recado.
 - **Texto dos títulos** (`"estiloTexto"`): palavra, maquina, marcador, onda ou recorte.
 
+- **Tema música** (STYLE_GUIDE 8.5): `"fundo": "musical"`, `"figurino": "maestro"` (Neuro de fraque e batuta, pose `regendo`), `pauta` (pentagrama) e quiz com contagem regressiva (`"tempoResposta": 10`). Exemplo: `roteiros/quiz-musica.json`.
+
 Se o pedido não disser o modelo, escolha o que combina com o tema e varie de um vídeo para o outro. Personagens, vozes, cores e fonte não mudam em nenhum modelo. Exemplos renderizados: `VIDEOS E ROTEIROS/MODELOS NOVOS/`.
 
 ## Formato do roteiro de locução (Dublador, só no modo dublagem)

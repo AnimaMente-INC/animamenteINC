@@ -34,17 +34,42 @@ const timingDe = (frames: number) =>
 
 export type PropsVideo = { roteiro: Roteiro; vozes?: ManifestoVozes | null };
 
-/** Música de fundo em loop, baixa, com fade de entrada e saída. */
-export const MusicaDeFundo: React.FC<{ nome: string; comVoz: boolean; volume?: number; inicio?: number }> = ({ nome, comVoz, volume = 1, inicio = 0 }) => {
+/** Trecho do vídeo (frames) em que uma voz está tocando. */
+export type TrechoVoz = { de: number; ate: number };
+
+/** 0 = sem voz, 1 = voz tocando (com rampa suave de `audio.rampaVoz` frames na entrada e na saída). */
+const pesoVoz = (f: number, trechos: TrechoVoz[]) =>
+  trechos.reduce(
+    (m, t) =>
+      Math.max(
+        m,
+        interpolate(f, [t.de - audio.rampaVoz, t.de, t.ate, t.ate + audio.rampaVoz], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+      ),
+    0,
+  );
+
+/**
+ * Música de fundo em loop, baixa, com fade de entrada e saída.
+ * Com `trechosVoz`, ela fica em `audio.volumeMusica` e ABAIXA para `audio.volumeMusicaComVoz` só enquanto alguém fala.
+ */
+export const MusicaDeFundo: React.FC<{ nome: string; comVoz: boolean; volume?: number; inicio?: number; trechosVoz?: TrechoVoz[] }> = ({
+  nome,
+  comVoz,
+  volume = 1,
+  inicio = 0,
+  trechosVoz,
+}) => {
   const { durationInFrames } = useVideoConfig();
-  const alvo = (comVoz ? audio.volumeMusicaComVoz : audio.volumeMusica) * volume;
+  const nivel = (f: number) =>
+    trechosVoz ? audio.volumeMusica + (audio.volumeMusicaComVoz - audio.volumeMusica) * pesoVoz(f, trechosVoz) : comVoz ? audio.volumeMusicaComVoz : audio.volumeMusica;
   return (
     <Audio
       src={staticFile(`musica/${nome}.mp3`)}
       loop
       startFrom={Math.round(inicio * fps)}
       volume={(f) =>
-        alvo *
+        nivel(f) *
+        volume *
         interpolate(f, [0, audio.fadeEntrada, durationInFrames - audio.fadeSaida, durationInFrames], [0, 1, 1, 0], {
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
@@ -66,7 +91,7 @@ export const Video: React.FC<PropsVideo> = ({ roteiro, vozes }) => {
   // MAPA MENTAL: um mapa só, em câmera contínua (sem cenas que trocam)
   if (roteiro.modelo === "mapa") {
     return (
-      <ProvedorEstilo formato={roteiro.formato} tema={roteiro.tema}>
+      <ProvedorEstilo formato={roteiro.formato} tema={roteiro.tema} fundo={roteiro.fundo} figurino={roteiro.figurino}>
         <TextoCtx.Provider value={roteiro.estiloTexto ?? "palavra"}>
           <AbsoluteFill>
             <MapaMental roteiro={roteiro} vozes={vozes} />
@@ -78,6 +103,17 @@ export const Video: React.FC<PropsVideo> = ({ roteiro, vozes }) => {
     );
   }
   const timing = timingDe(transicaoDe(roteiro));
+  // onde cada voz toca no vídeo inteiro (a música abaixa só nesses trechos)
+  const trechosVoz: TrechoVoz[] = [];
+  {
+    let inicioCena = 0;
+    roteiro.cenas.forEach((bruta, i) => {
+      const voz = vozesDasCenas[i];
+      const f = falaDaCena(comPadroes(bruta));
+      if (voz?.arquivo && f) trechosVoz.push({ de: inicioCena + f.em, ate: inicioCena + f.em + seg(voz.duracao) });
+      inicioCena += frames[i] - transicaoDe(roteiro);
+    });
+  }
   const rapido = roteiro.ritmo === "rapido";
   // modo história: o Neuro narra de um cantinho no topo (só no vertical, que tem espaço em cima)
   const comNarrador = roteiro.narradorNoCanto === true && roteiro.formato === "vertical";
@@ -109,7 +145,7 @@ export const Video: React.FC<PropsVideo> = ({ roteiro, vozes }) => {
     });
   }
   return (
-    <ProvedorEstilo formato={roteiro.formato} tema={roteiro.tema} reservaTopo={comNarrador ? narrador.faixa : 0}>
+    <ProvedorEstilo formato={roteiro.formato} tema={roteiro.tema} reservaTopo={comNarrador ? narrador.faixa : 0} fundo={roteiro.fundo} figurino={roteiro.figurino}>
       <AbsoluteFill>
         <AlturaFixaCtx.Provider value={roteiro.elencoContinuo && roteiro.formato === "vertical" ? narrador.alturaElenco : undefined}>
         <TransitionSeries>
@@ -147,7 +183,7 @@ export const Video: React.FC<PropsVideo> = ({ roteiro, vozes }) => {
         </AlturaFixaCtx.Provider>
         {comNarrador && <NarradorSobreposto segmentos={segmentos} />}
         <BarraProgresso />
-        {musica && <MusicaDeFundo nome={musica} comVoz={temVozTocando} volume={roteiro.volumeMusica} inicio={roteiro.musicaInicio} />}
+        {musica && <MusicaDeFundo nome={musica} comVoz={temVozTocando} volume={roteiro.volumeMusica} inicio={roteiro.musicaInicio} trechosVoz={temVozTocando ? trechosVoz : undefined} />}
       </AbsoluteFill>
     </ProvedorEstilo>
   );

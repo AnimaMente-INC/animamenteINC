@@ -13,6 +13,7 @@ import { Cartao } from "../componentes/Cartao";
 import { Chat } from "../componentes/Chat";
 import { Medalha, NumeroGigante } from "../componentes/NumeroGigante";
 import { Quiz } from "../componentes/Quiz";
+import { Pentagrama } from "../componentes/Pentagrama";
 import { TextoAnimado } from "../componentes/TextoAnimado";
 import { Versus } from "../componentes/Versus";
 import { ComparacaoMitoVerdade } from "../componentes/ComparacaoMitoVerdade";
@@ -30,7 +31,7 @@ import { TelaRetro } from "../componentes/TelaRetro";
 import { textoLimpo } from "../componentes/TextoAnimado";
 import { TextoImpacto } from "../componentes/TextoImpacto";
 import { Titulo } from "../componentes/Titulo";
-import { CenaRoteiro, ItemRoteiro, Roteiro, seg } from "../roteiro";
+import { CenaRoteiro, ItemRoteiro, Roteiro, seg, tempoDoQuiz } from "../roteiro";
 import { useEstilo } from "../tema/Estilo";
 import { tempos } from "../tema/tokens";
 import { Fundo, GrupoPersonagens, LayoutCena } from "./LayoutCena";
@@ -71,6 +72,7 @@ export const CenaExplicacao: React.FC<PropsCena> = ({ cena, indice }) => (
     conteudo={
       <>
         {cena.titulo && <Titulo texto={cena.titulo} tamanho="subtitulo" atraso={2} />}
+        {cena.pauta && <Pentagrama {...cena.pauta} atraso={8} />}
         {cena.imagem && <Imagem arquivo={cena.imagem} rotulo={cena.imagemRotulo} atraso={8} />}
         {cena.lousa && <Lousa formula={cena.lousa} rotulo={cena.lousaRotulo} atraso={8} />}
         {cena.cartao && <Cartao {...cena.cartao} atraso={cena.lousa ? 24 : 8} />}
@@ -393,7 +395,12 @@ export const CenaTerminal: React.FC<PropsCena> = ({ cena, duracao, indice }) => 
 
 // ═══ MODELOS NOVOS: quiz, versus, numero, ranking, passos, chat ════════════
 /** Frame em que a resposta do quiz (ou o vencedor do versus) aparece. */
-const revelar = (c: CenaRoteiro, duracao: number) => (c.revelarEm !== undefined ? seg(c.revelarEm) : Math.max(tempos.entrada * 3, duracao - tempos.revelarQuiz - tempos.transicao));
+const revelar = (c: CenaRoteiro, duracao: number) =>
+  c.tipo === "quiz" && c.tempoResposta !== undefined
+    ? tempoDoQuiz(c, c._duracaoVoz).revela
+    : c.revelarEm !== undefined
+      ? seg(c.revelarEm)
+      : Math.max(tempos.entrada * 3, duracao - tempos.revelarQuiz - tempos.transicao);
 
 // ─── QUIZ: pergunta + alternativas + barra de tempo + resposta ─────────────
 export const CenaQuiz: React.FC<PropsCena> = ({ cena, duracao, indice }) => {
@@ -403,15 +410,22 @@ export const CenaQuiz: React.FC<PropsCena> = ({ cena, duracao, indice }) => {
       semente={indice + 1}
       conteudo={
         <>
-          <Etiqueta texto="Quiz" tamanho="rotulo" atraso={0} animar />
+          <Etiqueta texto={cena.etiqueta ?? "Quiz"} tamanho="rotulo" atraso={0} animar />
           {cena.titulo && <Titulo texto={cena.titulo} tamanho="subtitulo" atraso={4} />}
-          <Quiz opcoes={cena.opcoes ?? []} correta={cena.correta ?? 0} atraso={tempos.entrada * 2} revelarEm={revelar(cena, duracao)} />
+          {cena.pauta && <Pentagrama {...cena.pauta} atraso={tempos.entrada} />}
+          <Quiz
+            opcoes={cena.opcoes ?? []}
+            correta={cena.correta ?? 0}
+            atraso={tempos.entrada * 2}
+            revelarEm={revelar(cena, duracao)}
+            inicioContagem={cena.tempoResposta !== undefined ? tempoDoQuiz(cena, cena._duracaoVoz).inicio : undefined}
+          />
         </>
       }
       personagens={cena.personagens}
       legenda={cena.legenda}
       legendaEm={legendaEm(cena, revelar(cena, duracao) + tempos.entrada)}
-      alturaPersonagem={formato === "vertical" ? ((cena.opcoes?.length ?? 0) > 3 ? 400 : 460) : undefined}
+      alturaPersonagem={formato === "vertical" ? (cena.pauta ? 460 : (cena.opcoes?.length ?? 0) > 3 ? 420 : 460) + (cena.personagens?.some((p) => p.fala) ? 0 : 100) : undefined}
     />
   );
 };

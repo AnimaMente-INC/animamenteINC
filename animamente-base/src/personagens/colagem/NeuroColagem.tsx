@@ -5,9 +5,15 @@
  * com ramos de neurônio a lápis e nós de papel, gravatinha-borboleta Amarelo de apresentador,
  * braços-neurônio de tira de papel com mãos-nó e a boca "South Park" (o queixo desce ao falar).
  * Personalidade: o anfitrião animado, olhos grandes e sobrancelhas sempre pra cima.
+ *
+ * FIGURINO "maestro" (roteiro com "figurino": "maestro"): fraque de papel Ardósia com lapelas Tinta,
+ * peitilho Névoa com botões, lencinho Coral no bolso, mangas Ardósia com punhos Névoa e a BATUTA
+ * (vareta Névoa com nó Amarelo na ponta). Pose "regendo": a mão da batuta desenha o compasso 4/4
+ * (baixo, dentro, fora, cima), um tempo a cada `tempos.compasso` frames.
  */
 import React from "react";
-import { cores } from "../../tema/tokens";
+import { useEstilo } from "../../tema/Estilo";
+import { colagem, cores, tempos } from "../../tema/tokens";
 import { CIRCULOS_CEREBRO } from "../partes/Cerebro";
 import { Pose } from "../tipos";
 import { elipse, Margem, Peca, Pt, Rabisco, recorte } from "./papel";
@@ -107,6 +113,48 @@ const maos = (pose: Pose, passo: number): [Pt, Pt] => {
       return [[86, 470], [514, 470]];
   }
 };
+// ─── maestro: ombros no fraque, mãos por pose e o compasso 4/4 da regência ────────
+const OMBROS_MAESTRO: [Pt, Pt] = [
+  [156, 478],
+  [444, 478],
+];
+const COMPASSO: Pt[] = [
+  [486, 452], // 1: baixo
+  [378, 360], // 2: para dentro
+  [588, 350], // 3: para fora
+  [512, 176], // 4: em cima
+];
+const reger = (passo: number): Pt => {
+  const t = (passo * colagem.passo) / tempos.compasso;
+  const b = Math.floor(t) % 4;
+  const f = Math.sqrt(t - Math.floor(t)); // chega rápido no tempo e "repousa" (o ictus da regência)
+  const [a, c] = [COMPASSO[b], COMPASSO[(b + 1) % 4]];
+  return [a[0] + (c[0] - a[0]) * f, a[1] + (c[1] - a[1]) * f];
+};
+const maosMaestro = (pose: Pose, passo: number): [Pt, Pt] => {
+  switch (pose) {
+    case "regendo":
+      return [[74, 330 + (Math.floor((passo * colagem.passo) / tempos.compasso) % 2 ? -18 : 0)], reger(passo)];
+    case "apontando":
+      return [[120, 646], [600, 320]];
+    case "acenando":
+      return [[120, 646], [540 + (passo % 2 ? 16 : -12), 150]];
+    case "pensando":
+      return [[120, 646], [392, 372]];
+    case "comemorando": {
+      const pulo = passo % 2 ? -14 : 0;
+      return [[78, 120 + pulo], [522, 120 + pulo]];
+    }
+    default:
+      return [[120, 646], [480, 646]];
+  }
+};
+const FRAQUE = recorte([[300, 430], [212, 440], [140, 476], [108, 552], [96, 700], [504, 700], [492, 552], [460, 476], [388, 440]], 270, 3, 40);
+const PEITILHO = recorte([[300, 432], [262, 442], [270, 700], [330, 700], [338, 442]], 271, 2, 30);
+const LAPELA_E = recorte([[262, 442], [222, 456], [246, 610], [286, 520]], 272, 2, 24);
+const LAPELA_D = recorte([[338, 442], [378, 456], [354, 610], [314, 520]], 273, 2, 24);
+const LENCO = recorte([[156, 560], [204, 548], [196, 584], [176, 566], [162, 586]], 274, 2, 20);
+
 const cotovelo = (o: Pt, m: Pt): Pt => {
   const mx = (o[0] + m[0]) / 2;
   const my = (o[1] + m[1]) / 2;
@@ -116,26 +164,49 @@ const cotovelo = (o: Pt, m: Pt): Pt => {
 
 export const NeuroColagem: React.FC<{ e: EstadoBusto }> = ({ e }) => {
   const id = e.id;
+  const maestro = useEstilo().figurino === "maestro";
   const espelho = e.olhando === "esquerda";
-  const [mE, mD] = maos(e.pose, e.passo);
+  const [mE, mD] = maestro ? maosMaestro(e.pose, e.passo) : maos(e.pose, e.passo);
+  const ombros = maestro ? OMBROS_MAESTRO : OMBROS;
   const mao = (o: Pt, m: Pt, lado: number) => {
     const el = cotovelo(o, m);
     return { o, m, el, lado };
   };
   // olhando para a esquerda: espelha o braço que gesticula
   const bracos = espelho
-    ? [mao(OMBROS[0], [600 - mD[0], mD[1]], 0), mao(OMBROS[1], [600 - mE[0], mE[1]], 1)]
-    : [mao(OMBROS[0], mE, 0), mao(OMBROS[1], mD, 1)];
+    ? [mao(ombros[0], [600 - mD[0], mD[1]], 0), mao(ombros[1], [600 - mE[0], mE[1]], 1)]
+    : [mao(ombros[0], mE, 0), mao(ombros[1], mD, 1)];
+  // a batuta fica na mão que gesticula
+  const ladoBatuta = espelho ? 0 : 1;
+  const manga = maestro ? cores.ardosia : N;
 
   return (
     <g>
       {/* braços (tiras de papel atrás do cérebro) */}
       {bracos.map(({ o, m, el, lado }) => (
         <g key={lado}>
-          <Peca id={id} d={tira(o, el, 26, 210 + lado)} cor={N} textura="manchada" margem={4} />
-          <Peca id={id} d={tira(el, m, 24, 212 + lado)} cor={N} textura="manchada" margem={4} />
+          <Peca id={id} d={tira(o, el, maestro ? 40 : 26, 210 + lado)} cor={manga} textura="manchada" margem={4} />
+          <Peca id={id} d={tira(el, m, maestro ? 34 : 24, 212 + lado)} cor={manga} textura="manchada" margem={4} />
         </g>
       ))}
+
+      {/* fraque de maestro (atrás do caule e da gravata) */}
+      {maestro && (
+        <g>
+          <Peca id={id} d={FRAQUE} cor={cores.ardosia} textura="aquarela" margem />
+          <Peca id={id} d={PEITILHO} cor={N} textura="manchada" />
+          <Peca id={id} d={LAPELA_E} cor={cores.tinta} textura="lisa" />
+          <Peca id={id} d={LAPELA_D} cor={cores.tinta} textura="lisa" />
+          {[512, 568, 624].map((y, i) => (
+            <circle key={i} cx={300} cy={y} r={7} fill={cores.tinta} />
+          ))}
+          <Peca id={id} d={LENCO} cor={C} textura="respingos" margem={3} />
+          <Rabisco pts={[[150, 586], [210, 574]]} cor={N} largura={3} opacidade={0.7} semente={275} />
+          {[[[140, 520], [160, 600]], [[460, 520], [440, 600]]].map((l, i) => (
+            <Rabisco key={i} pts={l as Pt[]} cor={cores.tinta} largura={3} opacidade={0.35} semente={276 + i} />
+          ))}
+        </g>
+      )}
 
       {/* caule + gravata-borboleta de apresentador */}
       <Peca id={id} d={CAULE} cor={C} textura="aquarela" margem />
@@ -201,8 +272,17 @@ export const NeuroColagem: React.FC<{ e: EstadoBusto }> = ({ e }) => {
       {bracos.map(({ el, m, lado }) => {
         const ang = Math.atan2(m[1] - el[1], m[0] - el[0]);
         const dedo = (d: number): Pt => [m[0] + Math.cos(ang + d) * 24, m[1] + Math.sin(ang + d) * 24];
+        const ponta: Pt = [m[0] + Math.cos(ang - 0.35) * 150, m[1] + Math.sin(ang - 0.35) * 150];
+        const punho: Pt = [m[0] - Math.cos(ang) * 30, m[1] - Math.sin(ang) * 30];
         return (
           <g key={lado}>
+            {maestro && <Peca id={id} d={tira(punho, [m[0] - Math.cos(ang) * 14, m[1] - Math.sin(ang) * 14], 40, 280 + lado)} cor={N} textura="lisa" margem={3} />}
+            {maestro && lado === ladoBatuta && (
+              <g>
+                <Peca id={id} d={tira(m, ponta, 9, 282)} cor={N} textura="lisa" margem={3} />
+                <Peca id={id} d={recorte(elipse(ponta[0], ponta[1], 9, 9, 9), 283, 1)} cor={cores.amarelo} textura="manchada" margem={3} />
+              </g>
+            )}
             {[-0.6, 0, 0.6].map((d, i) => (
               <Peca key={i} id={id} d={recorte(elipse(dedo(d)[0], dedo(d)[1], 10, 10, 8), 250 + lado * 5 + i, 1)} cor={C} textura="aquarela" margem={4} />
             ))}

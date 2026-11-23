@@ -1,0 +1,379 @@
+{
+  "id": "quiz-musica-3",
+  "titulo": "Quiz *musical*: nível 3",
+  "categoria": "Música",
+  "formato": "vertical",
+  "musica": "rei-da-montanha",
+  "vozesIA": true,
+  "fundo": "musical",
+  "figurino": "maestro",
+  "estiloFala": "legenda",
+  "estiloTexto": "onda",
+  "cenas": [
+    {
+      "tipo": "intro"
+    },
+    {
+      "tipo": "impacto",
+      "duracao": 4,
+      "impacto": "Quiz musical / nível *3* / só maestro / acerta!",
+      "estiloFala": "grito",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "empolgado",
+          "fala": "Nível três, extremamente difícil! Só maestro acerta as seis. Você consegue?",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "etiqueta": "Pergunta 1 de 6",
+      "titulo": "Qual nota é *essa*?",
+      "pauta": {
+        "notas": [
+          "la5"
+        ],
+        "destaque": [
+          0
+        ]
+      },
+      "opcoes": [
+        "Sol",
+        "Lá",
+        "Si"
+      ],
+      "correta": 1,
+      "tempoResposta": 6,
+      "narracao": "Pra aquecer: que nota é essa, lá no alto, fora da pauta?",
+      "narrador": "neuro",
+      "narracaoEm": 0.5,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "pensativo"
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "titulo": "É o *Lá*!",
+      "pauta": {
+        "notas": [
+          "fa5",
+          "sol5",
+          "la5"
+        ],
+        "destaque": [
+          2
+        ],
+        "rotulos": true
+      },
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "feliz",
+          "fala": "É o Lá! Ele fica na primeira linha suplementar, acima da pauta.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "etiqueta": "Pergunta 2 de 6",
+      "titulo": "Qual é a *relativa* menor de Dó maior?",
+      "opcoes": [
+        "Mi menor",
+        "Lá menor",
+        "Ré menor"
+      ],
+      "correta": 1,
+      "tempoResposta": 6,
+      "narracao": "Qual é a escala relativa menor de Dó maior?",
+      "narrador": "neuro",
+      "narracaoEm": 0.5,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "pensativo"
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "titulo": "É *Lá* menor!",
+      "pauta": {
+        "notas": [
+          "la4",
+          "si4",
+          "do5",
+          "re5",
+          "mi5",
+          "fa5",
+          "sol5",
+          "la5"
+        ],
+        "destaque": [
+          0,
+          7
+        ],
+        "rotulos": true
+      },
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "feliz",
+          "fala": "Lá menor! Ela usa as mesmas notas de Dó maior, sem nenhum sustenido.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "etiqueta": "Pergunta 3 de 6",
+      "titulo": "Que *intervalo* é esse?",
+      "pauta": {
+        "notas": [
+          "do4",
+          "fa#4"
+        ],
+        "destaque": [
+          0,
+          1
+        ]
+      },
+      "opcoes": [
+        "Quarta justa",
+        "Quarta aumentada",
+        "Quinta justa"
+      ],
+      "correta": 1,
+      "tempoResposta": 6,
+      "narracao": "Dó e Fá sustenido. Que intervalo é esse?",
+      "narrador": "neuro",
+      "narracaoEm": 0.5,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "surpreso"
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "titulo": "O *trítono*!",
+      "pauta": {
+        "notas": [
+          "do4",
+          "fa#4"
+        ],
+        "destaque": [
+          1
+        ],
+        "corDestaque": "coral",
+        "rotulos": true
+      },
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "fala": "Quarta aumentada, o trítono! São seis semitons, o famoso intervalo do diabo.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "etiqueta": "Pergunta 4 de 6",
+      "titulo": "Quantos *sustenidos* tem Mi maior?",
+      "opcoes": [
+        "3",
+        "4",
+        "5"
+      ],
+      "correta": 1,
+      "tempoResposta": 6,
+      "narracao": "Quantos sustenidos tem a escala de Mi maior?",
+      "narrador": "neuro",
+      "narracaoEm": 0.5,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "pensativo"
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "titulo": "Mi maior tem *quatro*",
+      "pauta": {
+        "notas": [
+          "mi4",
+          "fa#4",
+          "sol#4",
+          "la4",
+          "si4",
+          "do#5",
+          "re#5",
+          "mi5"
+        ],
+        "destaque": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "rotulos": true
+      },
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "feliz",
+          "fala": "Quatro! Mi maior tem Fá, Dó, Sol e Ré sustenidos.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "etiqueta": "Pergunta 5 de 6",
+      "titulo": "Que *acorde* essas notas formam?",
+      "pauta": {
+        "notas": [
+          "re4",
+          "fa#4",
+          "la4"
+        ],
+        "destaque": [
+          0,
+          1,
+          2
+        ]
+      },
+      "opcoes": [
+        "Ré maior",
+        "Ré menor",
+        "Fá sustenido menor"
+      ],
+      "correta": 0,
+      "tempoResposta": 6,
+      "narracao": "Ré, Fá sustenido e Lá. Que acorde essas três notas formam?",
+      "narrador": "neuro",
+      "narracaoEm": 0.5,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "pensativo"
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "titulo": "É *Ré* maior!",
+      "pauta": {
+        "notas": [
+          "re4",
+          "fa#4",
+          "la4"
+        ],
+        "destaque": [
+          0,
+          1,
+          2
+        ],
+        "rotulos": true
+      },
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "feliz",
+          "fala": "Ré maior! Fundamental, terça maior e quinta justa: Ré, Fá sustenido e Lá.",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "etiqueta": "Pergunta 6 de 6",
+      "titulo": "Qual *não* é da escala de Si maior?",
+      "opcoes": [
+        "Ré sustenido",
+        "Lá sustenido",
+        "Mi",
+        "Dó"
+      ],
+      "correta": 3,
+      "tempoResposta": 6,
+      "narracao": "A última, a mais cabeluda! Qual nota fica de fora da escala de Si maior?",
+      "narrador": "neuro",
+      "narracaoEm": 0.5,
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "surpreso"
+        }
+      ]
+    },
+    {
+      "tipo": "explicacao",
+      "titulo": "Si maior tem *cinco* sustenidos",
+      "pauta": {
+        "notas": [
+          "si4",
+          "do#5",
+          "re#5",
+          "mi5",
+          "fa#5",
+          "sol#5",
+          "la#5",
+          "si5"
+        ],
+        "destaque": [
+          1
+        ],
+        "corDestaque": "coral",
+        "rotulos": true
+      },
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "apontando",
+          "expressao": "empolgado",
+          "fala": "Si maior tem cinco sustenidos, incluindo o Dó. Então o Dó natural fica de fora!",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "destaque": "Você é *maestro*!",
+      "personagens": [
+        {
+          "id": "neuro",
+          "pose": "regendo",
+          "expressao": "empolgado",
+          "fala": "Acertou as seis? Pode pegar a batuta, você é maestro de verdade!",
+          "falaEm": 0.4
+        }
+      ]
+    },
+    {
+      "tipo": "outro",
+      "chamada": "Quantas você *acertou*?",
+      "botao": "Comente seu placar"
+    }
+  ]
+}

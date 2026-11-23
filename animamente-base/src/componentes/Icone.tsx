@@ -26,12 +26,13 @@ export type NomeIcone =
   | "gota"
   | "folha"
   | "trofeu"
-  | "balao";
+  | "balao"
+  | "nota";
 
 export const ICONES: NomeIcone[] = [
   "lampada", "livro", "atomo", "grafico", "relogio", "ampulheta", "interrogacao", "alvo",
   "certo", "errado", "calor", "dados", "play", "camera", "neuronio",
-  "sol", "gota", "folha", "trofeu", "balao",
+  "sol", "gota", "folha", "trofeu", "balao", "nota",
 ];
 
 export const Icone: React.FC<{ nome: NomeIcone; tamanho?: number; cor?: NomeCor; semCirculo?: boolean }> = ({
@@ -46,6 +47,12 @@ export const Icone: React.FC<{ nome: NomeIcone; tamanho?: number; cor?: NomeCor;
   const t = { stroke: linha, strokeWidth: 4, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, fill: "none" };
   const cheio = { fill: linha };
   const desenhos: Record<NomeIcone, React.ReactNode> = {
+    nota: (
+      <>
+        <ellipse cx={25} cy={43} rx={7} ry={5} transform="rotate(-22 25 43)" {...cheio} />
+        <path d="M 31 42 L 31 18 Q 38 22 43 28" {...t} />
+      </>
+    ),
     lampada: (
       <>
         <path d="M 25 36 A 10 10 0 1 1 39 36 Q 37 39 37 42 L 27 42 Q 27 39 25 36 Z" {...t} />
